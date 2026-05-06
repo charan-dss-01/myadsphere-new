@@ -1,7 +1,7 @@
 "use client";
 
 import { cn } from "@/lib/utils";
-import { motion } from "framer-motion";
+import { motion } from "motion/react";
 import Image from "next/image";
 
 export const CardHoverEffect = ({
@@ -33,7 +33,7 @@ export const CardHoverEffect = ({
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.3, delay: idx * 0.1 }}
-            className="relative z-20 h-full w-full overflow-hidden rounded-lg border border-transparent bg-neutral-950 p-4 group-hover:border-orange-500"
+            className="relative z-20 h-full w-full overflow-hidden rounded-lg border border-transparent bg-neutral-950 p-4 group-hover:border-white/50"
           >
             <div className="relative z-50">
               <div className="p-4">

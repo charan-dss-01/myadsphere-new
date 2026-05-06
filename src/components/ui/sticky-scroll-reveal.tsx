@@ -46,9 +46,9 @@ export const StickyScroll = ({
     "#171717", // neutral-900
   ];
   const linearGradients = useMemo(() => [
-    "linear-gradient(to bottom right, #06b6d4, #10b981)", // cyan-500 to emerald-500
-    "linear-gradient(to bottom right, #ec4899, #6366f1)", // pink-500 to indigo-500
-    "linear-gradient(to bottom right, #f97316, #eab308)", // orange-500 to yellow-500
+    "linear-gradient(to bottom right, #3f3f46, #18181b)", // zinc-700 to zinc-900
+    "linear-gradient(to bottom right, #52525b, #27272a)", // zinc-600 to zinc-800
+    "linear-gradient(to bottom right, #71717a, #3f3f46)", // zinc-500 to zinc-700
   ], []);
 
   const [backgroundGradient, setBackgroundGradient] = useState(

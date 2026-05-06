@@ -30,10 +30,10 @@ function Navbar({ className }: { className?: string }) {
         <>
             {/* Mobile Menu Button */}
             <button
-                className="fixed top-4 right-4 z-50 md:hidden p-2 rounded-lg bg-black/10 backdrop-blur-sm"
+                className="fixed top-6 right-6 z-50 md:hidden p-3 rounded-xl bg-white/10 backdrop-blur-md border border-white/10 shadow-xl"
                 onClick={() => setIsSidebarOpen(!isSidebarOpen)}
             >
-                {isSidebarOpen ? <X size={24} /> : <MenuIcon size={24} />}
+                {isSidebarOpen ? <X size={20} className="text-white" /> : <MenuIcon size={20} className="text-white" />}
             </button>
 
             {/* Desktop Menu */}
@@ -50,10 +50,9 @@ function Navbar({ className }: { className?: string }) {
             {/* Mobile Sidebar */}
             <div
                 className={cn(
-                    "fixed top-0 right-0 h-full w-64 bg-black/10 backdrop-blur-sm z-40 transform transition-transform duration-300 ease-in-out md:hidden overflow-y-auto",
+                    "fixed top-0 right-0 z-40 w-64 h-full bg-black text-white transition-transform duration-300 ease-in-out",
                     isSidebarOpen ? "translate-x-0" : "translate-x-full"
                 )}
-                style={{ marginRight: 0 }}
             >
                 <div className="flex flex-col items-start p-8 mt-16 space-y-4">
                     {menuItems.map((item) => (

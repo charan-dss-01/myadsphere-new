@@ -1,225 +1,216 @@
-'use client'
-import React, { useState, useEffect } from 'react';
-import { Boxes } from "./ui/background-boxes";
-import { cn } from "@/lib/utils";
-import { TypewriterEffect, TypewriterEffectSmooth } from "@/components/ui/typewriter-effect";
-import { motion, AnimatePresence } from 'framer-motion';
+'use client';
 
+import React, { useState, useRef } from 'react';
+import { motion, AnimatePresence } from 'motion/react';
+
+// ── Helpers ───────────────────────────────────────────────────────────────
+function FadeIn({ children, delay = 0, y = 20, className = "" }: { 
+  children: React.ReactNode; delay?: number; y?: number; className?: string 
+}) {
+  return (
+    <motion.div
+      initial={{ opacity: 0, y }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, margin: "-60px" }}
+      transition={{ duration: 0.8, delay, ease: [0.16, 1, 0.3, 1] }}
+      className={className}
+    >
+      {children}
+    </motion.div>
+  );
+}
+
+// ── Main Component ────────────────────────────────────────────────────────
 export default function Contact() {
-    const [success, setSuccess] = useState(false);
-    const [error, setError] = useState('');
-    const [loading, setLoading] = useState(false);
-    const [mounted, setMounted] = useState(false);
-    const words = [
-        {
-          text: "Get",
-        },
-        {
-          text: "in",
-        },
-        {
-          text: "Touch.",
-          className: "text-orange-500 dark:text-orange-500",
-        },
-      ];
-    useEffect(() => {
-        setMounted(true);
-    }, []);
+  const [status, setStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle');
+  const formRef = useRef<HTMLFormElement>(null);
 
-    const onSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
-        event.preventDefault();
-        setLoading(true);
-        setError('');
-        
-        try {
-            const form = event.currentTarget;
-            const response = await fetch("https://api.web3forms.com/submit", {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json",
-                    Accept: "application/json"
-                },
-                body: JSON.stringify({
-                    access_key: "6b9f20d0-e0d4-4176-b857-435f09b69437",
-                    name: (form.elements.namedItem('name') as HTMLInputElement).value,
-                    email: (form.elements.namedItem('email') as HTMLInputElement).value,
-                    subject: (form.elements.namedItem('subject') as HTMLInputElement).value,
-                    message: (form.elements.namedItem('message') as HTMLTextAreaElement).value,
-                })
-            });
-            
-            const result = await response.json();
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setStatus('loading');
     
-            if (result.success) {
-                setSuccess(true);
-                form.reset();
-                setTimeout(() => {
-                    setSuccess(false);
-                }, 5000);
-            } else {
-                setError('Failed to send message. Please try again.');
-            }
-        } catch (err) {
-            setError('An error occurred. Please try again later.');
-        } finally {
-            setLoading(false);
-        }
-    };
-
-    if (!mounted) {
-        return null;
+    try {
+      const formData = new FormData(formRef.current!);
+      const response = await fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          access_key: "6b9f20d0-e0d4-4176-b857-435f09b69437",
+          name: formData.get('name'),
+          email: formData.get('email'),
+          subject: formData.get('subject'),
+          message: formData.get('message'),
+        })
+      });
+      
+      const res = await response.json();
+      if (res.success) {
+        setStatus('success');
+        formRef.current?.reset();
+        setTimeout(() => setStatus('idle'), 5000);
+      } else {
+        setStatus('error');
+      }
+    } catch (err) {
+      setStatus('error');
     }
+  };
 
-    return (
-        <div className="min-h-screen relative w-full overflow-hidden  flex flex-col items-center justify-center">
-            <div className="absolute inset-0 w-full h-full bg-slate-900 z-20 [mask-image:radial-gradient(transparent,white)] pointer-events-none" />
-            {/* <Boxes /> */}
+  return (
+    <section id="contact" className="relative bg-black py-32 px-4 overflow-hidden">
+      {/* Background patterns */}
+      <div className="absolute inset-0 bg-[radial-gradient(rgba(255,255,255,0.02)_1px,transparent_1px)] bg-[size:32px_32px] pointer-events-none" />
+      
+      {/* Large highlight glow behind the glass container */}
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-white/[0.04] blur-[140px] rounded-full pointer-events-none" />
+
+      <div className="max-w-6xl mx-auto relative z-10">
+        
+        {/* Header (Premium Style) */}
+        <FadeIn className="text-center mb-24 relative">
+          <div className="absolute inset-0 flex items-center justify-center pointer-events-none select-none overflow-hidden" aria-hidden>
+            <span className="text-[120px] md:text-[200px] font-black text-transparent tracking-tighter leading-none"
+              style={{ WebkitTextStroke: '1px rgba(255,255,255,0.06)' }}>
+              CONNECT
+            </span>
+          </div>
+          <div className="relative z-10 pt-10">
+            <h2 className="text-6xl md:text-8xl font-black tracking-tight leading-none">
+              <span className="bg-gradient-to-b from-white via-zinc-100 to-zinc-500 bg-clip-text text-transparent">
+                Contact
+              </span>
+            </h2>
+          </div>
+        </FadeIn>
+
+        {/* ── Glassmorphism Container ── */}
+        <FadeIn delay={0.2}>
+          <div className="relative rounded-[40px] border border-white/20 bg-white/[0.03] backdrop-blur-2xl shadow-[0_0_80px_rgba(0,0,0,0.4)] overflow-hidden">
             
-            <div className="relative z-30 w-full max-w-6xl mx-auto px-4 py-20">
-                {/* <h1 className="text-4xl md:text-5xl font-extrabold text-white text-center mb-12">
-                    Get in <span className="text-orange-500">Touch</span>
-                </h1> */}
-                <div className='flex justify-center items-center'>
-                <TypewriterEffectSmooth words={words} className="text-4xl md:text-5xl font-extrabold text-white text-center mb-12" />
-                </div>
-                
-                <div className="flex flex-col-reverse md:flex-row gap-10 justify-center items-start">
-                    {/* Contact Info Card */}
-                    <div className="w-full md:w-1/3 bg-zinc-900/80 backdrop-blur-sm rounded-2xl p-8 shadow-xl border border-zinc-800">
-                        <h2 className="text-2xl font-bold text-white mb-6">Contact Information</h2>
-                        <div className="space-y-6">
-                            <div className="flex items-center space-x-4">
-                                <i className="fa-solid fa-location-dot text-orange-500 text-2xl"></i>
-                                <span className="text-gray-300 text-lg">Hyderabad</span>
-                            </div>
-                            <div className="flex items-center space-x-4">
-                                <i className="fa-solid fa-envelope text-orange-500 text-2xl"></i>
-                                <span className="text-gray-300 text-lg">cdonthu816@gmail.com</span>
-                            </div>
-                            <div className="flex items-center space-x-4">
-                                <i className="fa-solid fa-phone text-orange-500 text-2xl"></i>
-                                <span className="text-gray-300 text-lg">9849490777</span>
-                            </div>
-                            
-                            <div className="pt-6 border-t border-zinc-800">
-                                <p className="text-gray-400 mb-4">Follow me on:</p>
-                                <div className="flex gap-6">
-                                    <a href="https://www.instagram.com/dss_charan_07/" target="_blank" rel="noopener noreferrer" className="hover:text-orange-500 transition-colors">
-                                        <i className="fa-brands fa-instagram text-3xl text-orange-500"></i>
-                                    </a>
-                                    <a href="https://www.linkedin.com/in/charandonthu" target="_blank" rel="noopener noreferrer" className="hover:text-orange-500 transition-colors">
-                                        <i className="fa-brands fa-linkedin text-3xl text-orange-500"></i>
-                                    </a>
-                                    <a href="https://github.com/charan-dss-01/" target="_blank" rel="noopener noreferrer" className="hover:text-orange-500 transition-colors">
-                                        <i className="fa-brands fa-github text-3xl text-orange-500"></i>
-                                    </a>
-                                </div>
-                            </div>
+            {/* Inner highlights */}
+            <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-white/20 to-transparent" />
+            <div className="absolute bottom-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-white/10 to-transparent" />
+
+            <div className="grid grid-cols-1 lg:grid-cols-12">
+              
+              {/* Left Column: Contact Details (Glass Panel) */}
+              <div className="lg:col-span-5 p-10 md:p-14 border-b lg:border-b-0 lg:border-r border-white/10 bg-white/[0.02]">
+                <div className="space-y-10">
+                  <div>
+                    <h3 className="text-3xl font-bold text-white mb-4 tracking-tight">Let&apos;s build something <br/> extraordinary.</h3>
+                    <p className="text-zinc-400 text-lg leading-relaxed font-light">
+                      Ready to start a project? I&apos;m available for full-stack opportunities and AI collaborations.
+                    </p>
+                  </div>
+
+                  <div className="space-y-6">
+                    {[
+                      { icon: "📍", label: "Location", val: "Hyderabad, India" },
+                      { icon: "📧", label: "Email", val: "cdonthu816@gmail.com" },
+                      { icon: "📱", label: "Phone", val: "+91 9849490777" }
+                    ].map((item) => (
+                      <div key={item.label} className="group flex items-center gap-6 p-4 rounded-2xl border border-white/5 bg-white/[0.02] hover:bg-white/[0.05] hover:border-white/10 transition-all duration-300">
+                        <div className="w-12 h-12 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center text-xl group-hover:scale-110 transition-transform">
+                          {item.icon}
                         </div>
-                    </div>
+                        <div>
+                          <p className="text-[10px] text-zinc-500 font-bold uppercase tracking-widest">{item.label}</p>
+                          <p className="text-white font-medium">{item.val}</p>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
 
-                    {/* Contact Form */}
-                    <div className="w-full md:w-2/3 bg-zinc-900/80 backdrop-blur-sm rounded-2xl p-8 shadow-xl border border-zinc-800">
-                        <form onSubmit={onSubmit} className="space-y-6" suppressHydrationWarning>
-                            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                                <div>
-                                    <input
-                                        type="text"
-                                        required
-                                        placeholder="Your Name"
-                                        name="name"
-                                        autoComplete="name"
-                                        className="w-full bg-zinc-800 border border-zinc-700 text-white p-4 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-500 transition-all"
-                                        suppressHydrationWarning
-                                    />
-                                </div>
-                                <div>
-                                    <input
-                                        type="email"
-                                        required
-                                        placeholder="Your Email"
-                                        name="email"
-                                        autoComplete="email"
-                                        className="w-full bg-zinc-800 border border-zinc-700 text-white p-4 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-500 transition-all"
-                                        suppressHydrationWarning
-                                    />
-                                </div>
-                            </div>
-                            <div>
-                                <input
-                                    type="text"
-                                    required
-                                    name="subject"
-                                    placeholder="Subject"
-                                    autoComplete="off"
-                                    className="w-full bg-zinc-800 border border-zinc-700 text-white p-4 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-500 transition-all"
-                                    suppressHydrationWarning
-                                />
-                            </div>
-                            <div>
-                                <textarea
-                                    rows={6}
-                                    required
-                                    placeholder="Your Message"
-                                    name="message"
-                                    autoComplete="off"
-                                    className="w-full bg-zinc-800 border border-zinc-700 text-white p-4 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-500 transition-all resize-none"
-                                    suppressHydrationWarning
-                                ></textarea>
-                            </div>
-                            {error && (
-                                <div className="text-red-500 text-sm">{error}</div>
-                            )}
-                            <button
-                                type="submit"
-                                disabled={loading}
-                                className="w-full bg-orange-500 text-white font-bold py-4 rounded-lg shadow-lg hover:bg-orange-600 transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed"
-                                suppressHydrationWarning
-                            >
-                                {loading ? 'Sending...' : 'Send Message'}
-                            </button>
-                        </form>
+                  <div className="pt-6">
+                    <p className="text-zinc-500 text-[10px] font-bold uppercase tracking-[0.3em] mb-6">Social Networks</p>
+                    <div className="flex gap-4">
+                        {[
+                          { icon: "fa-brands fa-linkedin-in", link: "https://www.linkedin.com/in/charandonthu" },
+                          { icon: "fa-brands fa-github", link: "https://github.com/charan-dss-01/" },
+                          { icon: "fa-brands fa-instagram", link: "https://www.instagram.com/dss_charan_07/" }
+                        ].map((s) => (
+                          <a key={s.link} href={s.link} target="_blank" className="w-12 h-12 rounded-full border border-white/10 flex items-center justify-center text-zinc-400 hover:text-white hover:border-white/30 hover:bg-white/5 transition-all">
+                            <i className={`${s.icon} text-lg`} />
+                          </a>
+                        ))}
                     </div>
+                  </div>
                 </div>
-            </div>
+              </div>
 
-            {/* Success Message Modal */}
-            <AnimatePresence>
-                {success && (
-                    <motion.div
-                        initial={{ opacity: 0 }}
-                        animate={{ opacity: 1 }}
-                        exit={{ opacity: 0 }}
-                        className="fixed inset-0 bg-black bg-opacity-50 backdrop-blur-sm flex items-center justify-center z-50"
-                        onClick={() => setSuccess(false)}
-                    >
-                        <motion.div 
-                            initial={{ scale: 0.5, opacity: 0 }}
-                            animate={{ scale: 1, opacity: 1 }}
-                            exit={{ scale: 0.5, opacity: 0 }}
-                            className="bg-zinc-900 p-8 rounded-2xl shadow-2xl border border-zinc-800 max-w-2xl w-full mx-4 overflow-hidden relative" 
-                            onClick={e => e.stopPropagation()}
-                        >
-                            {/* Modal Content */}
-                            <div className="relative z-10">
-                                <div className="text-center">
-                                    <div className="w-16 h-16 bg-green-500 rounded-full flex items-center justify-center mx-auto mb-4">
-                                        <i className="fa-solid fa-check text-white text-2xl"></i>
-                                    </div>
-                                    <h3 className="text-2xl font-bold text-white mb-2">Message Sent!</h3>
-                                    <p className="text-gray-400 mb-6">Thank you for reaching out. I&apos;ll get back to you soon.</p>
-                                    <button
-                                        onClick={() => setSuccess(false)}
-                                        className="bg-orange-500 text-white px-6 py-3 rounded-lg hover:bg-orange-600 transition-all duration-300"
-                                    >
-                                        Close
-                                    </button>
-                                </div>
-                            </div>
-                        </motion.div>
-                    </motion.div>
-                )}
-            </AnimatePresence>
+              {/* Right Column: Form (Glass Panel) */}
+              <div className="lg:col-span-7 p-10 md:p-14">
+                <form ref={formRef} onSubmit={handleSubmit} className="space-y-8">
+                  
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    <div className="space-y-2">
+                      <label className="text-[10px] text-zinc-400 font-bold uppercase tracking-widest ml-1">Full Name</label>
+                      <input 
+                        type="text" name="name" required placeholder="John Doe"
+                        className="w-full bg-white/[0.05] border border-white/10 rounded-xl px-5 py-4 text-white placeholder:text-zinc-600 focus:outline-none focus:border-white/30 focus:bg-white/[0.08] transition-all"
+                      />
+                    </div>
+                    <div className="space-y-2">
+                      <label className="text-[10px] text-zinc-400 font-bold uppercase tracking-widest ml-1">Email Address</label>
+                      <input 
+                        type="email" name="email" required placeholder="john@example.com"
+                        className="w-full bg-white/[0.05] border border-white/10 rounded-xl px-5 py-4 text-white placeholder:text-zinc-600 focus:outline-none focus:border-white/30 focus:bg-white/[0.08] transition-all"
+                      />
+                    </div>
+                  </div>
+
+                  <div className="space-y-2">
+                    <label className="text-[10px] text-zinc-400 font-bold uppercase tracking-widest ml-1">Subject</label>
+                    <input 
+                      type="text" name="subject" required placeholder="Project Inquiry"
+                      className="w-full bg-white/[0.05] border border-white/10 rounded-xl px-5 py-4 text-white placeholder:text-zinc-600 focus:outline-none focus:border-white/30 focus:bg-white/[0.08] transition-all"
+                    />
+                  </div>
+
+                  <div className="space-y-2">
+                    <label className="text-[10px] text-zinc-400 font-bold uppercase tracking-widest ml-1">Your Message</label>
+                    <textarea 
+                      name="message" required rows={4} placeholder="Tell me about your project..."
+                      className="w-full bg-white/[0.05] border border-white/10 rounded-xl px-5 py-4 text-white placeholder:text-zinc-600 focus:outline-none focus:border-white/30 focus:bg-white/[0.08] transition-all resize-none"
+                    />
+                  </div>
+
+                  <button 
+                    type="submit" 
+                    disabled={status === 'loading'}
+                    className="w-full h-16 rounded-2xl bg-white text-black font-black text-sm uppercase tracking-[0.3em] hover:bg-zinc-200 hover:scale-[1.02] active:scale-95 transition-all flex items-center justify-center gap-4 disabled:opacity-50 group"
+                  >
+                    {status === 'loading' ? 'Transmitting...' : 'Send Message'}
+                    <i className="fa-solid fa-paper-plane text-xs group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
+                  </button>
+
+                  <AnimatePresence>
+                    {status === 'success' && (
+                      <motion.p initial={{opacity:0, y: 10}} animate={{opacity:1, y: 0}} exit={{opacity:0}} className="text-green-400 text-center font-bold text-sm tracking-wide">
+                        Message sent successfully!
+                      </motion.p>
+                    )}
+                    {status === 'error' && (
+                      <motion.p initial={{opacity:0, y: 10}} animate={{opacity:1, y: 0}} exit={{opacity:0}} className="text-red-400 text-center font-bold text-sm tracking-wide">
+                        Error sending message. Please try again.
+                      </motion.p>
+                    )}
+                  </AnimatePresence>
+                </form>
+              </div>
+
+            </div>
+          </div>
+        </FadeIn>
+
+        {/* Footer */}
+        <div className="mt-32 pt-12 border-t border-white/5 text-center">
+           <p className="text-zinc-600 text-[10px] font-bold uppercase tracking-[0.5em]">
+             © {new Date().getFullYear()} Charan Donthu · Building with Precision
+           </p>
         </div>
-    );
+
+      </div>
+    </section>
+  );
 }

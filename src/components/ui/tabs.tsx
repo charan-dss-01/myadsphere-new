@@ -79,7 +79,7 @@ export const Tabs = ({
         active={active}
         key={active.value}
         hovering={hovering}
-        className={cn("mt-32", contentClassName)}
+        className={cn("mt-10 md:mt-20", contentClassName)}
       />
     </>
   );
@@ -106,10 +106,10 @@ export const FadeInDiv = ({
           key={tab.value}
           layoutId={tab.value}
           style={{
-            scale: 1 - idx * 0.1,
-            top: hovering ? idx * -50 : 0,
+            scale: 1 - idx * 0.05,
+            top: hovering ? idx * -40 : 0,
             zIndex: -idx,
-            opacity: idx < 3 ? 1 - idx * 0.1 : 0,
+            opacity: idx < 3 ? 1 - idx * 0.15 : 0,
           }}
           animate={{
             y: isActive(tab) ? [0, 40, 0] : 0,

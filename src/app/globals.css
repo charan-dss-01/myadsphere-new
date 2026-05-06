@@ -16,6 +16,33 @@
   }
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
+::selection {
+  background: rgba(255, 255, 255, 0.9);
+  color: #000;
+}
+
+/* Custom Monochromatic Scrollbar */
+::-webkit-scrollbar {
+  width: 5px;
+}
+
+::-webkit-scrollbar-track {
+  background: #000;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #27272a;
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #3f3f46;
+}
+
 .no-visible-scrollbar {
   scrollbar-width: none;
   -ms-overflow-style: none;
@@ -30,4 +57,46 @@
 body {
   color: rgb(var(--foreground-rgb));
   background: rgb(var(--background-start-rgb));
+}
+
+/* GPU-accelerated orbit ring animations — runs on compositor thread, zero jank */
+@keyframes orbit-cw {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+@keyframes orbit-ccw {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(-360deg); }
+}
+@keyframes float-up-down {
+  0%, 100% { transform: translateY(0px); }
+  50%       { transform: translateY(-6px); }
+}
+
+.animate-orbit-cw {
+  animation: orbit-cw 22s linear infinite;
+  will-change: transform;
+}
+.animate-orbit-ccw {
+  animation: orbit-ccw 34s linear infinite;
+  will-change: transform;
+}
+.animate-float {
+  animation: float-up-down 3s ease-in-out infinite;
+  will-change: transform;
+}
+.animate-float-delay-1 { animation-delay: 0.4s; }
+.animate-float-delay-2 { animation-delay: 0.8s; }
+.animate-float-delay-3 { animation-delay: 1.2s; }
+.animate-float-delay-4 { animation-delay: 1.6s; }
+.animate-float-delay-5 { animation-delay: 2.0s; }
+
+/* 3D tag sphere — GPU compositor, zero jitter */
+@keyframes sphere-spin {
+  from { transform: rotateY(0deg); }
+  to   { transform: rotateY(360deg); }
+}
+.animate-sphere {
+  animation: sphere-spin 30s linear infinite;
+  will-change: transform;
 }
