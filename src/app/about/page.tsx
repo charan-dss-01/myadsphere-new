@@ -25,7 +25,8 @@ import {
   Activity,
   Layers,
   Zap,
-  TrendingUp
+  TrendingUp,
+  Download
 } from 'lucide-react';
 
 // ── 02 & 03: MISSION, VISION, VALUES DATA ──
@@ -598,12 +599,15 @@ export default function AboutUsPage() {
               Start a Project <ArrowUpRight size={18} />
             </Link>
 
-            <Link
-              href="/our-work"
+            <a
+              href="/assets/myadsphereportfolio.pdf"
+              download="MyAdSphere_Portfolio.pdf"
+              target="_blank"
+              rel="noopener noreferrer"
               className="inline-flex items-center gap-3 px-8 py-4 rounded-full bg-zinc-950 border border-white/15 text-white font-bold text-xs uppercase tracking-widest hover:border-white/30 transition-all duration-300"
             >
-              Explore Our Work
-            </Link>
+              Download Portfolio <Download size={16} />
+            </a>
           </div>
         </div>
       </section>

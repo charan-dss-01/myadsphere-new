@@ -1,59 +1,63 @@
-"use client";
-import React, { useState, useEffect } from "react";
-import Link from "next/link";
-import { usePathname } from "next/navigation";
-import { cn } from "@/lib/utils";
-import { Menu as MenuIcon, X, ChevronDown } from "lucide-react";
-import { motion, AnimatePresence } from "motion/react";
+'use client';
 
+import React, { useState, useEffect } from 'react';
+import Link from 'next/link';
+import { usePathname } from 'next/navigation';
+import { cn } from '@/lib/utils';
+import { 
+  ChevronDown, 
+  Menu as MenuIcon, 
+  X, 
+  ArrowUpRight
+} from 'lucide-react';
+import { motion, AnimatePresence } from 'motion/react';
+
+// Categories for Mega-Menu Dropdown
 const serviceCategories = [
   {
-    title: "Performance",
+    title: "Performance & Ads",
     items: [
-      { name: "Performance Marketing", desc: "Paid social & search acquisition", href: "/services/performance-marketing" },
-      { name: "Paid Advertising Engine", desc: "High-ROI Google & Meta ad scaling", href: "/services/paid-advertising" },
-      { name: "Lead Generation Systems", desc: "High-intent customer pipelines", href: "/services/lead-generation" }
+      { name: "Performance Marketing", desc: "Full-funnel data-driven acquisition", href: "/services/performance-marketing" },
+      { name: "Google Ads / PPC", desc: "High-intent search & Shopping campaigns", href: "/services/google-ads-ppc" },
+      { name: "Meta Ads", desc: "Facebook & Instagram conversion scaling", href: "/services/meta-ads" },
+      { name: "Lead Generation & Funnels", desc: "Targeted B2B pipeline systems", href: "/services/lead-generation" },
+      { name: "E-commerce Marketing", desc: "Scaling D2C revenue & return on spend", href: "/services/ecommerce-marketing" }
     ]
   },
   {
-    title: "Organic Growth",
+    title: "Organic & Creative",
     items: [
-      { name: "SEO & Organic Scaling", desc: "Search engine rank domination", href: "/services/seo" },
-      { name: "Content Marketing", desc: "Authority & audience building", href: "/services/content-marketing" },
-      { name: "Social Media Marketing", desc: "Brand reach & engagement", href: "/services/social-media-marketing" }
+      { name: "Branding & Identity", desc: "Positioning & visual guidelines", href: "/services/branding-identity" },
+      { name: "Content & Creative", desc: "Ad creatives, videos & copywriting", href: "/services/content-creative-production" },
+      { name: "Social Media Marketing", desc: "Strategic publishing & engagement", href: "/services/social-media-marketing" },
+      { name: "Search Engine Optimization (SEO)", desc: "Technical & organic search dominance", href: "/services/seo" }
     ]
   },
   {
-    title: "Creative & Brand",
+    title: "Development & Intelligence",
     items: [
-      { name: "Brand Strategy & Creative", desc: "Distinguished brand positioning", href: "/services/brand-strategy" }
-    ]
-  },
-  {
-    title: "Intelligence & CRO",
-    items: [
-      { name: "Conversion Optimization (CRO)", desc: "A/B testing & UX refinement", href: "/services/conversion-optimization" },
-      { name: "Analytics & Intelligence", desc: "Attribution & Looker dashboards", href: "/services/analytics" }
+      { name: "Website Design & Dev", desc: "Fast, conversion-focused websites", href: "/services/website-design-development" },
+      { name: "Marketing Automation & CRM", desc: "Automated workflows & customer journeys", href: "/services/marketing-automation-crm" },
+      { name: "AI Solutions & Automation", desc: "AI agents & intelligent chatbots", href: "/services/ai-solutions-automation" }
     ]
   }
 ];
 
-function Navbar({ className }: { className?: string }) {
-  const pathname = usePathname();
+export default function Navbar({ className }: { className?: string }) {
   const [scrolled, setScrolled] = useState(false);
-  const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   const [isServicesOpen, setIsServicesOpen] = useState(false);
-  const [isMobileServicesOpen, setIsMobileServicesOpen] = useState(false);
+  const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+  const [mobileServicesExpanded, setMobileServicesExpanded] = useState(false);
+  const pathname = usePathname();
 
   useEffect(() => {
     const handleScroll = () => {
-      setScrolled(window.scrollY > 30);
+      setScrolled(window.scrollY > 20);
     };
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  // Helper to determine if a route is active
   const isHomeActive = pathname === "/";
   const isServicesActive = pathname.startsWith("/services");
   const isWorkActive = pathname.startsWith("/our-work");
@@ -62,13 +66,13 @@ function Navbar({ className }: { className?: string }) {
 
   return (
     <>
-      {/* ── MOBILE HEADER BAR ── */}
+      {/* ── MOBILE HEADER BAR (< md) ── */}
       <div className="fixed top-0 inset-x-0 z-50 flex items-center justify-between px-6 py-4 bg-black/90 backdrop-blur-2xl border-b border-white/10 md:hidden">
-        <Link href="/" onClick={() => setIsSidebarOpen(false)} className="flex items-center hover:opacity-90 transition-opacity pl-2">
+        <Link href="/" onClick={() => setIsSidebarOpen(false)} className="flex items-center hover:opacity-90 transition-opacity pl-1 pr-6">
           <img 
             src="/assets/logo.png" 
             alt="MyAdSphere" 
-            className="h-9 w-auto object-contain scale-[1.4] origin-left" 
+            className="h-8 w-auto object-contain scale-[1.4] origin-left" 
           />
         </Link>
         <button
@@ -80,30 +84,33 @@ function Navbar({ className }: { className?: string }) {
         </button>
       </div>
 
-      {/* ── DESKTOP FLOATING NAVBAR ── */}
-      <div className={cn("fixed top-6 inset-x-0 max-w-5xl mx-auto z-50 hidden md:block transition-all duration-500", className)}>
+      {/* ── DESKTOP & TABLET FLOATING GLASS NAVBAR (>= md) ── */}
+      <div className={cn("fixed top-4 md:top-6 inset-x-0 max-w-6xl mx-auto px-4 z-50 hidden md:block transition-all duration-500", className)}>
         <div 
           className={cn(
-            "flex items-center justify-between px-8 py-3 rounded-full transition-all duration-500",
+            "relative flex items-center justify-between px-6 md:px-8 py-3 rounded-full border transition-all duration-500 shadow-[0_15px_40px_rgba(0,0,0,0.85)] overflow-visible",
             scrolled 
-              ? "bg-black/90 backdrop-blur-2xl border border-white/15 shadow-[0_10px_35px_rgba(0,0,0,0.9)]" 
-              : "bg-black/60 backdrop-blur-xl border border-white/10 shadow-xl"
+              ? "bg-zinc-950/90 backdrop-blur-2xl border-white/15" 
+              : "bg-zinc-950/75 backdrop-blur-xl border-white/10"
           )}
         >
-          {/* Brand Logo Asset */}
+          {/* Glossy Top Specular Reflection Highlight */}
+          <div className="absolute inset-0 rounded-full bg-[radial-gradient(ellipse_at_top,rgba(255,255,255,0.08),transparent_70%)] pointer-events-none" />
+
+          {/* Brand Logo Asset (Prominent Sizing with Self-Contained Right Padding) */}
           <Link 
             href="/" 
-            className="flex items-center hover:opacity-90 transition-opacity pl-2 pr-8 shrink-0 h-10 md:h-12 overflow-visible"
+            className="relative z-10 flex items-center hover:opacity-90 transition-opacity shrink-0 pl-1 pr-10 md:pr-14 lg:pr-16 h-8 md:h-9"
           >
             <img 
               src="/assets/logo.png" 
               alt="MyAdSphere" 
-              className="h-10 md:h-12 w-auto object-contain scale-[3.2] origin-left transition-transform" 
+              className="h-8 md:h-9 w-auto object-contain scale-[1.5] md:scale-[1.75] lg:scale-[2.0] origin-left transition-transform transform-gpu" 
             />
           </Link>
 
-          {/* Desktop Navigation Links */}
-          <nav className="flex items-center space-x-7 text-xs font-medium tracking-wide">
+          {/* Desktop & Tablet Navigation Links */}
+          <nav className="relative z-10 flex items-center space-x-3 md:space-x-5 lg:space-x-7 text-xs font-medium tracking-wide">
             
             {/* Home */}
             <Link
@@ -155,7 +162,7 @@ function Navbar({ className }: { className?: string }) {
                     animate={{ opacity: 1, y: 0, scale: 1 }}
                     exit={{ opacity: 0, y: 10, scale: 0.98 }}
                     transition={{ duration: 0.25, ease: [0.16, 1, 0.3, 1] }}
-                    className="absolute top-full -left-20 mt-3 w-[580px] p-6 rounded-2xl bg-black/95 backdrop-blur-2xl border border-white/15 shadow-[0_25px_60px_rgba(0,0,0,0.95)] grid grid-cols-2 gap-6 z-50"
+                    className="absolute top-full -left-20 mt-3 w-[580px] p-6 rounded-2xl bg-zinc-950/95 backdrop-blur-2xl border border-white/15 shadow-[0_25px_60px_rgba(0,0,0,0.95)] grid grid-cols-2 gap-6 z-50"
                   >
                     {serviceCategories.map((cat) => (
                       <div key={cat.title} className="space-y-2">
@@ -255,7 +262,7 @@ function Navbar({ className }: { className?: string }) {
           {/* Start a Project CTA Button */}
           <Link
             href="/#contact"
-            className="ml-4 px-6 py-2.5 rounded-full bg-[#FF4A17]/85 backdrop-blur-xl border border-[#FF4A17]/60 text-white font-bold text-xs uppercase tracking-wider shadow-[0_0_25px_rgba(255,74,23,0.45)] hover:bg-[#FF4A17] hover:shadow-[0_0_35px_rgba(255,74,23,0.65)] hover:scale-105 transition-all duration-300"
+            className="relative z-10 ml-2 md:ml-3 lg:ml-4 px-4 md:px-5 lg:px-6 py-2 md:py-2.5 rounded-full bg-[#FF4A17]/85 backdrop-blur-xl text-white font-bold text-[11px] md:text-xs uppercase tracking-wider shadow-[0_0_25px_rgba(255,74,23,0.45)] hover:bg-[#FF4A17] hover:shadow-[0_0_35px_rgba(255,74,23,0.65)] hover:scale-105 transition-all duration-300 shrink-0 whitespace-nowrap"
           >
             Start a Project
           </Link>
@@ -266,116 +273,92 @@ function Navbar({ className }: { className?: string }) {
       <AnimatePresence>
         {isSidebarOpen && (
           <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
+            initial={{ opacity: 0, y: -20 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -20 }}
             transition={{ duration: 0.3 }}
-            className="fixed inset-0 z-50 bg-black/95 backdrop-blur-2xl md:hidden flex flex-col justify-between p-8 overflow-y-auto"
+            className="fixed inset-0 z-40 bg-black/98 backdrop-blur-3xl pt-24 pb-8 px-6 flex flex-col justify-between overflow-y-auto md:hidden"
           >
-            <div className="flex items-center justify-between pb-6 border-b border-white/10">
-              <Link href="/" onClick={() => setIsSidebarOpen(false)} className="flex items-center">
-                <img src="/assets/logo.png" alt="MyAdSphere" className="h-10 w-auto object-contain" />
-              </Link>
-              <button 
-                onClick={() => setIsSidebarOpen(false)} 
-                className="p-2 rounded-lg bg-white/5 border border-white/10 text-zinc-400 hover:text-white"
-              >
-                <X size={18} />
-              </button>
-            </div>
-
-            <div className="flex flex-col items-center justify-center space-y-6 my-auto text-center py-8">
-              
-              <Link
-                href="/"
+            <div className="space-y-6">
+              <Link 
+                href="/" 
                 onClick={() => setIsSidebarOpen(false)}
-                className={cn(
-                  "text-xl font-bold transition-colors",
-                  isHomeActive ? "text-[#FF4A17]" : "text-zinc-300 hover:text-white"
-                )}
+                className="block text-2xl font-black uppercase text-white hover:text-[#FF4A17] transition-colors"
               >
                 Home
               </Link>
-              
+
               {/* Mobile Services Accordion */}
-              <div className="w-full text-center">
-                <button 
-                  onClick={() => setIsMobileServicesOpen(!isMobileServicesOpen)} 
-                  className={cn(
-                    "inline-flex items-center gap-2 text-xl font-bold transition-colors",
-                    isServicesActive ? "text-[#FF4A17]" : "text-zinc-300 hover:text-white"
-                  )}
+              <div>
+                <button
+                  onClick={() => setMobileServicesExpanded(!mobileServicesExpanded)}
+                  className="w-full flex items-center justify-between text-2xl font-black uppercase text-white hover:text-[#FF4A17] transition-colors"
                 >
-                  Services
-                  <ChevronDown size={16} className={cn("transition-transform duration-300", isMobileServicesOpen ? "rotate-180 text-[#FF4A17]" : "")} />
+                  <span>Services</span>
+                  <ChevronDown className={cn("transition-transform duration-300", mobileServicesExpanded ? "rotate-180 text-[#FF4A17]" : "")} />
                 </button>
 
-                {isMobileServicesOpen && (
-                  <div className="mt-4 p-4 rounded-xl bg-white/5 space-y-3 text-sm text-zinc-400">
-                    <Link href="/services" onClick={() => setIsSidebarOpen(false)} className="block text-[#FF4A17] font-bold">
-                      View All Services Overview ↗
-                    </Link>
-                    <Link href="/services/performance-marketing" onClick={() => setIsSidebarOpen(false)} className="block hover:text-white">
-                      Performance Marketing
-                    </Link>
-                    <Link href="/services/paid-advertising" onClick={() => setIsSidebarOpen(false)} className="block hover:text-white">
-                      Paid Advertising Engine
-                    </Link>
-                    <Link href="/services/seo" onClick={() => setIsSidebarOpen(false)} className="block hover:text-white">
-                      SEO & Organic Scaling
-                    </Link>
-                    <Link href="/services/social-media-marketing" onClick={() => setIsSidebarOpen(false)} className="block hover:text-white">
-                      Social Media Scaling
-                    </Link>
-                    <Link href="/services/analytics" onClick={() => setIsSidebarOpen(false)} className="block hover:text-white">
-                      Analytics & CRO
-                    </Link>
+                {mobileServicesExpanded && (
+                  <div className="mt-4 pl-4 space-y-4 border-l border-white/10">
+                    {serviceCategories.map((cat) => (
+                      <div key={cat.title} className="space-y-2">
+                        <p className="text-[11px] font-mono text-[#FF4A17] uppercase tracking-wider font-bold">
+                          {cat.title}
+                        </p>
+                        <div className="space-y-2">
+                          {cat.items.map((item) => (
+                            <Link
+                              key={item.name}
+                              href={item.href}
+                              onClick={() => setIsSidebarOpen(false)}
+                              className="block text-sm text-zinc-300 hover:text-white"
+                            >
+                              {item.name}
+                            </Link>
+                          ))}
+                        </div>
+                      </div>
+                    ))}
                   </div>
                 )}
               </div>
 
-              <Link
-                href="/our-work"
+              <Link 
+                href="/our-work" 
                 onClick={() => setIsSidebarOpen(false)}
-                className={cn(
-                  "text-xl font-bold transition-colors",
-                  isWorkActive ? "text-[#FF4A17]" : "text-zinc-300 hover:text-white"
-                )}
+                className="block text-2xl font-black uppercase text-white hover:text-[#FF4A17] transition-colors"
               >
                 Our Work
               </Link>
 
-              <Link
-                href="/about"
+              <Link 
+                href="/about" 
                 onClick={() => setIsSidebarOpen(false)}
-                className={cn(
-                  "text-xl font-bold transition-colors",
-                  isAboutActive ? "text-[#FF4A17]" : "text-zinc-300 hover:text-white"
-                )}
+                className="block text-2xl font-black uppercase text-white hover:text-[#FF4A17] transition-colors"
               >
                 About Us
               </Link>
 
-              <Link
-                href="/careers"
+              <Link 
+                href="/careers" 
                 onClick={() => setIsSidebarOpen(false)}
-                className={cn(
-                  "text-xl font-bold transition-colors",
-                  isCareerActive ? "text-[#FF4A17]" : "text-zinc-300 hover:text-white"
-                )}
+                className="block text-2xl font-black uppercase text-white hover:text-[#FF4A17] transition-colors"
               >
                 Career
               </Link>
             </div>
 
-            <div className="pt-6 border-t border-white/10">
+            <div className="pt-8 border-t border-white/10 space-y-4">
               <Link
                 href="/#contact"
                 onClick={() => setIsSidebarOpen(false)}
-                className="block w-full py-4 rounded-xl bg-[#FF4A17]/90 backdrop-blur-xl border border-[#FF4A17]/60 text-white font-bold text-xs uppercase tracking-widest text-center shadow-[0_0_25px_rgba(255,74,23,0.45)] transition-all"
+                className="w-full py-4 rounded-full bg-[#FF4A17] text-white font-bold text-center text-xs uppercase tracking-widest block shadow-[0_0_25px_rgba(255,74,23,0.5)]"
               >
-                Start a Project
+                Start a Project <ArrowUpRight className="inline-block ml-1" size={14} />
               </Link>
+              <p className="text-center text-[10px] font-mono text-zinc-500 uppercase tracking-widest">
+                MyAdSphere Digital Growth Agency
+              </p>
             </div>
           </motion.div>
         )}
@@ -383,5 +366,3 @@ function Navbar({ className }: { className?: string }) {
     </>
   );
 }
-
-export default Navbar;

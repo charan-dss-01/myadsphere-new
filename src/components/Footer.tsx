@@ -135,7 +135,7 @@ export default function Footer() {
         </div>
       </div>
 
-      {/* ── 3. GIANT BACKDROP OUTLINE TYPOGRAPHY (MATCHING REFERENCE IMAGE) ── */}
+      {/* ── 3. GIANT BACKDROP OUTLINE TYPOGRAPHY (RESPONSIVE FLUID SCALING) ── */}
       <div className="relative w-full overflow-hidden flex items-center justify-center select-none pt-4 pb-12 pointer-events-none z-0">
         
         {/* Atmosphere glow behind giant text */}
@@ -144,8 +144,8 @@ export default function Footer() {
         </div>
 
         <span 
-          className="text-[120px] sm:text-[180px] md:text-[240px] font-black text-transparent tracking-tighter leading-none whitespace-nowrap opacity-40 drop-shadow-[0_0_35px_rgba(255,74,23,0.3)]"
-          style={{ WebkitTextStroke: '2px rgba(255,255,255,0.35)' }}
+          className="font-[family-name:var(--font-poppins)] text-[10.5vw] sm:text-[14vw] md:text-[17vw] font-black text-transparent tracking-tighter leading-none whitespace-nowrap opacity-40 drop-shadow-[0_0_35px_rgba(255,74,23,0.3)] max-w-full"
+          style={{ WebkitTextStroke: '1.5px rgba(255,255,255,0.35)' }}
         >
           MYADSPHERE
         </span>
