@@ -6,7 +6,7 @@ import { ChevronLeft, ChevronRight, Linkedin } from 'lucide-react';
 
 const teamMembers = [
   {
-    name: "Alex Thorne",
+    name: "Alex",
     role: "Founder & Growth Director",
     specialty: "Performance Marketing & Funnel Strategy",
     image: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?q=80&w=800&auto=format&fit=crop",
