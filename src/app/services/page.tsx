@@ -17,32 +17,41 @@ import {
   Palette, 
   Users, 
   Filter, 
-  BarChart3 
+  Globe,
+  ShoppingBag,
+  Cpu,
+  Bot
 } from 'lucide-react';
 
 const categories = ['ALL', 'PERFORMANCE', 'ORGANIC GROWTH', 'CREATIVE', 'CONVERSION', 'INTELLIGENCE'] as const;
 
-// Map each service slug to its unique Lucide icon
+// Unique Lucide icons mapped to all 12 service slugs
 const serviceIcons: Record<string, React.ReactNode> = {
-  'performance-marketing': <TrendingUp className="w-4 h-4 text-[#FF4A17]" />,
-  'seo': <Search className="w-4 h-4 text-[#FF4A17]" />,
+  'branding-identity': <Palette className="w-4 h-4 text-[#FF4A17]" />,
+  'content-creative-production': <FileText className="w-4 h-4 text-[#FF4A17]" />,
   'social-media-marketing': <Share2 className="w-4 h-4 text-[#FF4A17]" />,
-  'paid-advertising': <Megaphone className="w-4 h-4 text-[#FF4A17]" />,
-  'content-marketing': <FileText className="w-4 h-4 text-[#FF4A17]" />,
-  'brand-strategy': <Palette className="w-4 h-4 text-[#FF4A17]" />,
+  'website-design-development': <Globe className="w-4 h-4 text-[#FF4A17]" />,
+  'seo': <Search className="w-4 h-4 text-[#FF4A17]" />,
+  'performance-marketing': <TrendingUp className="w-4 h-4 text-[#FF4A17]" />,
+  'google-ads-ppc': <Megaphone className="w-4 h-4 text-[#FF4A17]" />,
+  'meta-ads': <Sparkles className="w-4 h-4 text-[#FF4A17]" />,
   'lead-generation': <Users className="w-4 h-4 text-[#FF4A17]" />,
-  'conversion-optimization': <Filter className="w-4 h-4 text-[#FF4A17]" />,
-  'analytics': <BarChart3 className="w-4 h-4 text-[#FF4A17]" />,
+  'ecommerce-marketing': <ShoppingBag className="w-4 h-4 text-[#FF4A17]" />,
+  'marketing-automation-crm': <Filter className="w-4 h-4 text-[#FF4A17]" />,
+  'ai-solutions-automation': <Bot className="w-4 h-4 text-[#FF4A17]" />
 };
 
 export default function ServicesOverviewPage() {
   const [activeCategory, setActiveCategory] = useState<string>('ALL');
 
-  const allServicesList = Object.values(servicesData);
+  // De-duplicate in case of legacy alias keys in servicesData
+  const uniqueServices = Object.values(servicesData).filter(
+    (service, index, self) => index === self.findIndex((s) => s.slug === service.slug)
+  );
 
   const filteredServices = activeCategory === 'ALL'
-    ? allServicesList
-    : allServicesList.filter(s => s.category === activeCategory);
+    ? uniqueServices
+    : uniqueServices.filter(s => s.category === activeCategory);
 
   return (
     <main className="min-h-screen bg-black text-white antialiased selection:bg-[#FF4A17] selection:text-white">
@@ -74,7 +83,7 @@ export default function ServicesOverviewPage() {
 
           {/* Subhead Paragraph */}
           <p className="text-zinc-400 text-base md:text-xl font-light leading-relaxed max-w-3xl mx-auto">
-            MyAdSphere unites performance advertising, search engine dominance, short-form creative, and revenue attribution into one compounding growth engine.
+            MyAdSphere unites branding, performance advertising, SEO, creative production, AI automation, and customer pipelines into one compounding growth engine.
           </p>
 
         </div>
@@ -108,7 +117,7 @@ export default function ServicesOverviewPage() {
                 key={service.slug}
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.4, delay: idx * 0.05 }}
+                transition={{ duration: 0.4, delay: idx * 0.04 }}
               >
                 <Link
                   href={`/services/${service.slug}`}
