@@ -2,44 +2,42 @@
 import React, { useRef, useEffect } from 'react';
 import { motion, useInView } from 'motion/react';
 
-// ── Tags ──────────────────────────────────────────────────────────────────
+// ── Marketing Service Tags ────────────────────────────────────────────────
 const techs = [
-  { name: "React", size: "lg" },
-  { name: "Next.js", size: "lg" },
-  { name: "Node.js", size: "lg" },
-  { name: "MongoDB", size: "md" },
-  { name: "TypeScript", size: "md" },
-  { name: "Python", size: "md" },
-  { name: "Tailwind CSS", size: "md" },
-  { name: "Express.js", size: "md" },
-  { name: "AWS", size: "md" },
-  { name: "PostgreSQL", size: "sm" },
-  { name: "MySQL", size: "sm" },
-  { name: "Flask", size: "sm" },
-  { name: "Docker", size: "sm" },
-  { name: "Git", size: "sm" },
-  { name: "GitHub", size: "sm" },
-
-  { name: "REST APIs", size: "sm" },
-
-  { name: "Java", size: "sm" },
-  { name: "JWT Auth", size: "sm" },
-  { name: "Redux", size: "sm" },
-  { name: "Postman", size: "sm" },
-  { name: "Cloudinary", size: "sm" },
+  { name: "Performance Marketing", size: "lg" },
+  { name: "Google Ads", size: "lg" },
+  { name: "Meta Ads", size: "lg" },
+  { name: "SEO Scaling", size: "md" },
+  { name: "Social Media Strategy", size: "md" },
+  { name: "Funnel Conversion (CRO)", size: "md" },
+  { name: "Content Marketing", size: "md" },
+  { name: "Email & Automation", size: "md" },
+  { name: "Analytics & GA4", size: "md" },
+  { name: "TikTok Ads", size: "sm" },
+  { name: "LinkedIn B2B Ads", size: "sm" },
+  { name: "Brand Identity", size: "sm" },
+  { name: "Video Ad Production", size: "sm" },
+  { name: "Copywriting", size: "sm" },
+  { name: "Retargeting Funnels", size: "sm" },
+  { name: "Lead Generation", size: "sm" },
+  { name: "Influencer Strategy", size: "sm" },
+  { name: "Shopify Scaling", size: "sm" },
+  { name: "PPC Campaigns", size: "sm" },
+  { name: "HubSpot CRM", size: "sm" },
+  { name: "Market Intelligence", size: "sm" },
 ];
 
 const sizeClass = {
-  lg: "text-sm  font-semibold px-4   py-2   border-white/20 text-white",
-  md: "text-xs  font-medium  px-3.5 py-1.5  border-white/12 text-zinc-200",
-  sm: "text-[11px] font-normal  px-3   py-1   border-white/8  text-zinc-400",
+  lg: "text-sm  font-bold px-4 py-2 border-[#FF4A17]/40 text-white bg-[#FF4A17]/10",
+  md: "text-xs  font-semibold px-3.5 py-1.5 border-white/20 text-zinc-100",
+  sm: "text-[11px] font-medium px-3 py-1 border-white/10 text-zinc-400",
 } as const;
 
 const bigNumbers = [
-  { val: '4+', label: 'Years Coding' },
-  { val: '20+', label: 'Technologies' },
-  { val: '15+', label: 'Projects Shipped' },
-  { val: '10+', label: 'Certifications' },
+  { val: '98%', label: 'Client Satisfaction' },
+  { val: '5.2x', label: 'Average ROAS' },
+  { val: '150+', label: 'Campaigns Scaled' },
+  { val: '24/7', label: 'Live Monitoring' },
 ];
 
 // ── Fibonacci sphere — unit positions ─────────────────────────────────────
@@ -74,16 +72,15 @@ function FadeIn({ children, delay = 0, className = '' }: {
 }
 
 // ── 3D Tag Sphere ─────────────────────────────────────────────────────────
-// Uses pure JS 3D math + 2D translate — no preserve-3d, no backface issues
 function TagSphere() {
   const wrapperRef = useRef<HTMLDivElement>(null);
   const tagRefs = useRef<(HTMLDivElement | null)[]>([]);
 
   useEffect(() => {
-    let rotY = 0;      // current total Y rotation (rad)
-    let rotX = 0;      // current total X rotation (rad)
-    let mouseRotY = 0;      // smoothed mouse Y influence (rad)
-    let mouseRotX = 0;      // smoothed mouse X influence (rad)
+    let rotY = 0;      
+    let rotX = 0;      
+    let mouseRotY = 0; 
+    let mouseRotX = 0; 
     let targetY = 0;
     let targetX = 0;
     let rafId: number;
@@ -93,40 +90,34 @@ function TagSphere() {
       const r = wrapperRef.current.getBoundingClientRect();
       const cx = r.left + r.width / 2;
       const cy = r.top + r.height / 2;
-      targetY = ((e.clientX - cx) / (r.width / 2)) * 0.65;   // ±0.65 rad max
+      targetY = ((e.clientX - cx) / (r.width / 2)) * 0.65;
       targetX = -((e.clientY - cy) / (r.height / 2)) * 0.4;
     };
 
     window.addEventListener('mousemove', onMouseMove);
 
     const tick = () => {
-      // Auto-spin
       rotY += 0.0028;
 
-      // Smooth lerp toward mouse
       mouseRotY += (targetY - mouseRotY) * 0.035;
       mouseRotX += (targetX - mouseRotX) * 0.035;
 
       const ry = rotY + mouseRotY;
-      const rx = mouseRotX + Math.sin(rotY * 0.45) * 0.15;  // gentle wobble
+      const rx = mouseRotX + Math.sin(rotY * 0.45) * 0.15;
 
-      // Precompute trig
       const cosRX = Math.cos(rx), sinRX = Math.sin(rx);
       const cosRY = Math.cos(ry), sinRY = Math.sin(ry);
 
       BASE_POS.forEach(({ x, y, z }, i) => {
-        // Rotate around Y then X (standard orbit math)
         const x1 = x * cosRY + z * sinRY;
         const y1 = x * sinRX * sinRY + y * cosRX - z * sinRX * cosRY;
         const z1 = -x * cosRX * sinRY + y * sinRX + z * cosRX * cosRY;
 
-        // Perspective projection → 2D screen coords
         const scale = PERSPECTIVE / (PERSPECTIVE - z1 * RADIUS);
         const sx = x1 * RADIUS * scale;
         const sy = -y1 * RADIUS * scale;
 
-        // Depth → opacity & scale (front = bright & big, back = dim & small)
-        const depth = (z1 + 1) / 2;                     // 0 = back, 1 = front
+        const depth = (z1 + 1) / 2;
         const op = (0.12 + 0.88 * depth).toFixed(2);
         const ts = (0.65 + 0.55 * depth).toFixed(3);
 
@@ -135,7 +126,6 @@ function TagSphere() {
           el.style.transform = `translate(${sx.toFixed(1)}px, ${sy.toFixed(1)}px) scale(${ts})`;
           el.style.opacity = op;
           el.style.zIndex = String(Math.round(depth * 100));
-          // Pointer events only for front-facing tags
           el.style.pointerEvents = depth > 0.55 ? 'auto' : 'none';
         }
       });
@@ -158,11 +148,11 @@ function TagSphere() {
     >
       {/* Ambient glow */}
       <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
-        <div className="w-[300px] h-[300px] rounded-full bg-white/[0.04] blur-[90px]" />
+        <div className="w-[320px] h-[320px] rounded-full bg-[#FF4A17]/[0.06] blur-[90px]" />
       </div>
       {/* Outer ring hint */}
       <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
-        <div className="w-[480px] h-[480px] rounded-full border border-white/[0.04]" />
+        <div className="w-[480px] h-[480px] rounded-full border border-[#FF4A17]/10" />
       </div>
 
       {/* Tags — positioned from centre via translate */}
@@ -172,10 +162,10 @@ function TagSphere() {
             key={tech.name}
             ref={el => { tagRefs.current[i] = el; }}
             className={`absolute whitespace-nowrap rounded-full
-                        bg-zinc-950/90 border backdrop-blur-sm
+                        bg-zinc-950/90 border border-white/10 backdrop-blur-sm
                         shadow-lg shadow-black/50
-                        hover:bg-white/10 hover:border-white/30 hover:text-white
-                        transition-colors duration-150
+                        hover:border-[#FF4A17]/50 hover:bg-zinc-900 hover:text-[#FF4A17]
+                        transition-all duration-300 ease-out cursor-pointer
                         ${sizeClass[tech.size as keyof typeof sizeClass]}`}
           >
             {tech.name}
@@ -197,66 +187,66 @@ export default function FeaturedSkills() {
         {/* Header */}
         <FadeIn className="text-center mb-20 relative">
           <div className="absolute inset-0 flex items-center justify-center pointer-events-none select-none overflow-hidden" aria-hidden>
-            <span className="text-[120px] md:text-[160px] font-black text-transparent tracking-tighter leading-none"
-              style={{ WebkitTextStroke: '1px rgba(255,255,255,0.04)' }}>
-              SKILLS
+            <span className="text-[90px] md:text-[160px] font-black text-transparent tracking-tighter leading-none"
+              style={{ WebkitTextStroke: '1px rgba(255,74,23,0.08)' }}>
+              SERVICES
             </span>
           </div>
           <div className="relative z-10 pt-8">
             <div className="inline-flex items-center gap-3 mb-5">
-              <div className="h-px w-8 bg-white/20" />
-              <p className="text-[11px] text-zinc-500 tracking-[0.35em] uppercase font-medium">Tech Arsenal</p>
-              <div className="h-px w-8 bg-white/20" />
+              <div className="h-px w-8 bg-[#FF4A17]/40" />
+              <p className="text-[11px] text-[#FF4A17] tracking-[0.35em] uppercase font-bold">Marketing Arsenal</p>
+              <div className="h-px w-8 bg-[#FF4A17]/40" />
             </div>
-            <h2 className="text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight leading-none">
+            <h2 className="text-5xl md:text-6xl lg:text-7xl font-black tracking-tight leading-none">
               <span className="bg-gradient-to-br from-white via-zinc-200 to-zinc-500 bg-clip-text text-transparent">
-                Tech Stack
+                Our Services
               </span>
             </h2>
-            <p className="text-zinc-500 text-lg mt-6 max-w-xl mx-auto leading-relaxed">
-              Move your cursor over the globe to control it. Every tag is a technology I&apos;ve shipped with.
+            <p className="text-zinc-400 text-lg mt-6 max-w-xl mx-auto leading-relaxed">
+              Move your cursor over the interactive sphere to explore our specialized digital growth channels and marketing tools.
             </p>
             <div className="flex items-center justify-center gap-3 mt-8">
-              <div className="h-px w-12 bg-gradient-to-r from-transparent to-white/30" />
-              <div className="w-1.5 h-1.5 rounded-full bg-white/30" />
-              <div className="h-px w-12 bg-gradient-to-l from-transparent to-white/30" />
+              <div className="h-px w-12 bg-gradient-to-r from-transparent to-[#FF4A17]/50" />
+              <div className="w-1.5 h-1.5 rounded-full bg-[#FF4A17]" />
+              <div className="h-px w-12 bg-gradient-to-l from-transparent to-[#FF4A17]/50" />
             </div>
           </div>
         </FadeIn>
 
         {/* Stats strip */}
         <FadeIn delay={0.05} className="mb-6">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-px bg-white/[0.06] rounded-2xl overflow-hidden border border-white/[0.07]">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-px bg-white/[0.08] rounded-2xl overflow-hidden border border-white/[0.1]">
             {bigNumbers.map(({ val, label }) => (
-              <div key={label} className="bg-zinc-950/80 py-8 text-center">
+              <div key={label} className="bg-zinc-950/90 py-8 text-center">
                 <p className="text-4xl md:text-5xl font-black text-white tabular-nums">{val}</p>
-                <p className="text-zinc-500 text-sm mt-2 tracking-wide">{label}</p>
+                <p className="text-zinc-400 text-xs font-semibold mt-2 tracking-wide uppercase">{label}</p>
               </div>
             ))}
           </div>
         </FadeIn>
 
         {/* Globe */}
-        <FadeIn delay={0.1}>
+        {/* <FadeIn delay={0.1}>
           <TagSphere />
-        </FadeIn>
+        </FadeIn> */}
 
-        {/* Currently learning */}
+        {/* Target Industries Strip */}
         <FadeIn delay={0.15}>
-          <div className="rounded-2xl border border-white/[0.07] bg-zinc-950/70 backdrop-blur-sm p-7
+          <div className="rounded-2xl border border-white/[0.1] bg-zinc-950/80 backdrop-blur-sm p-7
                           flex flex-col sm:flex-row items-center gap-5">
-            <div className="w-10 h-10 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center text-lg shrink-0">🚀</div>
+            <div className="w-10 h-10 rounded-xl bg-[#FF4A17]/10 border border-[#FF4A17]/30 flex items-center justify-center text-lg shrink-0 text-[#FF4A17]">🚀</div>
             <div className="text-center sm:text-left">
-              <p className="text-white font-semibold text-base">Currently Exploring</p>
-              <p className="text-zinc-500 text-sm mt-1">
-                Next.Js · LangChain · Generative AI · Ai Tools
+              <p className="text-white font-bold text-base">Key Industries We Scale</p>
+              <p className="text-zinc-400 text-sm mt-1">
+                E-Commerce · SaaS · Healthcare · Real Estate · Startups · Finance · D2C Brands
               </p>
             </div>
             <div className="sm:ml-auto shrink-0">
-              <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-white/10
-                               bg-white/5 text-xs text-zinc-400 tracking-widest uppercase">
-                <span className="w-1.5 h-1.5 rounded-full bg-white animate-pulse" />
-                Always Learning
+              <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-[#FF4A17]/30
+                               bg-[#FF4A17]/10 text-xs text-[#FF4A17] font-bold tracking-widest uppercase">
+                <span className="w-1.5 h-1.5 rounded-full bg-[#FF4A17] animate-pulse" />
+                Data-Driven ROI
               </span>
             </div>
           </div>

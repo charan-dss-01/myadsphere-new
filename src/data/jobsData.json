@@ -1,0 +1,122 @@
+[
+  {
+    "id": "job-01",
+    "slug": "performance-marketing-manager",
+    "title": "Performance Marketing Manager",
+    "department": "Performance Marketing",
+    "location": "Hyderabad · Hybrid",
+    "workType": "Hybrid",
+    "employmentType": "Full Time",
+    "shortDescription": "Build, optimize, and scale high-ROAS paid search and paid social campaign architectures across Meta, Google, and TikTok.",
+    "aboutRole": "As a Performance Marketing Manager at MyAdSphere, you will take full ownership of client acquisition funnels. You will work directly with creative strategists and media buyers to deploy million-dollar ad budgets into high-ROI growth engines.",
+    "responsibilities": [
+      "Design and execute multi-channel paid acquisition campaigns on Meta Ads, Google Search, Performance Max, and TikTok.",
+      "Conduct weekly creative testing iterations, analyzing visual hooks, ad copy variations, and post-click conversion rates.",
+      "Manage client ad budgets, bid strategies, and server-side tracking (CAPI) setups to maximize return on ad spend.",
+      "Build real-time executive dashboards in Looker Studio tracking CPA, ROAS, and net revenue metrics."
+    ],
+    "requirements": [
+      "3+ years of hands-on experience managing performance marketing ad spend above $50k/month.",
+      "Deep expertise with Meta Ads Manager, Google Ads (Search & Shopping), and Google Tag Manager.",
+      "Strong analytical mindset with proficiency in GA4 conversion modeling and attribution frameworks.",
+      "Exceptional communication skills and client-facing strategic presentation capabilities."
+    ],
+    "niceToHave": [
+      "Experience with e-commerce platforms (Shopify Plus) and B2B SaaS CRM tools (HubSpot).",
+      "Familiarity with server-side GTM containers and first-party data tracking tools."
+    ],
+    "status": "published",
+    "createdAt": "2026-08-01T10:00:00.000Z",
+    "updatedAt": "2026-08-16T11:55:20.587Z"
+  },
+  {
+    "id": "job-02",
+    "slug": "lead-seo-specialist",
+    "title": "Lead SEO Specialist",
+    "department": "SEO & Organic Scaling",
+    "location": "Remote",
+    "workType": "Remote",
+    "employmentType": "Full Time",
+    "shortDescription": "Engineers technical site architecture, keyword topical authority clusters, and generative search (GEO) visibility for global client brands.",
+    "aboutRole": "We are seeking a Lead SEO Specialist to engineer high-ranking organic search engines for enterprise clients. You will combine technical crawl budget auditing with strategic editorial content clusters that systematically capture first-page search demand.",
+    "responsibilities": [
+      "Perform comprehensive technical SEO audits, resolving Core Web Vitals bottlenecks, schema markup, and indexing issues.",
+      "Architect keyword demand maps and topical authority content clusters for high-intent transactional search terms.",
+      "Lead ethical digital PR link acquisition campaigns to build domain authority across high-tier publications.",
+      "Optimize site data structures for AI search engines including Google Search Generative Experience (SGE) and ChatGPT."
+    ],
+    "requirements": [
+      "4+ years of proven SEO experience with a portfolio of rank growth case studies.",
+      "Proficiency in Ahrefs, SEMrush, Screaming Frog, Google Search Console, and schema data structures.",
+      "Solid understanding of JavaScript SEO, technical rendering, and site speed acceleration.",
+      "Analytical ability to translate organic traffic metrics into business revenue outcomes."
+    ],
+    "niceToHave": [
+      "Experience with Webflow, WordPress, and Next.js SEO optimization.",
+      "Familiarity with Python for SEO automation or data scraping."
+    ],
+    "status": "published",
+    "createdAt": "2026-08-05T10:00:00.000Z",
+    "updatedAt": "2026-08-05T10:00:00.000Z"
+  },
+  {
+    "id": "job-03",
+    "slug": "creative-video-director",
+    "title": "Creative Video & Motion Director",
+    "department": "Creative & Brand",
+    "location": "Hyderabad · On-site",
+    "workType": "On-site",
+    "employmentType": "Full Time",
+    "shortDescription": "Direct, shoot, and edit high-converting short-form video ads, motion graphics, and brand assets for social platforms.",
+    "aboutRole": "As Creative Video Director, you will lead the visual storytelling aspect of MyAdSphere. You will script, direct, and produce short-form video ads (Reels, TikTok, Shorts) and motion design assets built to stop user scrolling and drive immediate engagement.",
+    "responsibilities": [
+      "Script and direct high-impact short-form video ad creative tailored for Instagram Reels, TikTok, and YouTube.",
+      "Edit fast-paced, hook-driven video ad assets using Adobe Premiere, After Effects, and DaVinci Resolve.",
+      "Collaborate with performance marketers to analyze creative performance metrics and iterate winning video angles.",
+      "Manage on-set video production, lighting setups, actor direction, and product photography."
+    ],
+    "requirements": [
+      "3+ years of professional video editing and motion graphics experience with a strong portfolio.",
+      "Expertise in Adobe Premiere Pro, After Effects, and modern social video editing trends.",
+      "Understanding of psychological visual hooks and performance creative ad structures.",
+      "Strong aesthetic judgment and keen eye for typography, color grading, and pacing."
+    ],
+    "niceToHave": [
+      "Experience directing UGC creators and influencer content shoots.",
+      "Basic 3D animation skills in Blender or Cinema 4D."
+    ],
+    "status": "published",
+    "createdAt": "2026-08-10T10:00:00.000Z",
+    "updatedAt": "2026-08-10T10:00:00.000Z"
+  },
+  {
+    "id": "job-04",
+    "slug": "b2b-lead-generation-lead",
+    "title": "B2B Lead Generation Strategist",
+    "department": "Performance Marketing",
+    "location": "Remote",
+    "workType": "Remote",
+    "employmentType": "Full Time",
+    "shortDescription": "Design automated multi-channel B2B outreach funnels, interactive qualification quizzes, and CRM lead nurture pipelines.",
+    "aboutRole": "Our B2B Lead Generation Strategist builds end-to-end customer acquisition systems for enterprise SaaS and service clients. You will combine LinkedIn Ads precision targeting with automated lead qualification engines to deliver sales-ready prospects.",
+    "responsibilities": [
+      "Build account-based marketing (ABM) campaigns targeting specific company sizes, executive titles, and tech stacks.",
+      "Design interactive calculator and quiz funnels that pre-qualify prospects before scheduling sales demos.",
+      "Configure automated email and SMS nurture sequences to maximize appointment booking show-up rates.",
+      "Integrate lead capture systems seamlessly with HubSpot, Salesforce, and GoHighLevel CRMs."
+    ],
+    "requirements": [
+      "3+ years of B2B lead generation experience managing campaigns across LinkedIn Ads and Google Search.",
+      "Proficiency with CRM automation platforms (HubSpot, GoHighLevel, Zapier, Make).",
+      "Strong copywriting skills for B2B cold email outreach, ad copy, and landing page offers.",
+      "Proven track record of lowering Cost Per Lead (CPL) while increasing qualified call velocity."
+    ],
+    "niceToHave": [
+      "Experience with LinkedIn Sales Navigator and data enrichment tools (Apollo, Clay).",
+      "Basic knowledge of Webflow or Unbounce landing page design."
+    ],
+    "status": "published",
+    "createdAt": "2026-08-12T10:00:00.000Z",
+    "updatedAt": "2026-08-12T10:00:00.000Z"
+  }
+]
