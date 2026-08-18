@@ -111,9 +111,8 @@ export default function Contact() {
 
                   <div className="space-y-6">
                     {[
-                      { icon: "📍", label: "Agency Headquarters", val: "Hyderabad, India · Global Operations" },
-                      { icon: "📧", label: "Direct Email", val: "contact@myadsphere.com" },
-                      { icon: "📱", label: "Phone Inquiry", val: "+91 9849490777" }
+                      { icon: "📧", label: "Direct Email", val: "info@myadsphere.in" },
+                      { icon: "📱", label: "Phone Inquiry", val: "+91 94949 80096" }
                     ].map((item) => (
                       <div key={item.label} className="group flex items-center gap-5 p-4 rounded-2xl border border-white/5 bg-zinc-900/40 hover:bg-zinc-900/80 hover:border-[#FF4A17]/30 transition-all duration-300">
                         <div className="w-12 h-12 rounded-xl bg-[#FF4A17]/10 border border-[#FF4A17]/20 flex items-center justify-center text-xl text-[#FF4A17] group-hover:scale-110 transition-transform">

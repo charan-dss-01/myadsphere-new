@@ -21,9 +21,9 @@ export default function Footer() {
         {/* Centered Brand Logo - Large Scale */}
         <div className="flex justify-center mb-10 overflow-visible py-4">
           <img 
-            src="/assets/logo.png" 
+            src="/assets/logo.svg" 
             alt="MyAdSphere" 
-            className="h-12 md:h-16 w-auto object-contain cursor-pointer hover:opacity-90 transition-opacity scale-[3.5] transform-gpu" 
+            className="h-7 md:h-9 lg:h-10 w-auto object-contain cursor-pointer hover:opacity-90 transition-opacity" 
             onClick={() => scrollToSection('home')}
           />
         </div>
@@ -62,8 +62,8 @@ export default function Footer() {
             <div className="space-y-3 text-zinc-400 text-xs leading-relaxed font-light pt-2">
               <p className="font-bold text-white text-sm">MyAdSphere HQ</p>
               <p>Hyderabad, India · Global Operations</p>
-              <p className="text-zinc-300 font-mono hover:text-[#FF4A17] transition-colors cursor-pointer">contact@myadsphere.com</p>
-              <p className="text-zinc-300 font-mono">+91 9849490777</p>
+              <p className="text-zinc-300 font-mono hover:text-[#FF4A17] transition-colors cursor-pointer">info@myadsphere.in</p>
+              <p className="text-zinc-300 font-mono">+91 94949 80096</p>
             </div>
           </div>
 
@@ -159,7 +159,7 @@ export default function Footer() {
             <span>|</span>
             <Link href="#contact" className="hover:text-zinc-300 transition-colors">Terms & Conditions</Link>
           </div>
-          <p>© {new Date().getFullYear()}. MyAdSphere. All Rights Reserved.</p>
+          <p>© {new Date().getFullYear()}. MyAdSphere private limited. All Rights Reserved.</p>
         </div>
       </div>
 

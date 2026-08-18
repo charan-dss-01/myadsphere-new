@@ -49,8 +49,8 @@ export default function WhyMyAdSphere() {
         <h2 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black tracking-tight leading-[1.05] uppercase mb-16 max-w-4xl">
           <span className="text-white block">WE DON'T JUST RUN</span>
           <span className="text-white block">CAMPAIGNS.</span>
-          <span className="text-[#FF4A17] block mt-1">WE BUILD GROWTH</span>
-          <span className="text-[#FF4A17] block">SYSTEMS.</span>
+          <span className="bg-gradient-to-r from-[#FF4A17] via-orange-400 to-amber-500 bg-clip-text text-transparent block mt-1">WE BUILD GROWTH</span>
+          <span className="bg-gradient-to-r from-[#FF4A17] via-orange-400 to-amber-500 bg-clip-text text-transparent block">SYSTEMS.</span>
         </h2>
 
         {/* 4 Pillars List */}

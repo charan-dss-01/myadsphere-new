@@ -182,7 +182,7 @@ export default function About() {
           </FadeIn>
 
           {/* 3. Capabilities Matrix — full width */}
-          <FadeIn delay={0.15} className="lg:col-span-3">
+          {/* <FadeIn delay={0.15} className="lg:col-span-3">
             <div className="rounded-2xl border border-white/[0.1] bg-zinc-950/80 backdrop-blur-sm p-6 md:p-9 group hover:border-[#FF4A17]/40 transition-all duration-500">
               <CardLabel icon="🛠️" label="Core Capabilities" />
               <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
@@ -208,10 +208,10 @@ export default function About() {
                 ))}
               </div>
             </div>
-          </FadeIn>
+          </FadeIn> */}
 
           {/* 4. Core Values */}
-          <FadeIn delay={0.2} className="lg:col-span-1">
+          {/* <FadeIn delay={0.2} className="lg:col-span-1">
             <div className="h-full rounded-2xl border border-white/[0.1] bg-zinc-950/80 backdrop-blur-sm p-6 md:p-9 group hover:border-[#FF4A17]/40 transition-all duration-500">
               <CardLabel icon="✨" label="Our Philosophy" />
               <div className="space-y-6">
@@ -226,17 +226,16 @@ export default function About() {
                 ))}
               </div>
             </div>
-          </FadeIn>
+          </FadeIn> */}
 
           {/* 5. Growth Methodology Timeline — 2 cols */}
-          <FadeIn delay={0.25} className="lg:col-span-2">
+          {/* <FadeIn delay={0.25} className="lg:col-span-2">
             <div className="h-full rounded-2xl border border-white/[0.1] bg-zinc-950/80 backdrop-blur-sm p-6 md:p-9 group hover:border-[#FF4A17]/40 transition-all duration-500">
               <CardLabel icon="🗓️" label="Our Growth Process" />
               <div className="space-y-7">
                 {methodology.map((item, i) => (
                   <FadeIn key={item.title} delay={0.28 + i * 0.07}>
                     <div className="flex gap-5">
-                      {/* Step badge */}
                       <div className="shrink-0 pt-0.5">
                         <span className="inline-block px-3 py-1 rounded-md bg-[#FF4A17]/10 border border-[#FF4A17]/30 text-[#FF4A17] text-[11px] font-mono font-bold tracking-wide whitespace-nowrap">
                           STEP {item.step}
@@ -252,7 +251,7 @@ export default function About() {
                 ))}
               </div>
             </div>
-          </FadeIn>
+          </FadeIn> */}
 
         </div>
       </div>

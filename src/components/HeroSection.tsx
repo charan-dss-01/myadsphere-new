@@ -38,6 +38,7 @@ const techs = [
   { name: "Market Intelligence", size: "sm" },
 ];
 
+
 const sizeClass = {
   lg: "text-xs md:text-sm font-bold px-2.5 py-1 md:px-4 md:py-2 border-[#FF4A17]/40 text-white bg-[#FF4A17]/10",
   md: "text-[10px] md:text-xs font-semibold px-2 py-0.5 md:px-3.5 md:py-1.5 border-white/20 text-zinc-100",
@@ -341,10 +342,10 @@ function HeroSection() {
             className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black leading-[1.08] tracking-tight"
           >
             <span className="text-white">
-              We Turn Attention{" "}
+              Everything Your Brand{" "}
             </span>
             <span className="bg-gradient-to-r from-white via-zinc-200 to-[#FF4A17] bg-clip-text text-transparent">
-              Into Measurable Growth.
+              Needs to Grow.
             </span>
           </motion.h1>
 
@@ -455,10 +456,13 @@ function HeroSection() {
 }
 
 const roles = [
+  "Branding",
+  "Content Creation",
+  "Social Media Marketing",
   "Performance Marketing",
-  "Social Media Strategy",
-  "SEO & Digital Growth",
-  "Conversion Optimization",
+  "Website & Development",
+  "PR & Media",
+  "AI Automation",
 ];
 
 const stats = [

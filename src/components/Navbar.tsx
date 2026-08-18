@@ -67,12 +67,12 @@ export default function Navbar({ className }: { className?: string }) {
   return (
     <>
       {/* ── MOBILE HEADER BAR (< md) ── */}
-      <div className="fixed top-0 inset-x-0 z-50 flex items-center justify-between px-6 py-4 bg-black/90 backdrop-blur-2xl border-b border-white/10 md:hidden">
-        <Link href="/" onClick={() => setIsSidebarOpen(false)} className="flex items-center hover:opacity-90 transition-opacity pl-1 pr-6">
+      <div className="fixed top-0 inset-x-0 z-50 flex items-center justify-between px-6 py-3.5 bg-black/90 backdrop-blur-2xl border-b border-white/10 md:hidden">
+        <Link href="/" onClick={() => setIsSidebarOpen(false)} className="flex items-center hover:opacity-90 transition-opacity">
           <img 
-            src="/assets/logo.png" 
+            src="/assets/logo.svg" 
             alt="MyAdSphere" 
-            className="h-8 w-auto object-contain scale-[1.4] origin-left" 
+            className="h-5 sm:h-6 w-auto object-contain" 
           />
         </Link>
         <button
@@ -85,10 +85,10 @@ export default function Navbar({ className }: { className?: string }) {
       </div>
 
       {/* ── DESKTOP & TABLET FLOATING GLASS NAVBAR (>= md) ── */}
-      <div className={cn("fixed top-4 md:top-6 inset-x-0 max-w-6xl mx-auto px-4 z-50 hidden md:block transition-all duration-500", className)}>
+      <div className={cn("fixed top-4 md:top-6 inset-x-0 max-w-5xl mx-auto px-4 z-50 hidden md:block transition-all duration-500", className)}>
         <div 
           className={cn(
-            "relative flex items-center justify-between px-6 md:px-8 py-3 rounded-full border transition-all duration-500 shadow-[0_15px_40px_rgba(0,0,0,0.85)] overflow-visible",
+            "relative flex items-center justify-between px-6 md:px-8 py-3 rounded-full border transition-all duration-500 shadow-[0_15px_40px_rgba(0,0,0,0.85)]",
             scrolled 
               ? "bg-zinc-950/90 backdrop-blur-2xl border-white/15" 
               : "bg-zinc-950/75 backdrop-blur-xl border-white/10"
@@ -97,15 +97,15 @@ export default function Navbar({ className }: { className?: string }) {
           {/* Glossy Top Specular Reflection Highlight */}
           <div className="absolute inset-0 rounded-full bg-[radial-gradient(ellipse_at_top,rgba(255,255,255,0.08),transparent_70%)] pointer-events-none" />
 
-          {/* Brand Logo Asset (Prominent Sizing with Self-Contained Right Padding) */}
+          {/* Brand Logo Asset (Perfectly Proportioned Logo Height: 36px–40px) */}
           <Link 
             href="/" 
-            className="relative z-10 flex items-center hover:opacity-90 transition-opacity shrink-0 pl-1 pr-10 md:pr-14 lg:pr-16 h-8 md:h-9"
+            className="relative z-10 flex items-center hover:opacity-90 transition-opacity shrink-0 mr-4 md:mr-6 lg:mr-8"
           >
             <img 
-              src="/assets/logo.png" 
+              src="/assets/logo.svg" 
               alt="MyAdSphere" 
-              className="h-8 md:h-9 w-auto object-contain scale-[1.5] md:scale-[1.75] lg:scale-[2.0] origin-left transition-transform transform-gpu" 
+              className="h-6 md:h-7 lg:h-[28px] xl:h-8 w-auto object-contain transition-all duration-300" 
             />
           </Link>
 
