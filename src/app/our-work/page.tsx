@@ -49,7 +49,7 @@ export default function OurWorkOverviewPage() {
         <div className="max-w-5xl mx-auto text-center relative z-10">
           
           {/* Eyebrow Badge */}
-          <div className="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full bg-zinc-950/90 border border-white/15 text-[#FF4A17] font-mono text-[11px] font-bold tracking-[0.3em] uppercase mb-8 shadow-xl">
+          <div className="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full bg-zinc-950/90 border border-white/15 text-[#FF4A17] font-sans text-[11px] font-bold tracking-[0.3em] uppercase mb-8 shadow-xl">
             <Sparkles size={13} className="animate-pulse" />
             OUR WORK — CURATED CASE STUDIES
           </div>
@@ -68,7 +68,7 @@ export default function OurWorkOverviewPage() {
           </p>
 
           {/* Campaign Signal Visual Element */}
-          <div className="pt-8 border-t border-white/10 max-w-3xl mx-auto flex flex-col md:flex-row items-center justify-between gap-4 text-xs font-mono text-zinc-400">
+          <div className="pt-8 border-t border-white/10 max-w-3xl mx-auto flex flex-col md:flex-row items-center justify-between gap-4 text-xs font-sans text-zinc-400">
             <div className="flex items-center gap-2 text-[#FF4A17]">
               <Activity size={14} className="animate-pulse" />
               <span className="font-bold tracking-widest uppercase">CAMPAIGN SIGNAL</span>
@@ -94,9 +94,9 @@ export default function OurWorkOverviewPage() {
         <div className="max-w-7xl mx-auto">
           
           <div className="flex items-center gap-3 mb-8">
-            <span className="text-[#FF4A17] font-mono text-xs font-bold tracking-widest">01</span>
+            <span className="text-[#FF4A17] font-sans text-xs font-bold tracking-widest">01</span>
             <div className="h-px w-6 bg-zinc-800" />
-            <span className="text-zinc-400 font-mono uppercase text-[11px] font-semibold tracking-[0.35em]">
+            <span className="text-zinc-400 font-sans uppercase text-[11px] font-semibold tracking-[0.35em]">
               FEATURED CASE STUDY
             </span>
           </div>
@@ -119,7 +119,7 @@ export default function OurWorkOverviewPage() {
               <div className="absolute inset-0 bg-gradient-to-t from-zinc-950 via-zinc-950/30 to-transparent" />
               
               {/* Project Number Watermark */}
-              <span className="absolute top-6 right-8 text-6xl md:text-8xl font-black text-white/10 font-mono select-none">
+              <span className="absolute top-6 right-8 text-6xl md:text-8xl font-black text-white/10 font-sans select-none">
                 01
               </span>
             </div>
@@ -128,10 +128,10 @@ export default function OurWorkOverviewPage() {
             <div className="p-8 md:p-12 relative z-10 flex flex-col md:flex-row md:items-end justify-between gap-8">
               <div className="max-w-2xl">
                 <div className="flex items-center gap-3 mb-4">
-                  <span className="px-3.5 py-1 rounded-full bg-[#FF4A17]/10 border border-[#FF4A17]/30 text-[#FF4A17] font-mono text-[10px] font-bold uppercase tracking-widest">
+                  <span className="px-3.5 py-1 rounded-full bg-[#FF4A17]/10 border border-[#FF4A17]/30 text-[#FF4A17] font-sans text-[10px] font-bold uppercase tracking-widest">
                     {featuredProject.category}
                   </span>
-                  <span className="text-zinc-500 text-xs font-mono tracking-wider">{featuredProject.client}</span>
+                  <span className="text-zinc-500 text-xs font-sans tracking-wider">{featuredProject.client}</span>
                 </div>
 
                 <h2 className="text-3xl md:text-5xl font-black text-white uppercase tracking-tight mb-4 group-hover:text-white transition-colors">
@@ -147,8 +147,8 @@ export default function OurWorkOverviewPage() {
                 <div className="flex items-center gap-6">
                   {featuredProject.metrics.slice(0, 2).map((m) => (
                     <div key={m.label} className="text-left md:text-right">
-                      <p className="text-2xl md:text-3xl font-black text-[#FF4A17] font-mono tracking-tight">{m.value}</p>
-                      <p className="text-[10px] text-zinc-500 uppercase tracking-widest font-semibold font-mono">{m.label}</p>
+                      <p className="text-2xl md:text-3xl font-black text-[#FF4A17] font-sans tracking-tight">{m.value}</p>
+                      <p className="text-[10px] text-zinc-500 uppercase tracking-widest font-semibold font-sans">{m.label}</p>
                     </div>
                   ))}
                 </div>
@@ -171,7 +171,7 @@ export default function OurWorkOverviewPage() {
           
           <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-8 select-none">
             <div>
-              <p className="text-[#FF4A17] font-mono text-xs font-bold tracking-[0.35em] uppercase mb-3">
+              <p className="text-[#FF4A17] font-sans text-xs font-bold tracking-[0.35em] uppercase mb-3">
                 CURATED GALLERY
               </p>
               <h2 className="text-3xl md:text-5xl font-black tracking-tight text-white uppercase">
@@ -185,7 +185,7 @@ export default function OurWorkOverviewPage() {
                 <button
                   key={cat}
                   onClick={() => setActiveCategory(cat)}
-                  className={`px-4 py-2 rounded-full text-xs font-mono font-bold tracking-wider transition-all duration-300 ${
+                  className={`px-4 py-2 rounded-full text-xs font-sans font-bold tracking-wider transition-all duration-300 ${
                     activeCategory === cat
                       ? 'bg-[#FF4A17] text-white border border-[#FF4A17] shadow-[0_0_15px_rgba(255,74,23,0.3)]'
                       : 'bg-zinc-950 border border-white/10 text-zinc-400 hover:text-white'
@@ -230,8 +230,8 @@ export default function OurWorkOverviewPage() {
                     <div className={`relative z-10 flex flex-col justify-between h-full ${isEven ? 'lg:col-span-6 lg:order-2' : 'lg:col-span-6 lg:order-1'}`}>
                       <div>
                         <div className="flex items-center justify-between mb-4">
-                          <span className="text-[#FF4A17] font-mono text-xs font-bold tracking-widest">{project.number}</span>
-                          <span className="text-[10px] text-zinc-400 font-mono uppercase tracking-widest font-semibold px-2.5 py-1 rounded bg-white/5 border border-white/10">
+                          <span className="text-[#FF4A17] font-sans text-xs font-bold tracking-widest">{project.number}</span>
+                          <span className="text-[10px] text-zinc-400 font-sans uppercase tracking-widest font-semibold px-2.5 py-1 rounded bg-white/5 border border-white/10">
                             {project.category}
                           </span>
                         </div>
@@ -248,13 +248,13 @@ export default function OurWorkOverviewPage() {
                       <div className="pt-6 border-t border-white/10 flex items-center justify-between">
                         <div className="flex items-center gap-4">
                           {project.metrics.slice(0, 1).map((m) => (
-                            <span key={m.label} className="text-xs font-mono font-semibold text-zinc-300">
+                            <span key={m.label} className="text-xs font-sans font-semibold text-zinc-300">
                               <strong className="text-[#FF4A17] font-black text-sm md:text-base mr-1.5">{m.value}</strong> {m.label}
                             </span>
                           ))}
                         </div>
 
-                        <span className="text-xs font-mono font-bold text-white uppercase tracking-wider group-hover:text-[#FF4A17] flex items-center gap-1.5 transition-colors">
+                        <span className="text-xs font-sans font-bold text-white uppercase tracking-wider group-hover:text-[#FF4A17] flex items-center gap-1.5 transition-colors">
                           View Case Study <ArrowUpRight size={14} className="group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
                         </span>
                       </div>
@@ -272,7 +272,7 @@ export default function OurWorkOverviewPage() {
       <section className="py-12 bg-black border-y border-white/10 overflow-hidden select-none">
         <div className="flex overflow-hidden">
           <motion.div
-            className="flex shrink-0 gap-12 items-center text-sm md:text-base font-mono font-bold tracking-[0.3em] uppercase text-zinc-500"
+            className="flex shrink-0 gap-12 items-center text-sm md:text-base font-sans font-bold tracking-[0.3em] uppercase text-zinc-500"
             animate={{ x: ['0%', '-50%'] }}
             transition={{ duration: 25, repeat: Infinity, ease: 'linear' }}
           >
@@ -291,7 +291,7 @@ export default function OurWorkOverviewPage() {
         <div className="max-w-6xl mx-auto">
           
           <div className="text-center mb-16">
-            <p className="text-[#FF4A17] font-mono text-xs font-bold tracking-[0.35em] uppercase mb-3">
+            <p className="text-[#FF4A17] font-sans text-xs font-bold tracking-[0.35em] uppercase mb-3">
               CROSS-INDUSTRY EXPERTISE
             </p>
             <h2 className="text-3xl md:text-5xl font-black tracking-tight text-white uppercase">
@@ -308,7 +308,7 @@ export default function OurWorkOverviewPage() {
                 <h4 className="text-white font-bold text-xs md:text-sm tracking-wider uppercase mb-1 group-hover:text-[#FF4A17] transition-colors">
                   {ind.name}
                 </h4>
-                <p className="text-zinc-500 text-[10px] font-mono uppercase">{ind.tag}</p>
+                <p className="text-zinc-500 text-[10px] font-sans uppercase">{ind.tag}</p>
               </div>
             ))}
           </div>
@@ -321,7 +321,7 @@ export default function OurWorkOverviewPage() {
         <div className="absolute inset-0 bg-[radial-gradient(rgba(255,74,23,0.06)_1px,transparent_1px)] bg-[size:32px_32px] pointer-events-none" />
 
         <div className="max-w-4xl mx-auto relative z-10">
-          <p className="text-[#FF4A17] font-mono text-xs font-bold tracking-[0.35em] uppercase mb-4">
+          <p className="text-[#FF4A17] font-sans text-xs font-bold tracking-[0.35em] uppercase mb-4">
             YOUR NEXT GROWTH STORY COULD BE HERE
           </p>
           <h2 className="text-3xl md:text-5xl font-black tracking-tight text-white uppercase mb-8">

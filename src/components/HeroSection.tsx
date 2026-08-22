@@ -21,10 +21,8 @@ const techs = [
   { name: "Social Media Strategy", size: "md" },
   { name: "Funnel Conversion (CRO)", size: "md" },
   { name: "Content Marketing", size: "md" },
-  { name: "Email & Automation", size: "md" },
   { name: "Analytics & GA4", size: "md" },
 
-  { name: "TikTok Ads", size: "sm" },
   { name: "LinkedIn B2B Ads", size: "sm" },
   { name: "Brand Identity", size: "sm" },
   { name: "Video Ad Production", size: "sm" },
@@ -34,8 +32,6 @@ const techs = [
   { name: "Influencer Strategy", size: "sm" },
   { name: "Shopify Scaling", size: "sm" },
   { name: "PPC Campaigns", size: "sm" },
-  { name: "HubSpot CRM", size: "sm" },
-  { name: "Market Intelligence", size: "sm" },
 ];
 
 
@@ -424,28 +420,27 @@ function HeroSection() {
             </a>
           </motion.div>
 
-          {/* Channels / Icons */}
+          {/* Channels / Clickable Social Icons */}
           <motion.div
             variants={fadeUp}
             className="flex justify-center lg:justify-start gap-4 pt-2"
           >
             {[
-              { icon: "google", label: "Google Ads" },
-              { icon: "meta", label: "Meta Ads" },
-              { icon: "instagram", label: "Instagram Growth" },
-              { icon: "linkedin", label: "B2B LinkedIn" },
+              { icon: "whatsapp", label: "WhatsApp", href: "https://wa.me/919494980096" },
+              { icon: "facebook-f", label: "Facebook", href: "https://www.facebook.com/myadsphere.in/" },
+              { icon: "instagram", label: "Instagram", href: "https://www.instagram.com/myadsphere.in/" },
+              { icon: "linkedin-in", label: "LinkedIn", href: "https://www.linkedin.com/company/myadsphere" },
             ].map((social, i) => (
-              <div
+              <a
                 key={i}
-                className="w-10 h-10 flex items-center justify-center rounded-xl border border-zinc-800/80 text-zinc-400 hover:text-white hover:border-zinc-600 hover:bg-white/5 transition-all duration-300"
+                href={social.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-10 h-10 flex items-center justify-center rounded-xl border border-zinc-800/80 text-zinc-400 hover:text-white hover:border-[#FF4A17] hover:bg-[#FF4A17]/10 transition-all duration-300"
                 title={social.label}
               >
-                <i
-                  className={`fa-brands fa-${
-                    social.icon === "meta" ? "facebook" : social.icon
-                  } text-sm`}
-                />
-              </div>
+                <i className={`fa-brands fa-${social.icon} text-sm`} />
+              </a>
             ))}
           </motion.div>
         </motion.div>

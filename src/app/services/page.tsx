@@ -20,25 +20,27 @@ import {
   Globe,
   ShoppingBag,
   Cpu,
-  Bot
+  Bot,
+  Newspaper
 } from 'lucide-react';
 
 const categories = ['ALL', 'PERFORMANCE', 'ORGANIC GROWTH', 'CREATIVE', 'CONVERSION', 'INTELLIGENCE'] as const;
 
 // Unique Lucide icons mapped to all 12 service slugs
 const serviceIcons: Record<string, React.ReactNode> = {
-  'branding-identity': <Palette className="w-4 h-4 text-[#FF4A17]" />,
-  'content-creative-production': <FileText className="w-4 h-4 text-[#FF4A17]" />,
-  'social-media-marketing': <Share2 className="w-4 h-4 text-[#FF4A17]" />,
-  'website-design-development': <Globe className="w-4 h-4 text-[#FF4A17]" />,
-  'seo': <Search className="w-4 h-4 text-[#FF4A17]" />,
-  'performance-marketing': <TrendingUp className="w-4 h-4 text-[#FF4A17]" />,
-  'google-ads-ppc': <Megaphone className="w-4 h-4 text-[#FF4A17]" />,
-  'meta-ads': <Sparkles className="w-4 h-4 text-[#FF4A17]" />,
-  'lead-generation': <Users className="w-4 h-4 text-[#FF4A17]" />,
-  'ecommerce-marketing': <ShoppingBag className="w-4 h-4 text-[#FF4A17]" />,
-  'marketing-automation-crm': <Filter className="w-4 h-4 text-[#FF4A17]" />,
-  'ai-solutions-automation': <Bot className="w-4 h-4 text-[#FF4A17]" />
+  'branding-identity': <Palette className="w-4 h-4 text-white" />,
+  'content-creative-production': <FileText className="w-4 h-4 text-white" />,
+  'social-media-marketing': <Share2 className="w-4 h-4 text-white" />,
+  'website-design-development': <Globe className="w-4 h-4 text-white" />,
+  'seo': <Search className="w-4 h-4 text-white" />,
+  'performance-marketing': <TrendingUp className="w-4 h-4 text-white" />,
+  'google-ads-ppc': <Megaphone className="w-4 h-4 text-white" />,
+  'meta-ads': <Sparkles className="w-4 h-4 text-white" />,
+  'lead-generation': <Users className="w-4 h-4 text-white" />,
+  'ecommerce-marketing': <ShoppingBag className="w-4 h-4 text-white" />,
+  'pr-media': <Newspaper className="w-4 h-4 text-white" />,
+  'marketing-automation-crm': <Newspaper className="w-4 h-4 text-white" />,
+  'ai-solutions-automation': <Bot className="w-4 h-4 text-white" />
 };
 
 export default function ServicesOverviewPage() {
@@ -68,7 +70,7 @@ export default function ServicesOverviewPage() {
         <div className="max-w-5xl mx-auto text-center relative z-10">
           
           {/* Eyebrow Badge */}
-          <div className="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full bg-zinc-950/90 border border-white/15 text-[#FF4A17] font-mono text-[11px] font-bold tracking-[0.3em] uppercase mb-8 shadow-xl">
+          <div className="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full bg-zinc-950/90 border border-white/15 text-[#FF4A17] font-sans text-[11px] font-bold tracking-[0.3em] uppercase mb-8 shadow-xl">
             <Sparkles size={13} className="animate-pulse" />
             WHAT WE DO — DIGITAL GROWTH OPERATING SYSTEM
           </div>
@@ -83,7 +85,7 @@ export default function ServicesOverviewPage() {
 
           {/* Subhead Paragraph */}
           <p className="text-zinc-400 text-base md:text-xl font-light leading-relaxed max-w-3xl mx-auto">
-            MyAdSphere unites branding, performance advertising, SEO, creative production, AI automation, and customer pipelines into one compounding growth engine.
+           Myadsphere brings strategy, creative, performance marketing, SEO, technology and AI together to help brands attract the right audience, generate qualified leads and achieve measurable growth.
           </p>
 
         </div>
@@ -99,7 +101,7 @@ export default function ServicesOverviewPage() {
               <button
                 key={cat}
                 onClick={() => setActiveCategory(cat)}
-                className={`px-5 py-2.5 rounded-full text-xs font-mono font-bold tracking-wider transition-all duration-300 ${
+                className={`px-5 py-2.5 rounded-full text-xs font-sans font-bold tracking-wider transition-all duration-300 ${
                   activeCategory === cat
                     ? 'bg-[#FF4A17] text-white shadow-[0_0_20px_rgba(255,74,23,0.4)] border border-[#FF4A17]'
                     : 'bg-zinc-950/80 border border-white/10 text-zinc-400 hover:text-white hover:border-white/20'
@@ -127,17 +129,12 @@ export default function ServicesOverviewPage() {
                   <div className="absolute top-0 right-0 w-32 h-32 bg-[#FF4A17]/[0.03] group-hover:bg-[#FF4A17]/10 blur-2xl transition-all duration-500 pointer-events-none" />
 
                   <div>
-                    {/* Top Card Bar: Icon, Number & Category */}
+                    {/* Top Card Bar: Icon & Category */}
                     <div className="flex items-center justify-between mb-8 pb-4 border-b border-white/10">
-                      <div className="flex items-center gap-3">
-                        <div className="w-8 h-8 rounded-lg bg-[#FF4A17]/10 border border-[#FF4A17]/25 flex items-center justify-center group-hover:bg-[#FF4A17]/20 group-hover:border-[#FF4A17]/50 group-hover:scale-105 transition-all duration-300 shadow-[0_0_12px_rgba(255,74,23,0.2)]">
-                          {serviceIcons[service.slug] || <Sparkles className="w-4 h-4 text-[#FF4A17]" />}
-                        </div>
-                        <span className="text-[#FF4A17] font-mono text-sm font-bold tracking-widest">
-                          {service.number}
-                        </span>
+                      <div className="w-8 h-8 rounded-lg bg-white/10 border border-white/20 flex items-center justify-center group-hover:bg-[#FF4A17] group-hover:border-[#FF4A17] group-hover:scale-105 transition-all duration-300 shadow-md">
+                        {serviceIcons[service.slug] || <Sparkles className="w-4 h-4 text-white" />}
                       </div>
-                      <span className="text-[10px] text-zinc-500 font-mono uppercase tracking-widest font-semibold">
+                      <span className="text-[10px] text-zinc-500 font-sans uppercase tracking-widest font-semibold">
                         {service.category}
                       </span>
                     </div>
@@ -158,12 +155,12 @@ export default function ServicesOverviewPage() {
                   <div>
                     <div className="flex flex-wrap gap-1.5 pt-4 border-t border-white/10">
                       {service.platforms.slice(0, 3).map((platform) => (
-                        <span key={platform} className="px-2.5 py-1 rounded bg-white/[0.04] border border-white/10 text-[10px] font-mono text-zinc-400">
+                        <span key={platform} className="px-2.5 py-1 rounded bg-white/[0.04] border border-white/10 text-[10px] font-sans text-zinc-400">
                           {platform}
                         </span>
                       ))}
                       {service.platforms.length > 3 && (
-                        <span className="px-2 py-1 rounded bg-white/[0.04] text-[10px] font-mono text-zinc-500">
+                        <span className="px-2 py-1 rounded bg-white/[0.04] text-[10px] font-sans text-zinc-500">
                           +{service.platforms.length - 3} more
                         </span>
                       )}
@@ -182,7 +179,7 @@ export default function ServicesOverviewPage() {
         <div className="absolute inset-0 bg-[radial-gradient(rgba(255,74,23,0.06)_1px,transparent_1px)] bg-[size:32px_32px] pointer-events-none" />
         
         <div className="max-w-4xl mx-auto relative z-10">
-          <p className="text-[#FF4A17] font-mono text-xs font-bold tracking-[0.35em] uppercase mb-4">
+          <p className="text-[#FF4A17] font-sans text-xs font-bold tracking-[0.35em] uppercase mb-4">
             READY TO SCALE YOUR BRAND?
           </p>
           <h2 className="text-3xl md:text-5xl font-black tracking-tight text-white uppercase mb-8">

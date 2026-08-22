@@ -55,7 +55,7 @@ export default function BrandLogo({ className = "h-9 w-auto", height }: BrandLog
           <span className="text-[#FF4A17]">my</span>
           <span>adsphere</span>
         </div>
-        <span className="text-[8px] md:text-[9px] font-mono tracking-[0.25em] text-zinc-400 font-bold uppercase pl-0.5 mt-0.5">
+        <span className="text-[8px] md:text-[9px] font-sans tracking-[0.25em] text-zinc-400 font-bold uppercase pl-0.5 mt-0.5">
           Think Beyond
         </span>
       </div>

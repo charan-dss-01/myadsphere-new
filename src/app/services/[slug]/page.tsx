@@ -57,7 +57,7 @@ export default async function ServiceDetailPage({ params }: PageProps) {
         <div className="max-w-6xl mx-auto relative z-10">
 
           {/* Minimal Breadcrumb */}
-          <div className="flex items-center gap-2 text-xs font-mono text-zinc-500 mb-8">
+          <div className="flex items-center gap-2 text-xs font-sans text-zinc-500 mb-8">
             <Link href="/" className="hover:text-white transition-colors">Home</Link>
             <ChevronRight size={12} />
             <Link href="/services" className="hover:text-white transition-colors">Services</Link>
@@ -69,7 +69,7 @@ export default async function ServiceDetailPage({ params }: PageProps) {
             
             {/* Left Content */}
             <div className="lg:col-span-7">
-              <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-zinc-950/90 border border-white/15 text-[#FF4A17] font-mono text-[11px] font-bold tracking-[0.3em] uppercase mb-6 shadow-lg">
+              <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-zinc-950/90 border border-white/15 text-[#FF4A17] font-sans text-[11px] font-bold tracking-[0.3em] uppercase mb-6 shadow-lg">
                 <span className="w-1.5 h-1.5 rounded-full bg-[#FF4A17] animate-pulse" />
                 SERVICE {service.number} · {service.category}
               </div>
@@ -108,11 +108,11 @@ export default async function ServiceDetailPage({ params }: PageProps) {
                 <div className="flex items-center justify-between pb-6 border-b border-white/10 mb-6">
                   <div className="flex items-center gap-2">
                     <Sparkles size={16} className="text-[#FF4A17]" />
-                    <span className="text-xs font-mono font-bold text-white uppercase tracking-wider">
+                    <span className="text-xs font-sans font-bold text-white uppercase tracking-wider">
                       {service.title} Engine
                     </span>
                   </div>
-                  <span className="text-[10px] text-[#FF4A17] font-mono font-bold bg-[#FF4A17]/10 px-2 py-0.5 rounded border border-[#FF4A17]/30">
+                  <span className="text-[10px] text-[#FF4A17] font-sans font-bold bg-[#FF4A17]/10 px-2 py-0.5 rounded border border-[#FF4A17]/30">
                     VERIFIED
                   </span>
                 </div>
@@ -129,7 +129,7 @@ export default async function ServiceDetailPage({ params }: PageProps) {
 
                 <div className="pt-4 border-t border-white/10 flex flex-wrap gap-1.5">
                   {service.platforms.map((platform) => (
-                    <span key={platform} className="px-2.5 py-1 rounded bg-white/[0.04] border border-white/10 text-[10px] font-mono text-zinc-400">
+                    <span key={platform} className="px-2.5 py-1 rounded bg-white/[0.04] border border-white/10 text-[10px] font-sans text-zinc-400">
                       {platform}
                     </span>
                   ))}
@@ -146,7 +146,7 @@ export default async function ServiceDetailPage({ params }: PageProps) {
       <section className="relative py-20 px-6 md:px-12 bg-black border-b border-white/10">
         <div className="max-w-5xl mx-auto">
           <div className="p-8 md:p-12 rounded-3xl border border-white/10 bg-zinc-950/80 backdrop-blur-md">
-            <h2 className="text-xs font-mono text-[#FF4A17] font-bold tracking-[0.3em] uppercase mb-4">
+            <h2 className="text-xs font-sans text-[#FF4A17] font-bold tracking-[0.3em] uppercase mb-4">
               SERVICE OVERVIEW
             </h2>
             <p className="text-white text-xl md:text-2xl font-light leading-relaxed">
@@ -161,7 +161,7 @@ export default async function ServiceDetailPage({ params }: PageProps) {
         <div className="max-w-7xl mx-auto">
           
           <div className="mb-16">
-            <p className="text-[#FF4A17] font-mono text-xs font-bold tracking-[0.35em] uppercase mb-3">
+            <p className="text-[#FF4A17] font-sans text-xs font-bold tracking-[0.35em] uppercase mb-3">
               CORE CAPABILITIES
             </p>
             <h2 className="text-3xl md:text-5xl font-black tracking-tight text-white uppercase">
@@ -176,7 +176,7 @@ export default async function ServiceDetailPage({ params }: PageProps) {
                 className="group p-8 rounded-2xl border border-white/10 bg-zinc-950/90 hover:border-[#FF4A17]/60 hover:bg-zinc-900/90 transition-all duration-500 shadow-xl flex flex-col justify-between"
               >
                 <div>
-                  <span className="text-xs font-mono text-zinc-500 font-bold tracking-widest block mb-4">
+                  <span className="text-xs font-sans text-zinc-500 font-bold tracking-widest block mb-4">
                     0{idx + 1}
                   </span>
                   <h3 className="text-white text-xl font-bold tracking-tight mb-3 group-hover:text-white transition-colors">
@@ -198,7 +198,7 @@ export default async function ServiceDetailPage({ params }: PageProps) {
         <div className="max-w-7xl mx-auto">
           
           <div className="mb-16">
-            <p className="text-[#FF4A17] font-mono text-xs font-bold tracking-[0.35em] uppercase mb-3">
+            <p className="text-[#FF4A17] font-sans text-xs font-bold tracking-[0.35em] uppercase mb-3">
               EXECUTION FRAMEWORK
             </p>
             <h2 className="text-3xl md:text-5xl font-black tracking-tight text-white uppercase">
@@ -212,7 +212,7 @@ export default async function ServiceDetailPage({ params }: PageProps) {
                 key={step.step}
                 className="p-6 rounded-2xl border border-white/10 bg-zinc-950/80 hover:border-[#FF4A17]/50 transition-all duration-300"
               >
-                <span className="text-[#FF4A17] font-mono text-xs font-bold tracking-widest block mb-3">
+                <span className="text-[#FF4A17] font-sans text-xs font-bold tracking-widest block mb-3">
                   {step.step}
                 </span>
                 <h4 className="text-white font-bold text-sm tracking-wider uppercase mb-2">
@@ -244,7 +244,7 @@ export default async function ServiceDetailPage({ params }: PageProps) {
               {service.targetIndustries.map((ind) => (
                 <span
                   key={ind}
-                  className="px-4 py-2 rounded-full bg-zinc-900 border border-white/10 text-xs font-mono text-zinc-300 font-semibold"
+                  className="px-4 py-2 rounded-full bg-zinc-900 border border-white/10 text-xs font-sans text-zinc-300 font-semibold"
                 >
                   {ind}
                 </span>
@@ -264,7 +264,7 @@ export default async function ServiceDetailPage({ params }: PageProps) {
               {service.platforms.map((plat) => (
                 <span
                   key={plat}
-                  className="px-4 py-2 rounded-full bg-zinc-900 border border-white/10 text-xs font-mono text-zinc-300 font-semibold"
+                  className="px-4 py-2 rounded-full bg-zinc-900 border border-white/10 text-xs font-sans text-zinc-300 font-semibold"
                 >
                   {plat}
                 </span>
@@ -280,7 +280,7 @@ export default async function ServiceDetailPage({ params }: PageProps) {
         <div className="max-w-4xl mx-auto">
           
           <div className="text-center mb-16">
-            <p className="text-[#FF4A17] font-mono text-xs font-bold tracking-[0.35em] uppercase mb-3">
+            <p className="text-[#FF4A17] font-sans text-xs font-bold tracking-[0.35em] uppercase mb-3">
               QUESTIONS & ANSWERS
             </p>
             <h2 className="text-3xl md:text-4xl font-black tracking-tight text-white uppercase">
@@ -313,7 +313,7 @@ export default async function ServiceDetailPage({ params }: PageProps) {
           
           <div className="flex items-center justify-between mb-12">
             <div>
-              <p className="text-[#FF4A17] font-mono text-xs font-bold tracking-[0.35em] uppercase mb-2">
+              <p className="text-[#FF4A17] font-sans text-xs font-bold tracking-[0.35em] uppercase mb-2">
                 EXPLORE MORE CAPABILITIES
               </p>
               <h2 className="text-2xl md:text-3xl font-black tracking-tight text-white uppercase">
@@ -322,7 +322,7 @@ export default async function ServiceDetailPage({ params }: PageProps) {
             </div>
             <Link
               href="/services"
-              className="text-xs font-mono font-bold text-zinc-400 hover:text-[#FF4A17] transition-colors flex items-center gap-1"
+              className="text-xs font-sans font-bold text-zinc-400 hover:text-[#FF4A17] transition-colors flex items-center gap-1"
             >
               View All Services ↗
             </Link>
@@ -336,8 +336,8 @@ export default async function ServiceDetailPage({ params }: PageProps) {
                 className="group p-6 rounded-2xl border border-white/10 bg-zinc-950/90 hover:border-[#FF4A17]/60 transition-all duration-300 block"
               >
                 <div className="flex items-center justify-between mb-4">
-                  <span className="text-[#FF4A17] font-mono text-xs font-bold">{rel.number}</span>
-                  <span className="text-[10px] text-zinc-500 font-mono uppercase">{rel.category}</span>
+                  <span className="text-[#FF4A17] font-sans text-xs font-bold">{rel.number}</span>
+                  <span className="text-[10px] text-zinc-500 font-sans uppercase">{rel.category}</span>
                 </div>
                 <h4 className="text-white font-bold text-lg mb-2 group-hover:text-[#FF4A17] transition-colors">
                   {rel.title}
@@ -357,7 +357,7 @@ export default async function ServiceDetailPage({ params }: PageProps) {
         <div className="absolute inset-0 bg-[radial-gradient(rgba(255,74,23,0.06)_1px,transparent_1px)] bg-[size:32px_32px] pointer-events-none" />
 
         <div className="max-w-4xl mx-auto relative z-10">
-          <p className="text-[#FF4A17] font-mono text-xs font-bold tracking-[0.35em] uppercase mb-4">
+          <p className="text-[#FF4A17] font-sans text-xs font-bold tracking-[0.35em] uppercase mb-4">
             READY TO SCALE {service.title.toUpperCase()}?
           </p>
           <h2 className="text-3xl md:text-5xl font-black tracking-tight text-white uppercase mb-8">

@@ -168,7 +168,7 @@ export default function CareersOverviewPage() {
         <div className="max-w-5xl mx-auto text-center relative z-10">
           
           {/* Eyebrow Badge */}
-          <div className="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full bg-zinc-950/90 border border-white/15 text-[#FF4A17] font-mono text-[11px] font-bold tracking-[0.3em] uppercase mb-8 shadow-xl">
+          <div className="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full bg-zinc-950/90 border border-white/15 text-[#FF4A17] font-sans text-[11px] font-bold tracking-[0.3em] uppercase mb-8 shadow-xl">
             <Sparkles size={13} className="animate-pulse" />
             CAREERS — JOIN MYADSPHERE
           </div>
@@ -199,7 +199,7 @@ export default function CareersOverviewPage() {
           <div className="lg:col-span-7 space-y-8">
             
             <div>
-              <p className="text-[#FF4A17] font-mono text-xs font-bold tracking-[0.35em] uppercase mb-3">
+              <p className="text-[#FF4A17] font-sans text-xs font-bold tracking-[0.35em] uppercase mb-3">
                 CURRENT OPPORTUNITIES
               </p>
               <h2 className="text-3xl md:text-4xl font-black tracking-tight text-white uppercase">
@@ -214,7 +214,7 @@ export default function CareersOverviewPage() {
                   <button
                     key={dept}
                     onClick={() => setActiveDept(dept)}
-                    className={`px-3.5 py-1.5 rounded-full text-[11px] font-mono font-bold tracking-wider transition-all duration-300 ${
+                    className={`px-3.5 py-1.5 rounded-full text-[11px] font-sans font-bold tracking-wider transition-all duration-300 ${
                       activeDept === dept
                         ? 'bg-[#FF4A17] text-white border border-[#FF4A17] shadow-[0_0_15px_rgba(255,74,23,0.3)]'
                         : 'bg-zinc-950 border border-white/10 text-zinc-400 hover:text-white'
@@ -228,7 +228,7 @@ export default function CareersOverviewPage() {
 
             {/* Job Cards List */}
             {loading ? (
-              <div className="text-center py-16 text-zinc-500 font-mono text-xs">
+              <div className="text-center py-16 text-zinc-500 font-sans text-xs">
                 Loading current openings...
               </div>
             ) : filteredJobs.length > 0 ? (
@@ -256,7 +256,7 @@ export default function CareersOverviewPage() {
                       <div className="flex flex-col justify-between h-full space-y-4">
                         <div>
                           {/* Metadata row */}
-                          <div className="flex flex-wrap items-center gap-2.5 mb-3 text-[11px] font-mono">
+                          <div className="flex flex-wrap items-center gap-2.5 mb-3 text-[11px] font-sans">
                             <span className="text-[#FF4A17] font-bold uppercase tracking-wider">
                               {job.department}
                             </span>
@@ -285,7 +285,7 @@ export default function CareersOverviewPage() {
 
                         {/* Action Callout */}
                         <div className="flex items-center justify-between pt-2 border-t border-white/5">
-                          <span className={`text-xs font-mono font-bold uppercase tracking-wider flex items-center gap-1.5 transition-colors ${
+                          <span className={`text-xs font-sans font-bold uppercase tracking-wider flex items-center gap-1.5 transition-colors ${
                             isSelected ? 'text-[#FF4A17]' : 'text-zinc-400 group-hover:text-white'
                           }`}>
                             {isSelected ? 'SELECTED ROLE' : 'APPLY FOR ROLE'}
@@ -293,7 +293,7 @@ export default function CareersOverviewPage() {
                           </span>
 
                           {isSelected && (
-                            <span className="text-[10px] font-mono px-2.5 py-0.5 rounded-full bg-[#FF4A17]/20 border border-[#FF4A17]/40 text-[#FF4A17]">
+                            <span className="text-[10px] font-sans px-2.5 py-0.5 rounded-full bg-[#FF4A17]/20 border border-[#FF4A17]/40 text-[#FF4A17]">
                               Active in Form
                             </span>
                           )}
@@ -333,7 +333,7 @@ export default function CareersOverviewPage() {
               <div className="absolute top-0 right-0 w-32 h-32 bg-[#FF4A17]/[0.05] blur-2xl pointer-events-none" />
 
               <div className="mb-8 border-b border-white/10 pb-6">
-                <span className="text-[#FF4A17] font-mono text-[11px] font-bold tracking-[0.35em] uppercase block mb-2">
+                <span className="text-[#FF4A17] font-sans text-[11px] font-bold tracking-[0.35em] uppercase block mb-2">
                   APPLY TO MYADSPHERE
                 </span>
                 <h3 className="text-2xl font-black text-white uppercase tracking-tight mb-2">
@@ -367,7 +367,7 @@ export default function CareersOverviewPage() {
                       setCoverNote('');
                       setResumeFile(null);
                     }}
-                    className="mt-4 px-6 py-2.5 rounded-full border border-white/20 text-zinc-300 hover:text-white hover:border-white/40 text-xs font-mono font-semibold uppercase tracking-wider transition-colors"
+                    className="mt-4 px-6 py-2.5 rounded-full border border-white/20 text-zinc-300 hover:text-white hover:border-white/40 text-xs font-sans font-semibold uppercase tracking-wider transition-colors"
                   >
                     Submit Another Application
                   </button>
@@ -377,14 +377,14 @@ export default function CareersOverviewPage() {
                 <form onSubmit={handleSubmit} className="space-y-5">
                   
                   {errorMsg && (
-                    <div className="p-3.5 rounded-xl bg-red-950/80 border border-red-500/40 text-red-300 text-xs font-mono">
+                    <div className="p-3.5 rounded-xl bg-red-950/80 border border-red-500/40 text-red-300 text-xs font-sans">
                       {errorMsg}
                     </div>
                   )}
 
                   {/* Role Dropdown Selector */}
                   <div>
-                    <label className="block text-xs font-mono text-zinc-400 uppercase tracking-wider mb-2">
+                    <label className="block text-xs font-sans text-zinc-400 uppercase tracking-wider mb-2">
                       Role You're Applying For *
                     </label>
                     <select
@@ -403,7 +403,7 @@ export default function CareersOverviewPage() {
 
                   {/* Full Name */}
                   <div>
-                    <label className="block text-xs font-mono text-zinc-400 uppercase tracking-wider mb-2">
+                    <label className="block text-xs font-sans text-zinc-400 uppercase tracking-wider mb-2">
                       Full Name *
                     </label>
                     <div className="relative">
@@ -422,7 +422,7 @@ export default function CareersOverviewPage() {
                   {/* Email & Phone */}
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                     <div>
-                      <label className="block text-xs font-mono text-zinc-400 uppercase tracking-wider mb-2">
+                      <label className="block text-xs font-sans text-zinc-400 uppercase tracking-wider mb-2">
                         Email Address *
                       </label>
                       <div className="relative">
@@ -439,7 +439,7 @@ export default function CareersOverviewPage() {
                     </div>
 
                     <div>
-                      <label className="block text-xs font-mono text-zinc-400 uppercase tracking-wider mb-2">
+                      <label className="block text-xs font-sans text-zinc-400 uppercase tracking-wider mb-2">
                         Phone Number
                       </label>
                       <div className="relative">
@@ -458,7 +458,7 @@ export default function CareersOverviewPage() {
                   {/* Portfolio & LinkedIn */}
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                     <div>
-                      <label className="block text-xs font-mono text-zinc-400 uppercase tracking-wider mb-2">
+                      <label className="block text-xs font-sans text-zinc-400 uppercase tracking-wider mb-2">
                         Portfolio / Website
                       </label>
                       <div className="relative">
@@ -474,7 +474,7 @@ export default function CareersOverviewPage() {
                     </div>
 
                     <div>
-                      <label className="block text-xs font-mono text-zinc-400 uppercase tracking-wider mb-2">
+                      <label className="block text-xs font-sans text-zinc-400 uppercase tracking-wider mb-2">
                         LinkedIn Profile
                       </label>
                       <div className="relative">
@@ -492,7 +492,7 @@ export default function CareersOverviewPage() {
 
                   {/* Cover Note */}
                   <div>
-                    <label className="block text-xs font-mono text-zinc-400 uppercase tracking-wider mb-2">
+                    <label className="block text-xs font-sans text-zinc-400 uppercase tracking-wider mb-2">
                       Cover Note / Introduction *
                     </label>
                     <textarea
@@ -507,7 +507,7 @@ export default function CareersOverviewPage() {
 
                   {/* Upload Resume */}
                   <div>
-                    <label className="block text-xs font-mono text-zinc-400 uppercase tracking-wider mb-2">
+                    <label className="block text-xs font-sans text-zinc-400 uppercase tracking-wider mb-2">
                       Upload Resume (PDF, DOC, DOCX) *
                     </label>
                     <div className="relative border border-dashed border-white/20 rounded-xl p-4 text-center bg-zinc-900/60 hover:border-[#FF4A17]/60 transition-colors">
@@ -521,7 +521,7 @@ export default function CareersOverviewPage() {
                       <p className="text-xs text-zinc-300 font-semibold mb-0.5">
                         {resumeFile ? resumeFile.name : 'Choose file or drag & drop here'}
                       </p>
-                      <p className="text-[10px] text-zinc-500 font-mono">Formats: PDF, DOC, DOCX (Max 10MB)</p>
+                      <p className="text-[10px] text-zinc-500 font-sans">Formats: PDF, DOC, DOCX (Max 10MB)</p>
                     </div>
                   </div>
 
@@ -549,9 +549,9 @@ export default function CareersOverviewPage() {
           
           <div className="mb-16">
             <div className="flex items-center gap-3 mb-3">
-              <span className="text-[#FF4A17] font-mono text-xs font-bold tracking-widest">01</span>
+              <span className="text-[#FF4A17] font-sans text-xs font-bold tracking-widest">01</span>
               <div className="h-px w-6 bg-zinc-800" />
-              <span className="text-zinc-400 font-mono uppercase text-[11px] font-semibold tracking-[0.35em]">
+              <span className="text-zinc-400 font-sans uppercase text-[11px] font-semibold tracking-[0.35em]">
                 CULTURE & VALUES
               </span>
             </div>
@@ -566,7 +566,7 @@ export default function CareersOverviewPage() {
                 key={pillar.number}
                 className="p-8 rounded-2xl border border-white/10 bg-zinc-950/80 hover:border-[#FF4A17]/60 hover:bg-zinc-900/80 transition-all duration-300 shadow-xl"
               >
-                <span className="text-[#FF4A17] font-mono text-xs font-bold tracking-widest block mb-4">
+                <span className="text-[#FF4A17] font-sans text-xs font-bold tracking-widest block mb-4">
                   {pillar.number}
                 </span>
                 <h3 className="text-white font-bold text-lg tracking-wider uppercase mb-3">

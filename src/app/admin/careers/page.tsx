@@ -201,13 +201,13 @@ export default function AdminCareersPage() {
 
           <form onSubmit={handleLogin} className="space-y-5">
             {loginError && (
-              <div className="p-3 rounded-xl bg-red-950/80 border border-red-500/40 text-red-300 text-xs font-mono">
+              <div className="p-3 rounded-xl bg-red-950/80 border border-red-500/40 text-red-300 text-xs font-sans">
                 {loginError}
               </div>
             )}
 
             <div>
-              <label className="block text-xs font-mono text-zinc-400 uppercase tracking-wider mb-2">
+              <label className="block text-xs font-sans text-zinc-400 uppercase tracking-wider mb-2">
                 Admin Security Password
               </label>
               <input
@@ -229,7 +229,7 @@ export default function AdminCareersPage() {
           </form>
 
           <div className="mt-8 text-center border-t border-white/10 pt-4">
-            <Link href="/careers" className="text-xs text-zinc-500 hover:text-white font-mono transition-colors">
+            <Link href="/careers" className="text-xs text-zinc-500 hover:text-white font-sans transition-colors">
               ← Return to Careers
             </Link>
           </div>
@@ -247,7 +247,7 @@ export default function AdminCareersPage() {
         {/* Top Header */}
         <div className="flex flex-col md:flex-row md:items-center justify-between pb-8 border-b border-white/15 mb-12 gap-4">
           <div>
-            <span className="text-[#FF4A17] font-mono text-xs font-bold tracking-widest uppercase block mb-1">
+            <span className="text-[#FF4A17] font-sans text-xs font-bold tracking-widest uppercase block mb-1">
               INTERNAL RECRUITMENT PORTAL
             </span>
             <h1 className="text-2xl md:text-3xl font-black text-white uppercase tracking-tight">
@@ -276,7 +276,7 @@ export default function AdminCareersPage() {
         {/* Job Openings Table */}
         <div className="space-y-4">
           {loading ? (
-            <div className="text-center py-12 text-zinc-500 font-mono text-xs">
+            <div className="text-center py-12 text-zinc-500 font-sans text-xs">
               Loading openings...
             </div>
           ) : jobs.length > 0 ? (
@@ -291,7 +291,7 @@ export default function AdminCareersPage() {
                     <button
                       onClick={() => toggleStatus(job)}
                       title="Click to toggle visibility"
-                      className={`px-2.5 py-0.5 rounded text-[10px] font-mono font-bold uppercase tracking-wider transition-colors cursor-pointer ${
+                      className={`px-2.5 py-0.5 rounded text-[10px] font-sans font-bold uppercase tracking-wider transition-colors cursor-pointer ${
                         job.status === 'published'
                           ? 'bg-emerald-950 text-emerald-400 border border-emerald-500/30 hover:bg-emerald-900'
                           : 'bg-amber-950 text-amber-400 border border-amber-500/30 hover:bg-amber-900'
@@ -300,7 +300,7 @@ export default function AdminCareersPage() {
                       {job.status === 'published' ? 'PUBLISHED (VISIBLE)' : 'HIDDEN (DRAFT)'}
                     </button>
                   </div>
-                  <p className="text-zinc-400 text-xs font-mono">
+                  <p className="text-zinc-400 text-xs font-sans">
                     {job.department} • {job.location} • {job.workType} • {job.employmentType}
                   </p>
                 </div>
@@ -309,7 +309,7 @@ export default function AdminCareersPage() {
                   {/* Hide / Unhide Toggle Button */}
                   <button
                     onClick={() => toggleStatus(job)}
-                    className={`px-3 py-2 rounded-lg border text-xs flex items-center gap-1.5 font-mono transition-colors font-bold uppercase tracking-wider ${
+                    className={`px-3 py-2 rounded-lg border text-xs flex items-center gap-1.5 font-sans transition-colors font-bold uppercase tracking-wider ${
                       job.status === 'published'
                         ? 'bg-amber-950/40 border-amber-500/30 text-amber-300 hover:bg-amber-900/60'
                         : 'bg-emerald-950/40 border-emerald-500/30 text-emerald-300 hover:bg-emerald-900/60'
@@ -328,14 +328,14 @@ export default function AdminCareersPage() {
 
                   <button
                     onClick={() => openEditModal(job)}
-                    className="p-2.5 rounded-lg bg-white/5 border border-white/10 text-zinc-300 hover:text-white hover:border-[#FF4A17]/60 text-xs flex items-center gap-1 font-mono"
+                    className="p-2.5 rounded-lg bg-white/5 border border-white/10 text-zinc-300 hover:text-white hover:border-[#FF4A17]/60 text-xs flex items-center gap-1 font-sans"
                   >
                     <Edit3 size={14} /> EDIT
                   </button>
 
                   <button
                     onClick={() => setDeletingJobId(job.id)}
-                    className="p-2.5 rounded-lg bg-red-950/40 border border-red-500/30 text-red-400 hover:bg-red-950/80 text-xs flex items-center gap-1 font-mono"
+                    className="p-2.5 rounded-lg bg-red-950/40 border border-red-500/30 text-red-400 hover:bg-red-950/80 text-xs flex items-center gap-1 font-sans"
                   >
                     <Trash2 size={14} /> DELETE
                   </button>
@@ -343,7 +343,7 @@ export default function AdminCareersPage() {
               </div>
             ))
           ) : (
-            <div className="text-center py-12 text-zinc-500 font-mono text-xs">
+            <div className="text-center py-12 text-zinc-500 font-sans text-xs">
               No positions created yet. Click "+ ADD POSITION" to get started.
             </div>
           )}
@@ -373,7 +373,7 @@ export default function AdminCareersPage() {
             <form onSubmit={handleSaveJob} className="flex flex-col flex-1 overflow-hidden">
               <div className="p-6 md:p-8 overflow-y-auto space-y-5 flex-1">
                 <div>
-                  <label className="block text-xs font-mono text-zinc-400 uppercase tracking-wider mb-1.5">
+                  <label className="block text-xs font-sans text-zinc-400 uppercase tracking-wider mb-1.5">
                     Job Title *
                   </label>
                   <input
@@ -388,7 +388,7 @@ export default function AdminCareersPage() {
 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                   <div>
-                    <label className="block text-xs font-mono text-zinc-400 uppercase tracking-wider mb-1.5">
+                    <label className="block text-xs font-sans text-zinc-400 uppercase tracking-wider mb-1.5">
                       Department *
                     </label>
                     <input
@@ -402,7 +402,7 @@ export default function AdminCareersPage() {
                   </div>
 
                   <div>
-                    <label className="block text-xs font-mono text-zinc-400 uppercase tracking-wider mb-1.5">
+                    <label className="block text-xs font-sans text-zinc-400 uppercase tracking-wider mb-1.5">
                       Location *
                     </label>
                     <input
@@ -418,7 +418,7 @@ export default function AdminCareersPage() {
 
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                   <div>
-                    <label className="block text-xs font-mono text-zinc-400 uppercase tracking-wider mb-1.5">
+                    <label className="block text-xs font-sans text-zinc-400 uppercase tracking-wider mb-1.5">
                       Work Type
                     </label>
                     <select
@@ -433,7 +433,7 @@ export default function AdminCareersPage() {
                   </div>
 
                   <div>
-                    <label className="block text-xs font-mono text-zinc-400 uppercase tracking-wider mb-1.5">
+                    <label className="block text-xs font-sans text-zinc-400 uppercase tracking-wider mb-1.5">
                       Employment Type
                     </label>
                     <select
@@ -449,7 +449,7 @@ export default function AdminCareersPage() {
                   </div>
 
                   <div>
-                    <label className="block text-xs font-mono text-zinc-400 uppercase tracking-wider mb-1.5">
+                    <label className="block text-xs font-sans text-zinc-400 uppercase tracking-wider mb-1.5">
                       Visibility / Status
                     </label>
                     <select
@@ -464,7 +464,7 @@ export default function AdminCareersPage() {
                 </div>
 
                 <div>
-                  <label className="block text-xs font-mono text-zinc-400 uppercase tracking-wider mb-1.5">
+                  <label className="block text-xs font-sans text-zinc-400 uppercase tracking-wider mb-1.5">
                     Short Description *
                   </label>
                   <textarea
@@ -478,7 +478,7 @@ export default function AdminCareersPage() {
                 </div>
 
                 <div>
-                  <label className="block text-xs font-mono text-zinc-400 uppercase tracking-wider mb-1.5">
+                  <label className="block text-xs font-sans text-zinc-400 uppercase tracking-wider mb-1.5">
                     About Role (Overview)
                   </label>
                   <textarea
@@ -491,7 +491,7 @@ export default function AdminCareersPage() {
                 </div>
 
                 <div>
-                  <label className="block text-xs font-mono text-zinc-400 uppercase tracking-wider mb-1.5">
+                  <label className="block text-xs font-sans text-zinc-400 uppercase tracking-wider mb-1.5">
                     Responsibilities (One per line)
                   </label>
                   <textarea
@@ -499,12 +499,12 @@ export default function AdminCareersPage() {
                     value={responsibilitiesText}
                     onChange={(e) => setResponsibilitiesText(e.target.value)}
                     placeholder="Design ad campaigns&#10;Manage ad budgets..."
-                    className="w-full px-4 py-3 rounded-xl bg-zinc-900 border border-white/10 text-white text-sm focus:outline-none focus:border-[#FF4A17] leading-relaxed font-mono text-xs"
+                    className="w-full px-4 py-3 rounded-xl bg-zinc-900 border border-white/10 text-white text-sm focus:outline-none focus:border-[#FF4A17] leading-relaxed font-sans text-xs"
                   />
                 </div>
 
                 <div>
-                  <label className="block text-xs font-mono text-zinc-400 uppercase tracking-wider mb-1.5">
+                  <label className="block text-xs font-sans text-zinc-400 uppercase tracking-wider mb-1.5">
                     Requirements (One per line)
                   </label>
                   <textarea
@@ -512,7 +512,7 @@ export default function AdminCareersPage() {
                     value={requirementsText}
                     onChange={(e) => setRequirementsText(e.target.value)}
                     placeholder="3+ years performance marketing experience&#10;Proficiency in Meta Ads Manager..."
-                    className="w-full px-4 py-3 rounded-xl bg-zinc-900 border border-white/10 text-white text-sm focus:outline-none focus:border-[#FF4A17] leading-relaxed font-mono text-xs"
+                    className="w-full px-4 py-3 rounded-xl bg-zinc-900 border border-white/10 text-white text-sm focus:outline-none focus:border-[#FF4A17] leading-relaxed font-sans text-xs"
                   />
                 </div>
               </div>
@@ -522,7 +522,7 @@ export default function AdminCareersPage() {
                 <button
                   type="button"
                   onClick={() => setIsModalOpen(false)}
-                  className="px-5 py-2.5 rounded-xl bg-white/5 hover:bg-white/10 text-zinc-400 hover:text-white text-xs font-mono transition-colors"
+                  className="px-5 py-2.5 rounded-xl bg-white/5 hover:bg-white/10 text-zinc-400 hover:text-white text-xs font-sans transition-colors"
                 >
                   CANCEL
                 </button>
@@ -551,7 +551,7 @@ export default function AdminCareersPage() {
             <div className="flex items-center justify-center gap-4">
               <button
                 onClick={() => setDeletingJobId(null)}
-                className="px-5 py-2.5 rounded-xl bg-white/5 text-zinc-300 hover:text-white text-xs font-mono"
+                className="px-5 py-2.5 rounded-xl bg-white/5 text-zinc-300 hover:text-white text-xs font-sans"
               >
                 CANCEL
               </button>

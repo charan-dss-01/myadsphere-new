@@ -38,9 +38,9 @@ export default function WhyMyAdSphere() {
         
         {/* Section Tag */}
         <div className="flex items-center gap-3 mb-8">
-          <span className="text-[#FF4A17] font-mono text-xs font-bold tracking-widest">04</span>
+          <span className="text-[#FF4A17] font-sans text-xs font-bold tracking-widest">04</span>
           <div className="h-px w-6 bg-zinc-800" />
-          <span className="text-zinc-400 font-mono uppercase text-[11px] font-semibold tracking-[0.35em]">
+          <span className="text-zinc-400 font-sans uppercase text-[11px] font-semibold tracking-[0.35em]">
             WHY MYADSPHERE
           </span>
         </div>
@@ -66,7 +66,7 @@ export default function WhyMyAdSphere() {
             >
               {/* Number + Pillar Title */}
               <div className="md:col-span-6 flex items-center gap-6">
-                <span className="text-[#FF4A17] font-mono text-xs font-bold tracking-widest shrink-0">
+                <span className="text-[#FF4A17] font-sans text-xs font-bold tracking-widest shrink-0">
                   {pillar.number}
                 </span>
                 <h3 className="text-white font-black text-xl md:text-2xl tracking-wider uppercase group-hover:text-[#FF4A17] transition-colors">

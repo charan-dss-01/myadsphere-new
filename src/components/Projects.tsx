@@ -10,13 +10,13 @@ import { ArrowUpRight } from 'lucide-react';
 // ── Case Studies Data ─────────────────────────────────────────────────────
 const projectItems = [
   {
-    title: "E-Commerce ROAS",
-    value: "ecommerce",
+    title: "AGRICONNECT",
+    value: "agriconnect",
     content: (
       <ProjectTabContent
-        title="D2C Revenue Surge"
+        title="AgriConnect Platform"
         category="Performance Marketing & Meta Ads"
-        desc="Achieved 340% ROAS increase for a high-growth retail brand by optimizing ad creatives, implementing dynamic retargeting funnels, and enhancing checkout conversion."
+        desc="Achieved 340% ROAS increase for AgriConnect by optimizing ad creatives, implementing dynamic retargeting funnels, and enhancing checkout conversion."
         src="/assets/agri-connect.png"
         href="#contact"
         tech={["Meta Ads", "Google Ads", "Shopify CRO", "Retargeting"]}
@@ -25,13 +25,13 @@ const projectItems = [
     ),
   },
   {
-    title: "SaaS Lead Engine",
-    value: "saas",
+    title: "EVENTEASY",
+    value: "eventeasy",
     content: (
       <ProjectTabContent
-        title="Enterprise Lead Pipeline"
+        title="EventEasy Platform"
         category="B2B Paid Search & SEO"
-        desc="Generated 12,000+ qualified demo leads for a SaaS provider by restructuring high-intent Google Search campaigns and deploying high-converting landers."
+        desc="Generated 12,000+ qualified demo leads for EventEasy by restructuring high-intent Google Search campaigns and deploying high-converting landers."
         src="/assets/ee.png"
         href="#contact"
         tech={["Google Ads", "LinkedIn Ads", "GA4 Analytics", "Landing CRO"]}
@@ -40,13 +40,13 @@ const projectItems = [
     ),
   },
   {
-    title: "D2C Brand Scale",
-    value: "brand",
+    title: "CAREERPILOT AI",
+    value: "careerpilot",
     content: (
       <ProjectTabContent
-        title="Social Brand Scaling"
+        title="CareerPilot AI Platform"
         category="Social Media & Creative Strategy"
-        desc="Scaled a consumer brand from startup to market leader with 5.2M+ video impressions on TikTok and Instagram, multiplying monthly revenue 4.5x."
+        desc="Scaled CareerPilot AI from startup to market leader with 5.2M+ video impressions on TikTok and Instagram, multiplying monthly revenue 4.5x."
         src="/assets/CareerPilot.png"
         href="#contact"
         tech={["TikTok Ads", "Instagram Growth", "Video Creatives", "Influencer"]}
@@ -55,13 +55,13 @@ const projectItems = [
     ),
   },
   {
-    title: "Real Estate Funnel",
-    value: "realestate",
+    title: "SECUREDOCS",
+    value: "securedocs",
     content: (
       <ProjectTabContent
-        title="Luxury Buyer Acquisition"
+        title="SecureDocs Platform"
         category="Geotargeted Paid Media & Lead Gen"
-        desc="Built an automated lead generation framework for a high-end property developer, driving $4.2M in qualified buyer pipeline in under 120 days."
+        desc="Built an automated lead generation framework for SecureDocs, driving $4.2M in qualified enterprise pipeline in under 120 days."
         src="/assets/securedocs.jpg"
         href="#contact"
         tech={["Geotargeted Ads", "Meta Ads", "CRM Integration", "Funnel CRO"]}
@@ -70,11 +70,11 @@ const projectItems = [
     ),
   },
   {
-    title: "HealthTech SEO",
-    value: "healthtech",
+    title: "SPARSHAKALA",
+    value: "sparshakala",
     content: (
       <ProjectTabContent
-        title="Organic Search Dominance"
+        title="Sparshakala Platform"
         category="Technical SEO & Content Clusters"
         desc="Engineered an organic SEO strategy securing #1 Google rankings across 45+ high-volume terms, scaling monthly organic traffic to 280,000 visitors."
         src="/assets/sparshakala.png"
@@ -104,18 +104,18 @@ function ProjectTabContent({ title, category, desc, src, href, tech, metric }: {
           <div>
             <div className="flex items-center gap-3 mb-3">
               <span className="w-2 h-2 rounded-full bg-[#FF4A17] animate-pulse" />
-              <p className="text-[11px] text-[#FF4A17] font-mono font-bold tracking-[0.4em] uppercase">{category}</p>
+              <p className="text-[11px] text-[#FF4A17] font-sans font-bold tracking-[0.4em] uppercase">{category}</p>
             </div>
             <div className="flex flex-wrap items-center gap-4">
               <h3 className="text-3xl md:text-5xl font-black tracking-tight leading-none uppercase">{title}</h3>
-              <span className="px-3.5 py-1 rounded-full bg-[#FF4A17]/15 border border-[#FF4A17]/35 text-[#FF4A17] text-xs font-mono font-bold uppercase tracking-wider">
+              <span className="px-3.5 py-1 rounded-full bg-[#FF4A17]/15 border border-[#FF4A17]/35 text-[#FF4A17] text-xs font-sans font-bold uppercase tracking-wider">
                 {metric}
               </span>
             </div>
           </div>
           <div className="flex flex-wrap gap-2 pt-2">
             {tech.map(t => (
-              <span key={t} className="px-3.5 py-1.5 rounded-xl bg-white/[0.04] border border-white/10 text-[10px] font-mono font-bold text-zinc-300 uppercase tracking-widest backdrop-blur-sm">
+              <span key={t} className="px-3.5 py-1.5 rounded-xl bg-white/[0.04] border border-white/10 text-[10px] font-sans font-bold text-zinc-300 uppercase tracking-widest backdrop-blur-sm">
                 {t}
               </span>
             ))}
@@ -173,7 +173,7 @@ export default function Projects() {
           >
             <div className="flex items-center gap-3 mb-6">
               <div className="h-px w-12 bg-gradient-to-r from-transparent to-[#FF4A17]/50" />
-              <p className="text-[11px] text-[#FF4A17] tracking-[0.5em] uppercase font-bold font-mono">Selected Case Studies</p>
+              <p className="text-[11px] text-[#FF4A17] tracking-[0.5em] uppercase font-bold font-sans">Selected Case Studies</p>
               <div className="h-px w-12 bg-gradient-to-l from-transparent to-[#FF4A17]/50" />
             </div>
 
@@ -200,9 +200,9 @@ export default function Projects() {
         <div className="h-[52rem] md:h-[72rem] [perspective:1000px] relative flex flex-col max-w-6xl mx-auto w-full items-start justify-start">
           <Tabs
             tabs={projectItems}
-            containerClassName="mb-10 md:mb-14 mx-auto p-2 bg-zinc-950/80 backdrop-blur-xl rounded-[24px] border border-white/10"
-            activeTabClassName="bg-[#FF4A17] text-white shadow-[0_0_20px_rgba(255,74,23,0.35)]"
-            tabClassName="text-zinc-400 hover:text-white px-6 md:px-8 py-3.5 font-bold text-xs font-mono uppercase tracking-widest transition-all duration-300"
+            containerClassName="mb-10 md:mb-14 mx-auto p-1.5 bg-[#0d0d0d] backdrop-blur-xl rounded-full border border-white/10"
+            activeTabClassName="bg-[#242424] text-white shadow-[0_0_15px_rgba(255,255,255,0.08)] rounded-full"
+            tabClassName="text-zinc-400 hover:text-white px-6 md:px-8 py-3.5 font-normal text-xs sm:text-sm font-sans uppercase tracking-widest transition-all duration-300"
           />
         </div>
 

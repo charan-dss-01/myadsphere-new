@@ -1,8 +1,9 @@
-'use client'
+'use client';
 
 import React, { useRef } from "react";
 import { motion } from "motion/react";
 import { useInView } from "motion/react";
+import { Rocket, BarChart3 } from "lucide-react";
 
 const capabilities = [
   {
@@ -85,10 +86,10 @@ function FadeIn({
   );
 }
 
-function CardLabel({ icon, label }: { icon: string; label: string }) {
+function CardLabel({ icon, label }: { icon: React.ReactNode; label: string }) {
   return (
     <div className="flex items-center gap-2.5 mb-7">
-      <div className="w-8 h-8 rounded-lg bg-[#FF4A17]/10 border border-[#FF4A17]/20 flex items-center justify-center text-sm shrink-0 text-[#FF4A17]">
+      <div className="w-8 h-8 rounded-lg bg-white/10 border border-white/20 flex items-center justify-center shrink-0 text-white shadow-md">
         {icon}
       </div>
       <span className="text-[11px] text-[#FF4A17] tracking-[0.22em] uppercase font-bold">{label}</span>
@@ -148,33 +149,49 @@ export default function About() {
 
           {/* 1. Agency Overview — 2 cols */}
           <FadeIn delay={0.05} className="lg:col-span-2">
-            <div className="h-full rounded-2xl border border-white/[0.1] bg-zinc-950/80 backdrop-blur-sm p-6 md:p-9 group hover:border-[#FF4A17]/40 transition-all duration-500">
-              <CardLabel icon="🚀" label="The Agency" />
-              <p className="text-white text-xl md:text-2xl font-light leading-relaxed">
-                At <span className="font-bold text-white">MyAdSphere</span>, we bridge the gap between{" "}
-                <span className="text-[#FF4A17] font-semibold">creative marketing</span> and{" "}
-                <span className="text-white font-semibold">measurable ROI</span>.
-              </p>
-              <p className="text-zinc-400 text-base md:text-lg leading-relaxed mt-5">
-                We manage multi-channel digital strategies designed to acquire customers, scale brand visibility, and increase enterprise revenue. By unifying data analytics with high-converting creative execution, we turn digital marketing into a predictable growth engine.
-              </p>
+            <div className="h-full rounded-2xl border border-white/[0.1] bg-zinc-950/80 backdrop-blur-sm p-6 md:p-9 group hover:border-[#FF4A17]/40 transition-all duration-500 flex flex-col justify-between">
+              <div>
+                <CardLabel icon={<Rocket className="w-4 h-4 text-white" />} label="The Agency" />
+                
+                <p className="text-white text-lg md:text-xl font-light leading-relaxed mb-5">
+                  Founded in 2020, <span className="font-bold text-white">myadsphere</span> was built with a clear ambition: to help businesses grow through powerful creativity, intelligent marketing, and modern digital experiences.
+                </p>
+
+                <p className="text-zinc-300 text-sm md:text-base leading-relaxed mb-4 font-light">
+                  With <span className="font-bold text-white">5+ years of experience</span>, we have grown into a results-driven <span className="text-[#FF4A17] font-semibold">Digital Marketing Agency in Hyderabad</span>, partnering with ambitious startups, growing businesses, and established brands to strengthen their presence, attract the right audience, and achieve measurable growth.
+                </p>
+
+                <p className="text-zinc-300 text-sm md:text-base leading-relaxed mb-4 font-light">
+                  Our expertise spans <span className="text-zinc-100 font-medium">SEO, Google Ads, Meta Ads, social media marketing, branding, content creation, lead generation, and website development</span>. Every strategy is shaped by insight, every creative serves a purpose, and every campaign is focused on delivering meaningful business outcomes.
+                </p>
+
+                <p className="text-zinc-300 text-sm md:text-base leading-relaxed mb-4 font-light">
+                  We believe digital marketing should do more than generate visibility. It should build brands, create demand, drive conversions, and unlock new opportunities for growth. By combining <span className="text-white font-semibold">creative thinking, data-driven strategy, and modern technology</span>, we transform digital presence into lasting business impact.
+                </p>
+              </div>
+
+              <div className="pt-4 border-t border-white/10 mt-4">
+                <p className="text-zinc-300 text-sm md:text-base leading-relaxed font-light">
+                  Rooted in <span className="font-bold text-white">Hyderabad</span> and expanding our reach across <span className="text-[#FF4A17] font-semibold">Dubai, the UK, and the USA</span>, myadsphere helps brands <span className="text-white font-semibold">connect with their audience, compete with confidence, and scale beyond boundaries.</span>
+                </p>
+              </div>
             </div>
           </FadeIn>
 
           {/* 2. Agency Metrics */}
           <FadeIn delay={0.1}>
             <div className="h-full rounded-2xl border border-white/[0.1] bg-zinc-950/80 backdrop-blur-sm p-6 md:p-9 group hover:border-[#FF4A17]/40 transition-all duration-500">
-              <CardLabel icon="📊" label="Performance Snapshot" />
+              <CardLabel icon={<BarChart3 className="w-4 h-4 text-white" />} label="myadsphere at a Glance" />
               <div className="space-y-6">
                 {[
-                  { val: "150+", label: "Successful Campaigns" },
-                  { val: "5.2x", label: "Average Campaign ROAS" },
-                  { val: "98%", label: "Client Retention Rate" },
-                  { val: "$10M+", label: "Managed Ad Spend ROI" },
+                  { val: "2020", label: "Founded" },
+                  { val: "5+ Years", label: "Industry Experience" },
+                  { val: "10+", label: "Specialist Services" },
+                  { val: "Global", label: "India • UAE • UK • USA" },
                 ].map(({ val, label }) => (
                   <div key={label} className="flex items-baseline justify-between border-b border-white/[0.05] pb-4 last:border-0 last:pb-0">
                     <span className="text-zinc-400 text-sm font-medium">{label}</span>
-                    <span className="text-white font-black text-2xl tabular-nums text-right">{val}</span>
+                    <span className="text-white font-black text-xl md:text-2xl tabular-nums text-right">{val}</span>
                   </div>
                 ))}
               </div>
@@ -237,7 +254,7 @@ export default function About() {
                   <FadeIn key={item.title} delay={0.28 + i * 0.07}>
                     <div className="flex gap-5">
                       <div className="shrink-0 pt-0.5">
-                        <span className="inline-block px-3 py-1 rounded-md bg-[#FF4A17]/10 border border-[#FF4A17]/30 text-[#FF4A17] text-[11px] font-mono font-bold tracking-wide whitespace-nowrap">
+                        <span className="inline-block px-3 py-1 rounded-md bg-[#FF4A17]/10 border border-[#FF4A17]/30 text-[#FF4A17] text-[11px] font-sans font-bold tracking-wide whitespace-nowrap">
                           STEP {item.step}
                         </span>
                       </div>

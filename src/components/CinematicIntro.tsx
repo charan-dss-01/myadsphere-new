@@ -2,27 +2,27 @@
 
 import React, { useState, useEffect } from 'react';
 import { Canvas, useFrame } from '@react-three/fiber';
-import { Stars, Float, Html, Sphere, MeshDistortMaterial } from '@react-three/drei';
+import { Stars, Float, Sphere, MeshDistortMaterial } from '@react-three/drei';
 import { motion, AnimatePresence } from 'motion/react';
 
-// The moving 3D camera effect
+// The moving 3D camera effect (Fast, Smooth Cinematic Glide)
 function CameraRig() {
   useFrame((state) => {
-    // Slowly move camera forward and slightly rotate
-    state.camera.position.z -= 0.08;
-    state.camera.rotation.z += 0.001;
+    // Move camera forward and rotate with 30% faster speed
+    state.camera.position.z -= 0.046;
+    state.camera.rotation.z += 0.0005;
 
-    // Slight sway based on time
-    state.camera.position.x = Math.sin(state.clock.elapsedTime * 0.2) * 2;
-    state.camera.position.y = Math.cos(state.clock.elapsedTime * 0.2) * 2;
+    // Gentle camera sway
+    state.camera.position.x = Math.sin(state.clock.elapsedTime * 0.16) * 1.5;
+    state.camera.position.y = Math.cos(state.clock.elapsedTime * 0.16) * 1.5;
   });
   return null;
 }
 
-// Futuristic Assistant Avatar
+// Futuristic Assistant Avatar (Liquid Motion)
 function AssistantAvatar() {
   return (
-    <Float speed={2} rotationIntensity={1} floatIntensity={2} position={[0, -2, -15]}>
+    <Float speed={1.5} rotationIntensity={0.6} floatIntensity={1.2} position={[0, -2, -15]}>
       <Sphere args={[1, 32, 32]}>
         <MeshDistortMaterial
           color="#ffffff"
@@ -31,19 +31,9 @@ function AssistantAvatar() {
           clearcoatRoughness={0.1}
           metalness={0.9}
           roughness={0.1}
-          distort={0.4}
-          speed={2}
+          distort={0.3}
+          speed={1.5}
         />
-        <Html center position={[0, 1.5, 0]} className="pointer-events-none w-[200px] text-center">
-          <motion.div
-            initial={{ opacity: 0, y: 15, filter: "blur(4px)" }}
-            animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
-            transition={{ delay: 2.5, duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
-            className="bg-black/40 backdrop-blur-xl border border-white/10 text-zinc-200 px-4 py-2 rounded-xl text-sm font-medium shadow-[0_0_20px_rgba(255,255,255,0.05)]"
-          >
-            Hi, I&apos;m Charan. Welcome to my portfolio.
-          </motion.div>
-        </Html>
       </Sphere>
 
       {/* Decorative rings around assistant */}
@@ -73,38 +63,33 @@ export default function CinematicIntro({ onComplete }: { onComplete: () => void 
   const [showIntro, setShowIntro] = useState(true);
   const [currentTextIndex, setCurrentTextIndex] = useState(0);
 
-const texts = [
-  "WE ARE",
-  "STRATEGISTS",
-  "CREATORS",
-  "STORYTELLERS",
-  "PERFORMANCE THINKERS",
-  "GROWTH PARTNERS"
-];
+  const texts = [
+    "WE ARE",
+    "STRATEGISTS",
+    "CREATORS",
+    "STORYTELLERS",
+    "PERFORMANCE\nTHINKERS",
+    "GROWTH PARTNERS"
+  ];
 
-  const textIntervalTime = 1500; // Slower transition between words
+  // 30% faster text phrase display interval (1.75s)
+  const textIntervalTime = 1750;
 
   const handleSkip = React.useCallback(() => {
     sessionStorage.setItem('introPlayed', 'true');
     setShowIntro(false);
-    setTimeout(() => onComplete(), 800); // Wait for exit animation
+    setTimeout(() => onComplete(), 850); // Smooth 30% faster exit completion
   }, [onComplete]);
 
   useEffect(() => {
-    const totalDuration = texts.length * textIntervalTime + 1000;
-    // Check if played in this session (ignore during development for easier testing)
-    // const played = sessionStorage.getItem('introPlayed');
-    // if (played && process.env.NODE_ENV !== 'development') {
-    //   setShowIntro(false);
-    //   onComplete();
-    //   return;
-    // }
+    document.body.classList.add('intro-active');
+    const totalDuration = texts.length * textIntervalTime + 850;
 
     // Text rotation logic
     const textInterval = setInterval(() => {
       setCurrentTextIndex((prev) => {
         if (prev < texts.length - 1) return prev + 1;
-        return prev; // Stay on last text
+        return prev; // Stay on last text phrase
       });
     }, textIntervalTime);
 
@@ -114,11 +99,11 @@ const texts = [
     }, totalDuration);
 
     return () => {
+      document.body.classList.remove('intro-active');
       clearInterval(textInterval);
       clearTimeout(completeTimeout);
     };
   }, [texts.length, onComplete, handleSkip]);
-
 
   if (!showIntro) return null;
 
@@ -126,7 +111,7 @@ const texts = [
     <motion.div
       className="fixed inset-0 z-[100] bg-black overflow-hidden flex items-center justify-center"
       exit={{ opacity: 0, scale: 1.05 }}
-      transition={{ duration: 0.8, ease: "easeInOut" }}
+      transition={{ duration: 0.85, ease: "easeInOut" }}
     >
       {/* 3D Background */}
       <div className="absolute inset-0">
@@ -136,7 +121,7 @@ const texts = [
           <pointLight position={[10, 10, 10]} intensity={1.5} color="#ffffff" />
           <pointLight position={[-10, -10, -10]} intensity={0.5} color="#888888" />
 
-          <Stars radius={100} depth={50} count={2000} factor={3} saturation={0} fade speed={1} />
+          <Stars radius={100} depth={50} count={2000} factor={3} saturation={0} fade speed={0.5} />
           <CyberGrid />
           <AssistantAvatar />
           <CameraRig />
@@ -151,8 +136,8 @@ const texts = [
             initial={{ opacity: 0, y: 30, scale: 0.95, filter: "blur(12px)" }}
             animate={{ opacity: 1, y: 0, scale: 1, filter: "blur(0px)" }}
             exit={{ opacity: 0, y: -30, scale: 1.05, filter: "blur(12px)" }}
-            transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
-            className="text-4xl md:text-6xl font-bold text-transparent bg-clip-text bg-gradient-to-br from-white via-zinc-300 to-zinc-600 drop-shadow-[0_0_15px_rgba(255,255,255,0.1)] tracking-widest"
+            transition={{ duration: 1.1, ease: [0.16, 1, 0.3, 1] }}
+            className="text-4xl md:text-6xl font-bold text-transparent bg-clip-text bg-gradient-to-br from-white via-zinc-300 to-zinc-600 drop-shadow-[0_0_15px_rgba(255,255,255,0.1)] tracking-widest text-center px-6 whitespace-pre-line leading-tight"
           >
             {texts[currentTextIndex]}
           </motion.h1>

@@ -9,7 +9,7 @@ import Skills from "@/components/FeturedCourses";
 import WhyMyAdSphere from "@/components/WhyMyAdSphere";
 import FAQ from "@/components/FAQ";
 import Team from "@/components/Team";
-import Contact from "@/components/Contact";
+import CalBookingSection from "@/components/CalBookingSection";
 import Footer from "@/components/Footer";
 import Loader from "@/components/ui/loader";
 import CinematicIntro from '@/components/CinematicIntro';
@@ -27,7 +27,7 @@ const SectionWrapper = ({ id, children, number, label }: { id: string, children:
     >
       {/* Creative Section Indicator */}
       <div className="absolute top-10 left-6 md:left-12 z-20 hidden md:flex items-center gap-4">
-         <span className="text-[#FF4A17] font-mono text-xs font-bold tracking-widest">{number}</span>
+         <span className="text-[#FF4A17] font-sans text-xs font-bold tracking-widest">{number}</span>
          <div className="h-px w-8 bg-zinc-800" />
          <span className="text-zinc-400 font-bold uppercase text-[10px] tracking-[0.4em]">{label}</span>
       </div>
@@ -112,8 +112,8 @@ export default function Home() {
           <Team />
         </SectionWrapper>
 
-        <SectionWrapper id="contact" number="08" label="Growth">
-          <Contact />
+        <SectionWrapper id="book-call" number="08" label="Book Call">
+          <CalBookingSection />
         </SectionWrapper>
 
         {/* Agency Footer */}
@@ -127,7 +127,7 @@ export default function Home() {
           className="fixed bottom-8 right-8 z-50 hidden md:block"
         >
            <a 
-             href="#contact"
+             href="/contact"
              className="px-6 py-3 rounded-full bg-[#FF4A17]/85 backdrop-blur-xl border border-[#FF4A17]/60 text-white font-bold text-[10px] uppercase tracking-[0.3em] shadow-[0_0_25px_rgba(255,74,23,0.45)] hover:bg-[#FF4A17] hover:shadow-[0_0_35px_rgba(255,74,23,0.65)] hover:scale-105 transition-all duration-300"
            >
               Start a Project

@@ -57,7 +57,7 @@ export default async function CaseStudyDetailPage({ params }: PageProps) {
         <div className="max-w-6xl mx-auto relative z-10">
 
           {/* Minimal Breadcrumbs */}
-          <div className="flex items-center gap-2 text-xs font-mono text-zinc-500 mb-8">
+          <div className="flex items-center gap-2 text-xs font-sans text-zinc-500 mb-8">
             <Link href="/" className="hover:text-white transition-colors">Home</Link>
             <ChevronRight size={12} />
             <Link href="/our-work" className="hover:text-white transition-colors">Our Work</Link>
@@ -67,10 +67,10 @@ export default async function CaseStudyDetailPage({ params }: PageProps) {
 
           {/* Category & Client Header */}
           <div className="flex flex-wrap items-center gap-3 mb-6">
-            <span className="px-3 py-1 rounded-full bg-[#FF4A17]/10 border border-[#FF4A17]/30 text-[#FF4A17] font-mono text-xs font-bold uppercase tracking-wider">
+            <span className="px-3 py-1 rounded-full bg-[#FF4A17]/10 border border-[#FF4A17]/30 text-[#FF4A17] font-sans text-xs font-bold uppercase tracking-wider">
               PROJECT {project.number} · {project.category}
             </span>
-            <span className="text-zinc-500 font-mono text-xs">CLIENT: {project.client.toUpperCase()}</span>
+            <span className="text-zinc-500 font-sans text-xs">CLIENT: {project.client.toUpperCase()}</span>
           </div>
 
           {/* Project Title & Tagline */}
@@ -85,8 +85,8 @@ export default async function CaseStudyDetailPage({ params }: PageProps) {
           <div className="grid grid-cols-2 md:grid-cols-3 gap-6 p-6 rounded-2xl border border-white/15 bg-zinc-950/90 backdrop-blur-xl mb-12">
             {project.metrics.map((m) => (
               <div key={m.label} className="space-y-1">
-                <p className="text-2xl md:text-4xl font-black text-[#FF4A17] font-mono">{m.value}</p>
-                <p className="text-[11px] text-zinc-400 font-mono uppercase tracking-wider">{m.label}</p>
+                <p className="text-2xl md:text-4xl font-black text-[#FF4A17] font-sans">{m.value}</p>
+                <p className="text-[11px] text-zinc-400 font-sans uppercase tracking-wider">{m.label}</p>
               </div>
             ))}
           </div>
@@ -108,7 +108,7 @@ export default async function CaseStudyDetailPage({ params }: PageProps) {
       <section className="relative py-20 px-6 md:px-12 bg-black border-b border-white/10">
         <div className="max-w-4xl mx-auto">
           <div className="p-8 md:p-12 rounded-3xl border border-white/10 bg-zinc-950/80 backdrop-blur-md">
-            <span className="text-[#FF4A17] font-mono text-xs font-bold tracking-[0.3em] uppercase block mb-3">
+            <span className="text-[#FF4A17] font-sans text-xs font-bold tracking-[0.3em] uppercase block mb-3">
               01 — THE CHALLENGE
             </span>
             <h2 className="text-2xl md:text-3xl font-black text-white uppercase tracking-tight mb-6">
@@ -126,7 +126,7 @@ export default async function CaseStudyDetailPage({ params }: PageProps) {
         <div className="max-w-6xl mx-auto">
           
           <div className="mb-16">
-            <span className="text-[#FF4A17] font-mono text-xs font-bold tracking-[0.35em] uppercase block mb-3">
+            <span className="text-[#FF4A17] font-sans text-xs font-bold tracking-[0.35em] uppercase block mb-3">
               02 — THE APPROACH
             </span>
             <h2 className="text-3xl md:text-5xl font-black text-white uppercase tracking-tight">
@@ -140,7 +140,7 @@ export default async function CaseStudyDetailPage({ params }: PageProps) {
                 key={idx}
                 className="p-8 rounded-2xl border border-white/10 bg-zinc-950/90 hover:border-[#FF4A17]/50 transition-all duration-300"
               >
-                <span className="text-[#FF4A17] font-mono text-xs font-bold tracking-widest block mb-4">
+                <span className="text-[#FF4A17] font-sans text-xs font-bold tracking-widest block mb-4">
                   STAGE 0{idx + 1}
                 </span>
                 <p className="text-zinc-300 text-sm font-light leading-relaxed">
@@ -159,7 +159,7 @@ export default async function CaseStudyDetailPage({ params }: PageProps) {
           
           {/* Work Executed List */}
           <div className="lg:col-span-7">
-            <span className="text-[#FF4A17] font-mono text-xs font-bold tracking-[0.35em] uppercase block mb-3">
+            <span className="text-[#FF4A17] font-sans text-xs font-bold tracking-[0.35em] uppercase block mb-3">
               03 — WORK EXECUTED
             </span>
             <h3 className="text-2xl md:text-3xl font-black text-white uppercase tracking-tight mb-8">
@@ -179,12 +179,12 @@ export default async function CaseStudyDetailPage({ params }: PageProps) {
           {/* Tech Stack & Industries */}
           <div className="lg:col-span-5 space-y-6">
             <div className="p-8 rounded-2xl border border-white/10 bg-zinc-950/90">
-              <h4 className="text-xs font-mono font-bold text-[#FF4A17] uppercase tracking-widest mb-4">
+              <h4 className="text-xs font-sans font-bold text-[#FF4A17] uppercase tracking-widest mb-4">
                 Platforms & Tools
               </h4>
               <div className="flex flex-wrap gap-2">
                 {project.platforms.map((p) => (
-                  <span key={p} className="px-3 py-1.5 rounded bg-zinc-900 border border-white/10 text-xs font-mono text-zinc-300">
+                  <span key={p} className="px-3 py-1.5 rounded bg-zinc-900 border border-white/10 text-xs font-sans text-zinc-300">
                     {p}
                   </span>
                 ))}
@@ -192,12 +192,12 @@ export default async function CaseStudyDetailPage({ params }: PageProps) {
             </div>
 
             <div className="p-8 rounded-2xl border border-white/10 bg-zinc-950/90">
-              <h4 className="text-xs font-mono font-bold text-[#FF4A17] uppercase tracking-widest mb-4">
+              <h4 className="text-xs font-sans font-bold text-[#FF4A17] uppercase tracking-widest mb-4">
                 Market Verticals
               </h4>
               <div className="flex flex-wrap gap-2">
                 {project.industries.map((ind) => (
-                  <span key={ind} className="px-3 py-1.5 rounded bg-zinc-900 border border-white/10 text-xs font-mono text-zinc-300">
+                  <span key={ind} className="px-3 py-1.5 rounded bg-zinc-900 border border-white/10 text-xs font-sans text-zinc-300">
                     {ind}
                   </span>
                 ))}
@@ -214,7 +214,7 @@ export default async function CaseStudyDetailPage({ params }: PageProps) {
           
           <div className="flex items-center justify-between mb-12">
             <div>
-              <p className="text-[#FF4A17] font-mono text-xs font-bold tracking-[0.35em] uppercase mb-2">
+              <p className="text-[#FF4A17] font-sans text-xs font-bold tracking-[0.35em] uppercase mb-2">
                 EXPLORE MORE WORK
               </p>
               <h2 className="text-2xl md:text-3xl font-black tracking-tight text-white uppercase">
@@ -223,7 +223,7 @@ export default async function CaseStudyDetailPage({ params }: PageProps) {
             </div>
             <Link
               href="/our-work"
-              className="text-xs font-mono font-bold text-zinc-400 hover:text-[#FF4A17] transition-colors flex items-center gap-1"
+              className="text-xs font-sans font-bold text-zinc-400 hover:text-[#FF4A17] transition-colors flex items-center gap-1"
             >
               View Portfolio ↗
             </Link>
@@ -241,8 +241,8 @@ export default async function CaseStudyDetailPage({ params }: PageProps) {
 
                 <div className="relative z-10">
                   <div className="flex items-center justify-between mb-4">
-                    <span className="text-[#FF4A17] font-mono text-xs font-bold">{rel.number}</span>
-                    <span className="text-[10px] text-zinc-400 font-mono uppercase font-semibold px-2.5 py-1 rounded bg-white/5 border border-white/10">
+                    <span className="text-[#FF4A17] font-sans text-xs font-bold">{rel.number}</span>
+                    <span className="text-[10px] text-zinc-400 font-sans uppercase font-semibold px-2.5 py-1 rounded bg-white/5 border border-white/10">
                       {rel.category}
                     </span>
                   </div>
@@ -265,7 +265,7 @@ export default async function CaseStudyDetailPage({ params }: PageProps) {
         <div className="absolute inset-0 bg-[radial-gradient(rgba(255,74,23,0.06)_1px,transparent_1px)] bg-[size:32px_32px] pointer-events-none" />
 
         <div className="max-w-4xl mx-auto relative z-10">
-          <p className="text-[#FF4A17] font-mono text-xs font-bold tracking-[0.35em] uppercase mb-4">
+          <p className="text-[#FF4A17] font-sans text-xs font-bold tracking-[0.35em] uppercase mb-4">
             HAVE A GROWTH CHALLENGE?
           </p>
           <h2 className="text-3xl md:text-5xl font-black tracking-tight text-white uppercase mb-8">

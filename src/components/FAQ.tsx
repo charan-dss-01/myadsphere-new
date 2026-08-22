@@ -6,32 +6,52 @@ import { ChevronDown } from 'lucide-react';
 
 const faqList = [
   {
-    q: "What services does MyAdSphere provide?",
-    a: "MyAdSphere offers end-to-end digital growth services including Performance Marketing (Google, Meta, TikTok, LinkedIn Ads), Search Engine Optimization (SEO), Conversion Rate Optimization (CRO), Social Media Management, Content Strategy, and Custom Funnel Analytics."
+    q: "What services does myadsphere provide?",
+    a: "myadsphere provides end-to-end digital growth solutions including Branding & Identity, Content & Creative Production, Social Media Marketing, Website Design & Development, UI/UX Design, Search Engine Optimization (SEO), Performance Marketing, Google Ads / PPC, Meta Ads, Lead Generation & Funnels, PR & Media, and AI Solutions & Automation."
   },
   {
-    q: "How do you build a digital marketing strategy for our brand?",
-    a: "We start with a complete audit of your market position, historic campaign performance, competitor gaps, and customer acquisition costs. From there, we build a tailored multi-channel strategy linking targeted traffic directly into high-converting landing funnels."
+    q: "How do you create a digital marketing strategy for my business?",
+    a: "We start by understanding your business, target audience, competitors, current digital presence, challenges, and growth objectives. From there, we identify the right channels, messaging, creative direction, technology, and performance metrics before execution begins."
   },
   {
     q: "How long does it take to see results?",
-    a: "Paid ad campaigns (Google & Meta Ads) typically start generating leads and sales within 48 to 72 hours of launch. Organic search engine optimization (SEO) and authority campaigns build momentum over 60 to 90 days for long-term compound growth."
+    a: "Timelines depend on the service and your goals. Google Ads, Meta Ads, and lead generation can begin producing useful data relatively quickly, while SEO, branding, content, and organic growth typically require a longer-term approach. We set realistic expectations and measurable goals before starting."
   },
   {
-    q: "Do you work with early-stage startups as well as established brands?",
-    a: "Yes! We partner with ambitious startups looking for predictable launch traction as well as established enterprises seeking to optimize ad spend efficiency and scale market share."
+    q: "Do you work with startups as well as established businesses?",
+    a: "Yes. myadsphere works with startups, local businesses, growing companies, and established brands. Our strategy, execution, and recommended channels are tailored to your business stage, objectives, industry, and budget."
   },
   {
-    q: "Do you manage paid advertising campaigns end-to-end?",
-    a: "Absolutely. Our team handles everything: audience research, ad copy writing, graphic & video creative production, campaign setup, real-time bid optimization, A/B testing, and weekly ROI reporting."
+    q: "Do you manage Google Ads and Meta Ads end-to-end?",
+    a: "Yes. We can manage the complete advertising process, including strategy, audience research, campaign setup, conversion tracking, creative coordination, targeting, optimization, retargeting, reporting, and scaling across Google and Meta."
   },
   {
-    q: "Do you provide transparent monthly reporting?",
-    a: "Yes. Every MyAdSphere client receives access to a custom real-time dashboard tracking ROAS, Cost-Per-Acquisition (CPA), conversion rates, click-through rates, and net revenue growth, accompanied by weekly strategist check-ins."
+    q: "Do you provide performance reporting?",
+    a: "Yes. We provide clear reporting focused on business-relevant metrics, not just impressions and clicks. Depending on the campaign, this can include leads, conversions, cost per lead, customer acquisition cost, ROAS, revenue, and other agreed KPIs."
   },
   {
-    q: "How do you measure campaign performance and ROI?",
-    a: "We measure success directly against your bottom-line business objectives: return on ad spend (ROAS), customer acquisition cost (CAC), qualified lead volume, and customer lifetime value (LTV)—never vanity metrics."
+    q: "How do you measure marketing ROI?",
+    a: "We define the most relevant KPIs based on your business model and campaign objectives. These may include qualified leads, cost per lead, conversion rate, customer acquisition cost, ROAS, sales, revenue, and pipeline value where reliable tracking is available."
+  },
+  {
+    q: "Can myadsphere handle both creative and marketing?",
+    a: "Yes. Our team combines strategy, branding, design, content production, social media, advertising, SEO, websites, and technology, allowing creative and performance teams to work together instead of operating separately."
+  },
+  {
+    q: "Do you provide website and UI/UX design services?",
+    a: "Yes. We design and develop responsive, SEO-ready, conversion-focused websites and provide dedicated UI/UX design services, including user flows, wireframes, interface design, prototyping, and design systems."
+  },
+  {
+    q: "Does myadsphere provide PR & Media services?",
+    a: "Yes. Our PR & Media services can include PR strategy, press release development, media outreach, thought leadership, influencer collaborations, and reputation-focused communication based on the needs of your brand."
+  },
+  {
+    q: "Do you provide AI and automation solutions?",
+    a: "Yes. We build AI-powered solutions such as chatbots, AI assistants, lead qualification workflows, business-process automation, content workflows, and custom AI integrations based on real operational needs."
+  },
+  {
+    q: "Why should I choose myadsphere?",
+    a: "myadsphere brings strategy, creative, performance marketing, technology, and AI together under one roof. Instead of treating each service as a separate activity, we focus on building connected digital systems designed around measurable business growth."
   }
 ];
 
@@ -95,7 +115,7 @@ export default function FAQ() {
                   className="w-full px-7 py-6 text-left flex items-center justify-between gap-4 font-bold text-lg text-white"
                 >
                   <span className="flex items-center gap-3">
-                    <span className="text-[#FF4A17] text-sm font-mono font-bold">0{idx + 1}.</span>
+                    <span className="text-[#FF4A17] text-sm font-sans font-bold">0{idx + 1}.</span>
                     {item.q}
                   </span>
                   <ChevronDown
