@@ -101,8 +101,8 @@ export default function OurWorkOverviewPage() {
             </span>
           </div>
 
-          <Link
-            href={`/our-work/${featuredProject.slug}`}
+          <a
+            href={featuredProject.websiteUrl || '#'}
             className="group relative block rounded-[32px] border border-white/15 bg-zinc-950/70 backdrop-blur-2xl overflow-hidden hover:border-[#FF4A17]/50 hover:-translate-y-1.5 transition-all duration-500 shadow-[0_30px_90px_rgba(0,0,0,0.9)]"
           >
             {/* Top-Left Specular Reflection Layer */}
@@ -154,13 +154,13 @@ export default function OurWorkOverviewPage() {
                 </div>
 
                 <div className="inline-flex items-center gap-2.5 px-6 py-3 rounded-full bg-white/[0.05] group-hover:bg-[#FF4A17] border border-white/15 group-hover:border-[#FF4A17] text-white text-xs font-bold uppercase tracking-widest shadow-lg transition-all duration-300">
-                  <span>View Case Study</span>
+                  <span>Visit Website</span>
                   <ArrowUpRight size={16} className="group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
                 </div>
               </div>
             </div>
 
-          </Link>
+          </a>
 
         </div>
       </section>
@@ -209,8 +209,8 @@ export default function OurWorkOverviewPage() {
                   viewport={{ once: true }}
                   transition={{ duration: 0.5, delay: idx * 0.08 }}
                 >
-                  <Link
-                    href={`/our-work/${project.slug}`}
+                  <a
+                    href={project.websiteUrl || '#'}
                     className="group relative rounded-[28px] border border-white/12 bg-zinc-950/70 backdrop-blur-xl p-7 md:p-9 grid grid-cols-1 lg:grid-cols-12 gap-8 items-center hover:border-[#FF4A17]/45 hover:bg-zinc-900/60 hover:-translate-y-1.5 transition-all duration-500 block overflow-hidden shadow-[0_20px_60px_rgba(0,0,0,0.85)]"
                   >
                     {/* Top-Left Specular Surface Highlight */}
@@ -255,11 +255,11 @@ export default function OurWorkOverviewPage() {
                         </div>
 
                         <span className="text-xs font-sans font-bold text-white uppercase tracking-wider group-hover:text-[#FF4A17] flex items-center gap-1.5 transition-colors">
-                          View Case Study <ArrowUpRight size={14} className="group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
+                          Visit Website <ArrowUpRight size={14} className="group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
                         </span>
                       </div>
                     </div>
-                  </Link>
+                  </a>
                 </motion.div>
               );
             })}

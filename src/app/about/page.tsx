@@ -6,9 +6,11 @@ import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import Team from '@/components/Team';
 import ClientLogosMarquee from '@/components/ClientLogosMarquee';
-import { motion } from 'motion/react';
+import { motion, useScroll, useSpring } from 'motion/react';
 import { 
   ArrowRight, 
+  ArrowUpRight,
+  ArrowDown,
   Sparkles, 
   Target, 
   Compass, 
@@ -31,39 +33,40 @@ import {
 // ── 04: JOURNEY TIMELINE DATA ──
 const journeyTimeline = [
   {
-    year: '2020',
-    title: 'The Beginning',
-    desc: 'myadsphere was founded in Hyderabad with a vision to help businesses make digital marketing more strategic, measurable, and accessible.'
-  },
-  {
     year: '2021',
-    title: 'Expanding Our Capabilities',
-    desc: 'We moved beyond individual marketing services and expanded into creative, social media, paid advertising, SEO, and brand strategy.'
+    title: 'THE INITIAL SPARK',
+    desc: 'The concept was born from a simple observation — brands needed better ways to turn attention into measurable growth.',
+    badge: '01 · CONCEPT & ORIGINS'
   },
   {
     year: '2022',
-    title: 'Building Digital Experiences',
-    desc: 'Website design, development, conversion experiences, and stronger technology capabilities became an important part of our offering.'
+    title: 'BUILDING THE FOUNDATION',
+    desc: 'We began building our core capabilities across strategy, creative, performance marketing and digital experiences.',
+    badge: '02 · CORE CAPABILITIES'
   },
   {
     year: '2023',
-    title: 'Connecting Creative & Performance',
-    desc: 'Our approach evolved into an integrated model where strategy, media, creative, content, and technology work together.'
+    title: 'FINDING OUR VOICE',
+    desc: 'MyAdSphere evolved into a focused growth partner combining creative thinking, marketing intelligence and technology.',
+    badge: '03 · GROWTH PARTNERSHIP'
   },
   {
     year: '2024',
-    title: 'Growing Across Industries',
-    desc: 'We expanded our experience across sectors including real estate, healthcare, e-commerce, hospitality, education, technology, and professional services.'
+    title: 'SCALING THE ENGINE',
+    desc: 'We expanded our capabilities across performance marketing, SEO, branding, content, development and automation.',
+    badge: '04 · FULL STACK EXPANSION'
   },
   {
     year: '2025',
-    title: 'Building Smarter Systems',
-    desc: 'Automation, data-driven workflows, and AI began playing a larger role in how we develop marketing and operational solutions.'
+    title: "BUILDING WHAT'S NEXT",
+    desc: 'We began combining marketing, technology and AI to create smarter growth systems for ambitious brands.',
+    badge: '05 · AI & AUTOMATION'
   },
   {
     year: '2026',
-    title: "Built for What's Next",
-    desc: 'Today, myadsphere is evolving into a multidisciplinary digital growth company with ambitions beyond Hyderabad — serving businesses across India and international markets.'
+    title: 'THE NEXT CHAPTER',
+    desc: 'MyAdSphere continues to evolve — building a global growth ecosystem where strategy, creativity, data and technology move together.',
+    badge: '06 · GLOBAL ECOSYSTEM'
   }
 ];
 
@@ -166,16 +169,203 @@ const industries = [
   }
 ];
 
+function CinematicJourneyTimeline() {
+  const containerRef = useRef<HTMLDivElement>(null);
+
+  const { scrollYProgress } = useScroll({
+    target: containerRef,
+    offset: ["start 70%", "end 80%"]
+  });
+
+  const scaleY = useSpring(scrollYProgress, {
+    stiffness: 120,
+    damping: 30,
+    restDelta: 0.001
+  });
+
+  return (
+    <section ref={containerRef} className="relative py-32 px-6 md:px-12 bg-black border-b border-white/10 select-none overflow-hidden font-sans">
+      {/* Background Ambient Glow Orbs */}
+      <div className="absolute top-1/3 left-1/2 -translate-x-1/2 w-[700px] h-[700px] bg-[#FF4A17]/[0.03] blur-[200px] pointer-events-none rounded-full" />
+
+      <div className="max-w-6xl mx-auto relative z-10">
+        
+        {/* Section Header */}
+        <div className="text-center max-w-3xl mx-auto mb-28">
+          <motion.span 
+            initial={{ opacity: 0, y: 10 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="text-[#FF4A17] text-xs font-bold tracking-[0.4em] uppercase block mb-4"
+          >
+            OUR JOURNEY
+          </motion.span>
+          
+          <motion.h2 
+            initial={{ opacity: 0, y: 15 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.1 }}
+            className="text-3xl sm:text-5xl md:text-6xl font-black tracking-tight uppercase leading-[1.15] mb-6"
+          >
+            <span className="bg-gradient-to-r from-white via-zinc-100 to-zinc-300 bg-clip-text text-transparent block">
+              FROM HYDERABAD TO A
+            </span>
+            <span className="bg-gradient-to-r from-[#FF4A17] via-[#FF6B3D] to-[#FFA07A] bg-clip-text text-transparent block">
+              GROWING DIGITAL FOOTPRINT.
+            </span>
+          </motion.h2>
+
+          <motion.p 
+            initial={{ opacity: 0, y: 15 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.2 }}
+            className="text-zinc-400 text-sm md:text-base font-light leading-relaxed max-w-2xl mx-auto"
+          >
+            Trace our evolution from a strategic ambition in Hyderabad into an integrated, multi-market digital growth agency.
+          </motion.p>
+        </div>
+
+        {/* Central Vertical Timeline Container */}
+        <div className="relative max-w-5xl mx-auto">
+
+          {/* Top Arrow Badge */}
+          <div className="flex justify-center mb-14 relative z-20">
+            <motion.div 
+              initial={{ scale: 0 }}
+              whileInView={{ scale: 1 }}
+              viewport={{ once: true }}
+              className="w-10 h-10 rounded-full border border-[#FF4A17]/40 bg-zinc-950/90 flex items-center justify-center text-[#FF4A17] shadow-[0_0_25px_rgba(255,74,23,0.4)] backdrop-blur-md"
+            >
+              <ArrowDown size={16} className="animate-bounce" />
+            </motion.div>
+          </div>
+
+          {/* BASE LINE: Subtle Dark Line */}
+          <div className="absolute left-4 md:left-1/2 -translate-x-1/2 top-16 bottom-16 w-[2px] bg-white/[0.08] pointer-events-none rounded-full" />
+
+          {/* ACTIVE LINE: Dynamic Scroll-driven Illuminated Laser Line */}
+          <motion.div 
+            style={{ scaleY }}
+            className="absolute left-4 md:left-1/2 -translate-x-1/2 top-16 bottom-16 w-[2.5px] bg-gradient-to-b from-[#FF4A17] via-[#FF6B3D] to-[#FFA07A] pointer-events-none rounded-full shadow-[0_0_18px_#FF4A17] origin-top z-10"
+          />
+
+          {/* Timeline Items */}
+          <div className="space-y-20 md:space-y-32">
+            {journeyTimeline.map((item, index) => {
+              const isEven = index % 2 === 0;
+
+              return (
+                <div 
+                  key={item.year} 
+                  className="relative flex flex-col md:flex-row items-center justify-between"
+                >
+                  {/* Node Dot Marker */}
+                  <div className="absolute left-4 md:left-1/2 -translate-x-1/2 z-30 flex items-center justify-center">
+                    <motion.div 
+                      initial={{ scale: 0.7, opacity: 0.4 }}
+                      whileInView={{ scale: 1.25, opacity: 1 }}
+                      viewport={{ once: true, margin: "-100px" }}
+                      transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
+                      className="relative flex items-center justify-center"
+                    >
+                      {/* Animated Pulse Halo Ring */}
+                      <div className="absolute w-9 h-9 rounded-full bg-[#FF4A17]/30 animate-ping pointer-events-none" />
+                      
+                      {/* Node Circle Outer Glow */}
+                      <div className="w-7 h-7 rounded-full bg-zinc-950 border border-[#FF4A17] flex items-center justify-center shadow-[0_0_20px_#FF4A17] backdrop-blur-sm">
+                        {/* Node Inner Core Dot */}
+                        <div className="w-2.5 h-2.5 rounded-full bg-[#FF4A17] shadow-[0_0_8px_#ffffff]" />
+                      </div>
+                    </motion.div>
+                  </div>
+
+                  {/* Left Side Content Slot */}
+                  <div className="w-full md:w-1/2 pl-12 md:pl-0 md:pr-16">
+                    {isEven && (
+                      <motion.div
+                        initial={{ opacity: 0.2, filter: "blur(6px)", y: 40 }}
+                        whileInView={{ opacity: 1, filter: "blur(0px)", y: 0 }}
+                        whileHover={{ y: -6, scale: 1.015 }}
+                        viewport={{ once: true, margin: "-100px" }}
+                        transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
+                        className="relative bg-zinc-950/70 border border-white/10 hover:border-[#FF4A17]/70 backdrop-blur-2xl rounded-3xl p-7 sm:p-9 shadow-2xl transition-all duration-500 group md:text-right overflow-hidden"
+                      >
+                        {/* Soft Inner Highlight Sheen */}
+                        <div className="absolute inset-0 bg-gradient-to-br from-white/[0.04] via-transparent to-transparent pointer-events-none" />
+                        
+                        {/* Atmospheric Glow on Active */}
+                        <div className="absolute -top-12 -right-12 w-40 h-40 bg-[#FF4A17]/[0.07] blur-3xl pointer-events-none rounded-full group-hover:bg-[#FF4A17]/[0.15] transition-all duration-500" />
+
+                        <span className="text-[11px] font-sans font-bold tracking-[0.25em] text-[#FF4A17] uppercase block mb-2">
+                          {item.badge}
+                        </span>
+
+                        <span className="text-4xl sm:text-5xl font-black text-[#FF4A17] tracking-tight block mb-2">
+                          {item.year}
+                        </span>
+
+                        <h3 className="text-white text-xl sm:text-2xl font-bold tracking-tight mb-3">
+                          {item.title}
+                        </h3>
+
+                        <p className="text-zinc-300 text-xs sm:text-sm font-light leading-relaxed">
+                          {item.desc}
+                        </p>
+                      </motion.div>
+                    )}
+                  </div>
+
+                  {/* Right Side Content Slot */}
+                  <div className="w-full md:w-1/2 pl-12 md:pl-16 pt-4 md:pt-0">
+                    {!isEven && (
+                      <motion.div
+                        initial={{ opacity: 0.2, filter: "blur(6px)", y: 40 }}
+                        whileInView={{ opacity: 1, filter: "blur(0px)", y: 0 }}
+                        whileHover={{ y: -6, scale: 1.015 }}
+                        viewport={{ once: true, margin: "-100px" }}
+                        transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
+                        className="relative bg-zinc-950/70 border border-white/10 hover:border-[#FF4A17]/70 backdrop-blur-2xl rounded-3xl p-7 sm:p-9 shadow-2xl transition-all duration-500 group text-left overflow-hidden"
+                      >
+                        {/* Soft Inner Highlight Sheen */}
+                        <div className="absolute inset-0 bg-gradient-to-br from-white/[0.04] via-transparent to-transparent pointer-events-none" />
+
+                        {/* Atmospheric Glow on Active */}
+                        <div className="absolute -top-12 -left-12 w-40 h-40 bg-[#FF4A17]/[0.07] blur-3xl pointer-events-none rounded-full group-hover:bg-[#FF4A17]/[0.15] transition-all duration-500" />
+
+                        <span className="text-[11px] font-sans font-bold tracking-[0.25em] text-[#FF4A17] uppercase block mb-2">
+                          {item.badge}
+                        </span>
+
+                        <span className="text-4xl sm:text-5xl font-black text-[#FF4A17] tracking-tight block mb-2">
+                          {item.year}
+                        </span>
+
+                        <h3 className="text-white text-xl sm:text-2xl font-bold tracking-tight mb-3">
+                          {item.title}
+                        </h3>
+
+                        <p className="text-zinc-300 text-xs sm:text-sm font-light leading-relaxed">
+                          {item.desc}
+                        </p>
+                      </motion.div>
+                    )}
+                  </div>
+
+                </div>
+              );
+            })}
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+  );
+}
+
 export default function AboutUsPage() {
-  const journeyScrollRef = useRef<HTMLDivElement>(null);
-
-  const handleJourneyScroll = (direction: 'left' | 'right') => {
-    if (journeyScrollRef.current) {
-      const amount = direction === 'left' ? -340 : 340;
-      journeyScrollRef.current.scrollBy({ left: amount, behavior: 'smooth' });
-    }
-  };
-
   return (
     <main className="min-h-screen bg-black text-white antialiased selection:bg-[#FF4A17] selection:text-white relative overflow-hidden font-sans">
       <Navbar />
@@ -184,67 +374,162 @@ export default function AboutUsPage() {
       <div className="absolute inset-0 bg-[radial-gradient(rgba(255,255,255,0.03)_1px,transparent_1px)] bg-[size:32px_32px] pointer-events-none" />
       <div className="absolute top-24 left-1/2 -translate-x-1/2 w-[700px] h-[350px] bg-[#FF4A17]/[0.06] blur-[150px] rounded-full pointer-events-none" />
 
-      {/* ── 01. OUR STORY ── */}
-      <section className="relative pt-32 pb-24 md:pt-40 md:pb-28 px-6 md:px-12 border-b border-white/10 z-10">
+      {/* ── 01. HERO SECTION & OUR STORY ── */}
+      <section className="relative pt-32 pb-24 md:pt-40 md:pb-28 px-6 md:px-12 border-b border-white/10 z-10 overflow-hidden">
+        {/* Ambient Glows */}
+        <div className="absolute top-1/3 left-10 w-96 h-96 bg-[#FF4A17]/[0.08] blur-[140px] pointer-events-none rounded-full" />
+        <div className="absolute top-1/2 right-10 w-[500px] h-[500px] bg-[#FF4A17]/[0.06] blur-[160px] pointer-events-none rounded-full" />
+
         <div className="max-w-7xl mx-auto">
-          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/[0.04] border border-white/10 text-xs text-[#FF4A17] font-bold tracking-[0.35em] uppercase mb-6 backdrop-blur-md">
-            01 — OUR STORY
-          </div>
+          
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
+            
+            {/* LEFT COLUMN: HERO CONTENT */}
+            <div className="lg:col-span-7 space-y-8 order-2 lg:order-1">
+              {/* Badge */}
+              <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/[0.04] border border-white/10 text-xs text-[#FF4A17] font-bold tracking-[0.35em] uppercase backdrop-blur-md">
+                <span className="w-2 h-2 rounded-full bg-[#FF4A17] animate-pulse" />
+                OUR STORY
+              </div>
 
-          <h1 className="text-4xl sm:text-6xl md:text-7xl font-black tracking-tight leading-tight uppercase mb-8 max-w-5xl">
-            <span className="bg-gradient-to-r from-white via-zinc-100 to-zinc-400 bg-clip-text text-transparent">
-              WE BUILD BRANDS THAT MOVE PEOPLE{' '}
-            </span>
-            <span className="bg-gradient-to-r from-[#FF4A17] via-[#FF6B3D] to-[#FFA07A] bg-clip-text text-transparent">
-              AND BUSINESS.
-            </span>
-          </h1>
+              {/* Main Heading */}
+              <h1 className="text-4xl sm:text-5xl md:text-6xl font-black tracking-tight leading-[1.1] uppercase">
+                <span className="bg-gradient-to-r from-white via-zinc-100 to-zinc-300 bg-clip-text text-transparent block">
+                  From Hyderabad’s Digital Edge
+                </span>
+                <span className="bg-gradient-to-r from-[#FF4A17] via-[#FF6B3D] to-[#FFA07A] bg-clip-text text-transparent block">
+                  to Global Growth.
+                </span>
+              </h1>
 
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-start">
-            <div className="lg:col-span-7 bg-zinc-950/70 border border-white/10 backdrop-blur-2xl rounded-3xl p-8 md:p-10 shadow-2xl space-y-6 text-zinc-300 font-light leading-relaxed text-base md:text-lg">
-              <p className="text-xl md:text-2xl font-bold text-white leading-snug">
-                myadsphere is a digital growth agency built around a simple belief:{' '}
-                <span className="text-[#FF4A17]">attention means nothing without action.</span>
-              </p>
-              <p>
-                Founded in Hyderabad in 2020, we bring strategy, creativity, performance marketing, technology, and AI together to help ambitious businesses build stronger brands, reach the right audiences, and turn digital opportunities into measurable growth.
-              </p>
-              <p>
-                What started with a clear ambition to help businesses navigate digital marketing has grown into a multidisciplinary team working across branding, content, paid media, SEO, websites, UI/UX, PR, and intelligent digital solutions.
-              </p>
-              <p>
-                Today, we work with startups, growing businesses, and established brands in India and beyond — building digital experiences and growth strategies designed for where business is going next.
-              </p>
-            </div>
+              {/* Paragraphs List */}
+              <div className="space-y-5 text-zinc-300 font-light text-base md:text-lg leading-relaxed bg-zinc-950/60 border border-white/10 backdrop-blur-2xl rounded-3xl p-6 sm:p-8 shadow-2xl">
+                <p>
+                  Founded in 2020, <strong className="text-white font-bold">Myadsphere</strong> began with a simple goal: help businesses grow through smarter marketing, stronger creativity, and better digital experiences.
+                </p>
 
-            <div className="lg:col-span-5 bg-gradient-to-br from-zinc-950 via-zinc-900 to-[#FF4A17]/10 border border-[#FF4A17]/20 backdrop-blur-xl rounded-3xl p-8 md:p-10 shadow-2xl flex flex-col justify-between h-full min-h-[340px]">
-              <div>
-                <span className="text-[#FF4A17] text-xs font-bold tracking-[0.3em] uppercase block mb-3">HYDERABAD · EST. 2020</span>
-                <h3 className="text-2xl md:text-3xl font-black text-white uppercase tracking-tight mb-4">
-                  DIGITAL GROWTH ENGINE
-                </h3>
-                <p className="text-zinc-400 text-sm font-light leading-relaxed">
-                  Connecting strategy, creative production, performance marketing, and modern engineering into one synchronized revenue ecosystem.
+                <p>
+                  Today, with <strong className="text-white font-bold">5+ years of experience</strong>, we’re a results-driven <strong className="text-[#FF4A17] font-bold">digital marketing agency in Hyderabad</strong> working with startups, growing businesses, and established brands that want to build a stronger presence, reach the right audience, and generate measurable growth.
+                </p>
+
+                <p>
+                  Our expertise includes <strong className="text-white font-semibold">SEO, Google Ads, Meta Ads, social media marketing, branding, content creation, lead generation, and website development</strong>. We don’t believe in one-size-fits-all solutions. Every strategy is guided by insight, every creative has a purpose, and every campaign is built around real business objectives.
+                </p>
+
+                <p>
+                  For us, digital marketing goes beyond visibility. It should help you build trust, create demand, generate qualified leads, increase conversions, and open new opportunities for growth. By bringing together <strong className="text-white font-semibold">creative strategy, data-driven marketing, and modern technology</strong>, we help turn your digital presence into meaningful business impact.
+                </p>
+
+                <p className="pt-3 text-white font-normal border-t border-white/10">
+                  With our roots in <strong className="text-[#FF4A17] font-bold">Hyderabad</strong> and a growing presence across <strong className="text-white font-bold">DUBAI, UK, and the USA</strong>, myadsphere helps ambitious brands <strong className="text-white font-bold">connect with their audience, compete more effectively, and scale beyond boundaries.</strong>
                 </p>
               </div>
 
-              <div className="pt-8 border-t border-white/10 flex items-center justify-between">
-                <div>
-                  <p className="text-3xl font-black text-white">150+</p>
-                  <p className="text-xs text-zinc-500 uppercase tracking-wider">Campaigns Scaled</p>
-                </div>
-                <div>
-                  <p className="text-3xl font-black text-[#FF4A17]">98%</p>
-                  <p className="text-xs text-zinc-500 uppercase tracking-wider">Client Retention</p>
-                </div>
+              {/* Action Buttons */}
+              <div className="flex flex-wrap items-center gap-4 pt-2">
+                <Link
+                  href="/contact"
+                  className="px-8 py-4 rounded-full bg-[#FF4A17] hover:bg-[#ff5d2e] text-white font-bold text-xs sm:text-sm uppercase tracking-wider transition-all duration-300 shadow-[0_0_30px_rgba(255,74,23,0.4)] flex items-center gap-2 group active:scale-95"
+                >
+                  <span>START A PROJECT</span>
+                  <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
+                </Link>
+
+                <Link
+                  href="/our-work"
+                  className="px-8 py-4 rounded-full bg-white/5 hover:bg-white/15 border border-white/15 text-white font-bold text-xs sm:text-sm uppercase tracking-wider transition-all duration-300 flex items-center gap-2 backdrop-blur-md active:scale-95"
+                >
+                  <span>VIEW OUR WORK</span>
+                  <ArrowUpRight size={16} />
+                </Link>
               </div>
             </div>
+
+            {/* RIGHT COLUMN: 3D COSMIC ORBIT PLANET GRAPHIC */}
+            <motion.div 
+              animate={{ y: [0, -14, 0] }}
+              transition={{ duration: 7, repeat: Infinity, ease: "easeInOut" }}
+              className="lg:col-span-5 relative flex items-center justify-center min-h-[380px] sm:min-h-[480px] order-1 lg:order-2 -mt-6 sm:-mt-10 lg:-mt-14"
+            >
+              {/* Outer Orbit Ring 1 (Smooth Rotation) */}
+              <motion.div 
+                animate={{ rotate: 360 }}
+                transition={{ duration: 35, repeat: Infinity, ease: "linear" }}
+                className="absolute w-[360px] h-[180px] sm:w-[460px] sm:h-[230px] rounded-[100%] border border-[#FF4A17]/30 pointer-events-none shadow-[0_0_25px_rgba(255,74,23,0.2)]" 
+              />
+              
+              {/* Outer Orbit Ring 2 (Smooth Reverse Rotation) */}
+              <motion.div 
+                animate={{ rotate: -360 }}
+                transition={{ duration: 45, repeat: Infinity, ease: "linear" }}
+                className="absolute w-[380px] h-[190px] sm:w-[480px] sm:h-[240px] rounded-[100%] border border-white/10 pointer-events-none" 
+              />
+
+              {/* Central Glowing Planet */}
+              <div className="relative w-60 h-60 sm:w-80 sm:h-80 rounded-full bg-gradient-to-tr from-black via-[#0c0604] to-[#FF4A17]/85 shadow-[0_0_100px_rgba(255,74,23,0.5),inset_0_-30px_60px_rgba(0,0,0,0.95),inset_0_15px_40px_rgba(255,107,61,0.7)] border border-[#FF4A17]/40 flex items-center justify-center group overflow-hidden">
+                {/* Internal Atmosphere Glow Breathing */}
+                <motion.div 
+                  animate={{ opacity: [0.4, 0.8, 0.4], scale: [1, 1.05, 1] }}
+                  transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
+                  className="absolute inset-0 bg-[radial-gradient(circle_at_75%_30%,rgba(255,107,61,0.5)_0%,transparent_65%)] pointer-events-none" 
+                />
+              </div>
+
+              {/* Floating Orbiting Pill Tags */}
+              <motion.div 
+                animate={{ y: [0, -10, 0] }}
+                transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
+                className="absolute top-4 right-4 sm:top-8 sm:right-8 px-4 py-1.5 rounded-full bg-black/80 border border-white/20 text-xs font-bold text-white shadow-xl backdrop-blur-md flex items-center gap-2"
+              >
+                <span className="w-2 h-2 rounded-full bg-[#FF4A17] animate-pulse" />
+                Strategy
+              </motion.div>
+
+              <motion.div 
+                animate={{ y: [0, 10, 0] }}
+                transition={{ duration: 5.5, repeat: Infinity, ease: "easeInOut", delay: 0.5 }}
+                className="absolute top-1/3 left-0 sm:-left-4 px-4 py-1.5 rounded-full bg-black/80 border border-white/20 text-xs font-bold text-white shadow-xl backdrop-blur-md flex items-center gap-2"
+              >
+                <span className="w-2 h-2 rounded-full bg-[#FF4A17] animate-pulse" />
+                Creative
+              </motion.div>
+
+              <motion.div 
+                animate={{ y: [0, -12, 0] }}
+                transition={{ duration: 6, repeat: Infinity, ease: "easeInOut", delay: 1 }}
+                className="absolute top-1/2 right-0 sm:-right-4 px-4 py-1.5 rounded-full bg-black/80 border border-white/20 text-xs font-bold text-white shadow-xl backdrop-blur-md flex items-center gap-2"
+              >
+                <span className="w-2 h-2 rounded-full bg-[#FF4A17] animate-pulse" />
+                Technology
+              </motion.div>
+
+              <motion.div 
+                animate={{ y: [0, 10, 0] }}
+                transition={{ duration: 5.2, repeat: Infinity, ease: "easeInOut", delay: 1.5 }}
+                className="absolute bottom-12 left-6 sm:left-10 px-4 py-1.5 rounded-full bg-black/80 border border-white/20 text-xs font-bold text-white shadow-xl backdrop-blur-md flex items-center gap-2"
+              >
+                <span className="w-2 h-2 rounded-full bg-[#FF4A17] animate-pulse" />
+                Growth
+              </motion.div>
+
+              <motion.div 
+                animate={{ y: [0, -10, 0] }}
+                transition={{ duration: 5.8, repeat: Infinity, ease: "easeInOut", delay: 2 }}
+                className="absolute bottom-6 right-10 sm:right-14 px-4 py-1.5 rounded-full bg-black/80 border border-white/20 text-xs font-bold text-white shadow-xl backdrop-blur-md flex items-center gap-2"
+              >
+                <span className="w-2 h-2 rounded-full bg-[#FF4A17] animate-pulse" />
+                Performance
+              </motion.div>
+
+            </motion.div>
+
           </div>
+
         </div>
       </section>
 
       {/* ── 02. WHO WE ARE ── */}
-      <section className="relative py-28 px-6 md:px-12 bg-black border-b border-white/10">
+      {/* <section className="relative py-28 px-6 md:px-12 bg-black border-b border-white/10">
         <div className="max-w-7xl mx-auto">
           <div className="mb-12">
             <span className="text-[#FF4A17] text-xs font-bold tracking-[0.35em] uppercase block mb-3">
@@ -270,7 +555,6 @@ export default function AboutUsPage() {
             </p>
           </div>
 
-          {/* Connected Disciplines Grid */}
           <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-4 mb-10">
             {[
               { label: 'BRANDING', desc: 'A strong brand needs the right positioning.' },
@@ -293,14 +577,14 @@ export default function AboutUsPage() {
             That&apos;s why <span className="text-white font-bold">myadsphere</span> connects every discipline into one coordinated digital ecosystem.
           </div>
         </div>
-      </section>
+      </section> */}
 
-      {/* ── 03. WHAT MOVES & DEFINES US (MISSION, VISION, VALUES) ── */}
+      {/* ── WHAT MOVES & DEFINES US (MISSION, VISION, VALUES) ── */}
       <section className="relative py-28 px-6 md:px-12 bg-black border-b border-white/10">
         <div className="max-w-7xl mx-auto">
           <div className="mb-16 text-center md:text-left">
             <span className="text-[#FF4A17] text-xs font-bold tracking-[0.35em] uppercase block mb-3">
-              03 — WHAT MOVES &amp; DEFINES US
+              WHAT MOVES &amp; DEFINES US
             </span>
             <h2 className="text-3xl sm:text-5xl font-black tracking-tight text-white uppercase">
               MISSION, VISION &amp; CORE VALUES
@@ -357,7 +641,7 @@ export default function AboutUsPage() {
                   key={val.title}
                   className="bg-zinc-950/70 border border-white/10 hover:border-[#FF4A17]/60 backdrop-blur-xl rounded-2xl p-6 transition-all duration-300 shadow-xl group"
                 >
-                  <span className="text-[#FF4A17] text-xs font-bold tracking-widest block mb-2">0{idx + 1}</span>
+                  <span className="text-[#FF4A17] text-xs font-bold tracking-widest block mb-2">VAL · 0{idx + 1}</span>
                   <h4 className="text-white text-lg font-bold mb-2 group-hover:text-[#FF4A17] transition-colors">{val.title}</h4>
                   <p className="text-zinc-400 text-xs md:text-sm font-light leading-relaxed">{val.desc}</p>
                 </div>
@@ -367,107 +651,15 @@ export default function AboutUsPage() {
         </div>
       </section>
 
-      {/* ── 04. OUR JOURNEY (2020 - 2026 TIMELINE) ── */}
-      <section className="relative py-28 px-6 md:px-12 bg-black border-b border-white/10 select-none">
-        <div className="max-w-7xl mx-auto">
-          <div className="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-6">
-            <div>
-              <span className="text-[#FF4A17] text-xs font-bold tracking-[0.35em] uppercase block mb-3">
-                04 — OUR JOURNEY
-              </span>
-              <h2 className="text-3xl sm:text-5xl font-black tracking-tight text-white uppercase">
-                FROM HYDERABAD TO A GROWING DIGITAL FOOTPRINT.
-              </h2>
-            </div>
+      {/* ── OUR JOURNEY (CINEMATIC SCROLL-DRIVEN TIMELINE) ── */}
+      <CinematicJourneyTimeline />
 
-            <div className="flex items-center gap-3 shrink-0">
-              <button
-                onClick={() => handleJourneyScroll('left')}
-                className="w-12 h-12 rounded-full border border-white/15 bg-zinc-950/80 hover:bg-[#FF4A17] hover:border-[#FF4A17] text-white flex items-center justify-center transition-all duration-300 shadow-lg active:scale-95"
-                aria-label="Previous Year"
-              >
-                <ChevronLeft size={20} />
-              </button>
-              <button
-                onClick={() => handleJourneyScroll('right')}
-                className="w-12 h-12 rounded-full border border-white/15 bg-zinc-950/80 hover:bg-[#FF4A17] hover:border-[#FF4A17] text-white flex items-center justify-center transition-all duration-300 shadow-lg active:scale-95"
-                aria-label="Next Year"
-              >
-                <ChevronRight size={20} />
-              </button>
-            </div>
-          </div>
-
-          <div
-            ref={journeyScrollRef}
-            className="flex gap-6 overflow-x-auto scrollbar-none scroll-smooth pb-6 pt-2 snap-x snap-mandatory"
-            style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
-          >
-            {journeyTimeline.map((item) => (
-              <div
-                key={item.year}
-                className="shrink-0 w-[290px] sm:w-[330px] snap-start rounded-3xl border border-white/10 bg-zinc-950/90 p-8 hover:border-[#FF4A17]/60 hover:bg-zinc-900/90 transition-all duration-500 shadow-2xl flex flex-col justify-between group"
-              >
-                <div>
-                  <span className="text-4xl sm:text-5xl font-black text-[#FF4A17] block mb-4 group-hover:scale-105 transition-transform origin-left">
-                    {item.year}
-                  </span>
-                  <h3 className="text-white text-xl font-bold tracking-tight mb-3">
-                    {item.title}
-                  </h3>
-                  <p className="text-zinc-400 text-xs md:text-sm font-light leading-relaxed">
-                    {item.desc}
-                  </p>
-                </div>
-                <div className="pt-6 mt-6 border-t border-white/10 flex items-center gap-2 text-[11px] text-zinc-500 font-medium">
-                  <span className="w-2 h-2 rounded-full bg-[#FF4A17]" />
-                  <span>MILESTONE ERA</span>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* ── 05. WHAT WE BRING TOGETHER ── */}
+      {/* ── THE TOOLS BEHIND THE WORK ── */}
       <section className="relative py-28 px-6 md:px-12 bg-black border-b border-white/10">
         <div className="max-w-7xl mx-auto">
           <div className="mb-16">
             <span className="text-[#FF4A17] text-xs font-bold tracking-[0.35em] uppercase block mb-3">
-              05 — WHAT WE BRING TOGETHER
-            </span>
-            <h2 className="text-3xl sm:text-5xl font-black tracking-tight text-white uppercase">
-              ONE TEAM. MULTIPLE DISCIPLINES.
-            </h2>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {disciplines.map((disc, idx) => (
-              <div 
-                key={disc.title}
-                className="bg-zinc-950/70 border border-white/10 hover:border-[#FF4A17]/60 backdrop-blur-xl rounded-3xl p-8 transition-all duration-300 shadow-xl group flex flex-col justify-between"
-              >
-                <div>
-                  <span className="text-xs text-[#FF4A17] font-bold tracking-widest block mb-4">0{idx + 1} · DISCIPLINE</span>
-                  <h3 className="text-white text-xl font-black tracking-tight mb-3 group-hover:text-[#FF4A17] transition-colors">
-                    {disc.title}
-                  </h3>
-                  <p className="text-zinc-400 text-xs md:text-sm font-light leading-relaxed">
-                    {disc.desc}
-                  </p>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* ── 06. THE TOOLS BEHIND THE WORK ── */}
-      <section className="relative py-28 px-6 md:px-12 bg-black border-b border-white/10">
-        <div className="max-w-7xl mx-auto">
-          <div className="mb-16">
-            <span className="text-[#FF4A17] text-xs font-bold tracking-[0.35em] uppercase block mb-3">
-              06 — THE TOOLS BEHIND THE WORK
+              THE TOOLS BEHIND THE WORK
             </span>
             <h2 className="text-3xl sm:text-5xl font-black tracking-tight text-white uppercase mb-4">
               TECHNOLOGY, CREATIVE &amp; MARKETING STACK
@@ -503,12 +695,12 @@ export default function AboutUsPage() {
         </div>
       </section>
 
-      {/* ── 07. INDUSTRIES WE UNDERSTAND ── */}
+      {/* ── INDUSTRIES WE UNDERSTAND ── */}
       <section className="relative py-28 px-6 md:px-12 bg-black border-b border-white/10">
         <div className="max-w-7xl mx-auto">
           <div className="mb-16">
             <span className="text-[#FF4A17] text-xs font-bold tracking-[0.35em] uppercase block mb-3">
-              07 — INDUSTRIES WE UNDERSTAND
+              INDUSTRIES WE UNDERSTAND
             </span>
             <h2 className="text-3xl sm:text-5xl font-black tracking-tight uppercase">
               <span className="bg-gradient-to-r from-white via-zinc-100 to-zinc-400 bg-clip-text text-transparent">
@@ -544,16 +736,16 @@ export default function AboutUsPage() {
         </div>
       </section>
 
-      {/* ── 08. THE PEOPLE BEHIND THE GROWTH (SHARED TEAM COMPONENT) ── */}
+      {/* ── THE PEOPLE BEHIND THE GROWTH (SHARED TEAM COMPONENT) ── */}
       <Team />
 
-      {/* ── 09. OUR PHILOSOPHY ── */}
+      {/* ── OUR PHILOSOPHY ── */}
       <section className="relative py-32 px-6 md:px-12 bg-black border-b border-white/10 text-center relative overflow-hidden">
         <div className="absolute inset-0 bg-[radial-gradient(rgba(255,74,23,0.06)_1px,transparent_1px)] bg-[size:36px_36px] pointer-events-none" />
 
         <div className="max-w-4xl mx-auto relative z-10">
           <span className="text-[#FF4A17] text-xs font-bold tracking-[0.4em] uppercase block mb-4">
-            09 — OUR PHILOSOPHY
+            OUR PHILOSOPHY
           </span>
 
           <h2 className="text-3xl sm:text-5xl md:text-6xl font-black tracking-tight uppercase leading-tight mb-8">
@@ -583,13 +775,13 @@ export default function AboutUsPage() {
         </div>
       </section>
 
-      {/* ── 10. READY TO GROW? (CTA SECTION) ── */}
+      {/* ── READY TO GROW? (CTA SECTION) ── */}
       <section className="relative py-32 px-6 md:px-12 bg-gradient-to-b from-black via-zinc-950 to-black text-center relative overflow-hidden">
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[300px] bg-[#FF4A17]/[0.1] blur-[150px] pointer-events-none rounded-full" />
 
         <div className="max-w-3xl mx-auto relative z-10">
           <span className="text-[#FF4A17] text-xs font-bold tracking-[0.4em] uppercase block mb-4">
-            10 — READY TO GROW?
+            READY TO GROW?
           </span>
 
           <h2 className="text-4xl sm:text-6xl font-black tracking-tight text-white uppercase mb-6">

@@ -15,7 +15,7 @@ const clientLogosRow1 = [
   { id: 'gulte', name: 'Gulte.com', src: '/logos/gulte.png' },
   { id: 'hotel-trilok', name: 'Hotel Trilok', src: '/logos/hotel-trilok.png' },
   { id: 'h', name: 'Hyrudayam', src: '/logos/hrudhayam.png' },
-  { id: 'bombey-irani1', name: 'bombey-irani', src: '/logos/bombey-irani.png' },
+  { id: 'bombey-irani1', name: 'bombey-irani', src: '/logos/bombey-irani1.png' },
 ];
 
 const clientLogosRow2 = [

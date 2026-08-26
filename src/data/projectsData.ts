@@ -8,6 +8,7 @@ export interface ProjectData {
   shortDesc: string;
   heroImage: string;
   thumbnail: string;
+  websiteUrl?: string;
   metrics: { label: string; value: string }[];
   challenge: string;
   approach: string[];
@@ -29,6 +30,7 @@ export const projectsData: Record<string, ProjectData> = {
     shortDesc: 'Scaling a D2C beauty brand past 8-figure revenue with automated Meta & Google Performance Max funnels.',
     heroImage: 'https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?q=80&w=1200&auto=format&fit=crop',
     thumbnail: 'https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?q=80&w=800&auto=format&fit=crop',
+    websiteUrl: '#',
     metrics: [
       { label: 'Return On Ad Spend', value: '+342%' },
       { label: 'Conversion Rate', value: '+68%' },
@@ -62,6 +64,7 @@ export const projectsData: Record<string, ProjectData> = {
     shortDesc: 'Building a predictable B2B sales pipeline targeting Fortune 500 CTOs and IT infrastructure leaders.',
     heroImage: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=1200&auto=format&fit=crop',
     thumbnail: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=800&auto=format&fit=crop',
+    websiteUrl: '#',
     metrics: [
       { label: 'Qualified Demos', value: '+240%' },
       { label: 'Cost Per Lead', value: '-42%' },
@@ -95,6 +98,7 @@ export const projectsData: Record<string, ProjectData> = {
     shortDesc: 'Capturing 15M+ organic impressions and scaling brand community engagement across Instagram & TikTok.',
     heroImage: 'https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=1200&auto=format&fit=crop',
     thumbnail: 'https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=800&auto=format&fit=crop',
+    websiteUrl: '#',
     metrics: [
       { label: 'Organic Impressions', value: '15.2M+' },
       { label: 'Social Engagement', value: '+510%' },
@@ -128,6 +132,7 @@ export const projectsData: Record<string, ProjectData> = {
     shortDesc: 'Securing $22M+ in closed luxury villa sales through cinematic video advertising and private VIP prospect funnels.',
     heroImage: 'https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?q=80&w=1200&auto=format&fit=crop',
     thumbnail: 'https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?q=80&w=800&auto=format&fit=crop',
+    websiteUrl: '#',
     metrics: [
       { label: 'Closed Sales Volume', value: '$22M+' },
       { label: 'Verified HNW Leads', value: '180+' },
@@ -161,6 +166,7 @@ export const projectsData: Record<string, ProjectData> = {
     shortDesc: 'Achieving #1 search rankings for competitive commercial healthcare keywords and driving organic customer acquisition.',
     heroImage: 'https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?q=80&w=1200&auto=format&fit=crop',
     thumbnail: 'https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?q=80&w=800&auto=format&fit=crop',
+    websiteUrl: '#',
     metrics: [
       { label: 'Organic Traffic Growth', value: '+420%' },
       { label: 'First-Page Keywords', value: '85+' },
