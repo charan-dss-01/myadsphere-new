@@ -33,26 +33,26 @@ const faqList = [
     q: "How do you measure marketing ROI?",
     a: "We define the most relevant KPIs based on your business model and campaign objectives. These may include qualified leads, cost per lead, conversion rate, customer acquisition cost, ROAS, sales, revenue, and pipeline value where reliable tracking is available."
   },
-  {
-    q: "Can myadsphere handle both creative and marketing?",
-    a: "Yes. Our team combines strategy, branding, design, content production, social media, advertising, SEO, websites, and technology, allowing creative and performance teams to work together instead of operating separately."
-  },
-  {
-    q: "Do you provide website and UI/UX design services?",
-    a: "Yes. We design and develop responsive, SEO-ready, conversion-focused websites and provide dedicated UI/UX design services, including user flows, wireframes, interface design, prototyping, and design systems."
-  },
-  {
-    q: "Does myadsphere provide PR & Media services?",
-    a: "Yes. Our PR & Media services can include PR strategy, press release development, media outreach, thought leadership, influencer collaborations, and reputation-focused communication based on the needs of your brand."
-  },
-  {
-    q: "Do you provide AI and automation solutions?",
-    a: "Yes. We build AI-powered solutions such as chatbots, AI assistants, lead qualification workflows, business-process automation, content workflows, and custom AI integrations based on real operational needs."
-  },
-  {
-    q: "Why should I choose myadsphere?",
-    a: "myadsphere brings strategy, creative, performance marketing, technology, and AI together under one roof. Instead of treating each service as a separate activity, we focus on building connected digital systems designed around measurable business growth."
-  }
+  // {
+  //   q: "Can myadsphere handle both creative and marketing?",
+  //   a: "Yes. Our team combines strategy, branding, design, content production, social media, advertising, SEO, websites, and technology, allowing creative and performance teams to work together instead of operating separately."
+  // },
+  // {
+  //   q: "Do you provide website and UI/UX design services?",
+  //   a: "Yes. We design and develop responsive, SEO-ready, conversion-focused websites and provide dedicated UI/UX design services, including user flows, wireframes, interface design, prototyping, and design systems."
+  // },
+  // {
+  //   q: "Does myadsphere provide PR & Media services?",
+  //   a: "Yes. Our PR & Media services can include PR strategy, press release development, media outreach, thought leadership, influencer collaborations, and reputation-focused communication based on the needs of your brand."
+  // },
+  // {
+  //   q: "Do you provide AI and automation solutions?",
+  //   a: "Yes. We build AI-powered solutions such as chatbots, AI assistants, lead qualification workflows, business-process automation, content workflows, and custom AI integrations based on real operational needs."
+  // },
+  // {
+  //   q: "Why should I choose myadsphere?",
+  //   a: "myadsphere brings strategy, creative, performance marketing, technology, and AI together under one roof. Instead of treating each service as a separate activity, we focus on building connected digital systems designed around measurable business growth."
+  // }
 ];
 
 export default function FAQ() {

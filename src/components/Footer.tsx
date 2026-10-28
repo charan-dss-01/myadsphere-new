@@ -236,11 +236,8 @@ export default function Footer() {
       <div className="border-t border-white/10 py-6 px-6 relative z-10 bg-black mt-16">
         <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-5 text-sm text-zinc-400">
           
-          {/* LEFT: Circular Badge N + Copyright */}
+          {/* LEFT: Copyright */}
           <div className="flex items-center gap-3 shrink-0">
-            <div className="w-8 h-8 rounded-full border border-white/20 bg-zinc-950 flex items-center justify-center text-[11px] font-bold text-white font-sans shrink-0 shadow-md">
-              N
-            </div>
             <p className="text-zinc-400 text-xs md:text-sm font-light">
               {footerData.copyright}
             </p>

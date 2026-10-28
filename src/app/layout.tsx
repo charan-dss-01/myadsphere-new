@@ -2,6 +2,7 @@ import './globals.css'
 import type { Metadata } from 'next'
 import { Plus_Jakarta_Sans, Space_Grotesk, Poppins } from 'next/font/google'
 import Navbar from '@/components/Navbar'
+import { GoogleAnalytics } from '@next/third-parties/google'
 
 const jakarta = Plus_Jakarta_Sans({ subsets: ['latin'] })
 const spaceGrotesk = Space_Grotesk({ 
@@ -15,8 +16,18 @@ const poppins = Poppins({
 })
 
 export const metadata: Metadata = {
-  title: 'myadsphere | Best Digital Marketing Agency in Hyderabad',
-  description: 'MyAdSphere is a high-performance digital marketing agency specializing in performance marketing, paid ads, SEO, social media growth, and conversion rate optimization.',
+  title: 'myadsphere – Branding and Digital Marketing Agency in Hyderabad',
+  description: 'Myadsphere is a results-driven digital marketing agency in Hyderabad helping businesses grow through SEO, Google Ads, Meta Ads, branding, website development, and performance marketing.',
+  keywords: [
+    'Digital Marketing Agency in Hyderabad',
+    'Branding and Digital Marketing Agency in Hyderabad',
+    'SEO Agency Hyderabad',
+    'Performance Marketing Agency',
+    'Myadsphere'
+  ],
+  verification: {
+    google: '3h9bNA5LgDKO6evkCI9cc1nMoIGF5_azycKKjMOGNX0',
+  },
   icons: {
     icon: [
       { url: '/assets/fav.svg', type: 'image/svg+xml' },
@@ -45,6 +56,7 @@ export default function RootLayout({
         </div>
         {children}
       </body>
+      <GoogleAnalytics gaId="G-CEB7C10JCG" />
     </html>
   )
 }

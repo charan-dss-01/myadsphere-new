@@ -1,5 +1,5 @@
 'use client'
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import HeroSection from "@/components/HeroSection";
 import ClientLogosMarquee from "@/components/ClientLogosMarquee";
 import About from "@/components/About";
@@ -11,7 +11,6 @@ import FAQ from "@/components/FAQ";
 import Team from "@/components/Team";
 import CalBookingSection from "@/components/CalBookingSection";
 import Footer from "@/components/Footer";
-import Loader from "@/components/ui/loader";
 import CinematicIntro from '@/components/CinematicIntro';
 import { motion, AnimatePresence } from 'motion/react';
 
@@ -48,20 +47,7 @@ const SectionWrapper = ({ id, children, number, label }: { id: string, children:
 };
 
 export default function Home() {
-  const [loading, setLoading] = useState(true);
   const [introCompleted, setIntroCompleted] = useState(false);
-
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      setLoading(false);
-    }, 2000);
-
-    return () => clearTimeout(timer);
-  }, []);
-
-  if (loading) {
-    return <Loader />;
-  }
 
   return (
     <main className="relative bg-black scroll-smooth">
