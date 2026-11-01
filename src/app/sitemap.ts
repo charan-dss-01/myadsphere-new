@@ -1,10 +1,11 @@
 
 import type { MetadataRoute } from 'next'
+import { servicesData } from '@/data/servicesData'
 
 const baseUrl = 'https://myadsphere.in'
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  return [
+  const mainPages: MetadataRoute.Sitemap = [
     {
       url: baseUrl,
       changeFrequency: 'weekly',
@@ -46,4 +47,15 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.3,
     },
   ]
+
+  // Include only original service URLs, excluding aliases.
+  const servicePages: MetadataRoute.Sitemap = Object.entries(servicesData)
+    .filter(([slug, service]) => slug === service.slug)
+    .map(([slug]) => ({
+      url: `${baseUrl}/services/${slug}`,
+      changeFrequency: 'monthly' as const,
+      priority: 0.8,
+    }))
+
+  return [...mainPages, ...servicePages]
 }
