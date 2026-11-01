@@ -160,10 +160,10 @@ export const servicesData: Record<string, ServiceData> = {
     ],
 
     metaTitle:
-      'Branding & Identity Agency in Hyderabad | Myadsphere',
+      'Branding Agency in Hyderabad | myadsphere',
 
     metaDescription:
-      'Brand strategy, logo design, visual identity, positioning and brand guidelines from Myadsphere, a digital growth agency in Hyderabad.'
+      'Branding, logo design and brand identity services in Hyderabad. myadsphere helps businesses develop a distinctive identity, from brand strategy to visual guidelines.'
   },
 
 
@@ -288,10 +288,10 @@ export const servicesData: Record<string, ServiceData> = {
     ],
 
     metaTitle:
-      'Content & Creative Production Agency | Myadsphere',
+      'Creative Production Agency in Hyderabad | myadsphere',
 
     metaDescription:
-      'Creative production, graphics, reels, videos, advertising creatives, photography and campaign content from Myadsphere.'
+      'Looking for creative production in Hyderabad? myadsphere creates brand content, social media creatives, advertising designs, reels and videos for businesses.'
   },
 
 
@@ -416,10 +416,10 @@ export const servicesData: Record<string, ServiceData> = {
     ],
 
     metaTitle:
-      'Social Media Marketing Agency in Hyderabad | Myadsphere',
+      'Social Media Marketing Agency in Hyderabad | myadsphere',
 
     metaDescription:
-      'Social media strategy, content creation, publishing, reels, community management and growth campaigns from Myadsphere.'
+      'Social media marketing in Hyderabad by myadsphere. We handle content planning, Instagram and Facebook management, creative production and campaign communication.'
   },
 
 
@@ -544,10 +544,10 @@ export const servicesData: Record<string, ServiceData> = {
     ],
 
     metaTitle:
-      'Website Design & Development Company in Hyderabad | Myadsphere',
+      'Website Design & Development in Hyderabad | myadsphere',
 
     metaDescription:
-      'Responsive website design and development, React, WordPress, Shopify and modern web experiences from Myadsphere.'
+      'Website design and development in Hyderabad. myadsphere builds responsive business websites using modern technologies, with a focus on design, usability and performance.'
   },
 
 
@@ -671,10 +671,10 @@ export const servicesData: Record<string, ServiceData> = {
     ],
 
     metaTitle:
-      'UI UX Design Agency in Hyderabad | Myadsphere',
+      'UI/UX Design Agency in Hyderabad | myadsphere',
 
     metaDescription:
-      'UI UX design, user research, wireframing, prototyping and digital product design services from Myadsphere.'
+      'myadsphere provides UI/UX design services for websites and digital products, including user research, wireframes, interface design and interactive prototypes.'
   },
 
 
@@ -799,10 +799,10 @@ export const servicesData: Record<string, ServiceData> = {
     ],
 
     metaTitle:
-      'SEO Agency in Hyderabad | Myadsphere',
+      'SEO Agency in Hyderabad | myadsphere',
 
     metaDescription:
-      'Technical SEO, local SEO, on-page SEO, content strategy and organic search optimisation services from Myadsphere.'
+      'SEO services in Hyderabad by myadsphere, covering technical SEO, keyword research, on-page optimisation, local SEO and Google search visibility.'
   },
 
 
@@ -927,10 +927,10 @@ export const servicesData: Record<string, ServiceData> = {
     ],
 
     metaTitle:
-      'Performance Marketing Agency in Hyderabad | Myadsphere',
+      'Performance Marketing Agency in Hyderabad | myadsphere',
 
     metaDescription:
-      'Data-driven performance marketing and paid media strategies focused on leads, customer acquisition and measurable growth.'
+      'Performance marketing in Hyderabad with campaign planning, paid media, audience targeting, conversion tracking and ongoing advertising optimisation.'
   },
 
 
@@ -1055,10 +1055,10 @@ export const servicesData: Record<string, ServiceData> = {
     ],
 
     metaTitle:
-      'Google Ads PPC Agency in Hyderabad | Myadsphere',
+      'Google Ads Agency in Hyderabad | myadsphere',
 
     metaDescription:
-      'Google Search Ads, Performance Max, Shopping, YouTube and PPC campaign management from Myadsphere.'
+      'Google Ads management in Hyderabad by myadsphere. We manage Search, Display, YouTube and Performance Max campaigns for businesses.'
   },
 
 
@@ -1182,10 +1182,10 @@ export const servicesData: Record<string, ServiceData> = {
     ],
 
     metaTitle:
-      'Meta Ads Agency in Hyderabad | Myadsphere',
+      'Facebook & Instagram Ads Agency in Hyderabad | myadsphere',
 
     metaDescription:
-      'Facebook and Instagram advertising, creative testing, audience targeting and Meta Ads campaign management from Myadsphere.'
+      'Facebook and Instagram advertising services in Hyderabad. myadsphere manages Meta Ads campaigns, creative testing, audience targeting and retargeting.'
   },
 
 
@@ -1310,10 +1310,10 @@ export const servicesData: Record<string, ServiceData> = {
     ],
 
     metaTitle:
-      'Lead Generation Agency in Hyderabad | Myadsphere',
+      'Lead Generation Agency in Hyderabad | myadsphere',
 
     metaDescription:
-      'Lead generation campaigns, landing pages, funnels, CRM integration and customer acquisition systems from Myadsphere.'
+      'Lead generation services in Hyderabad, including paid campaigns, landing pages, lead funnels and CRM integration to help businesses attract potential customers.'
   },
 
 
@@ -1438,10 +1438,10 @@ export const servicesData: Record<string, ServiceData> = {
     ],
 
     metaTitle:
-      'PR & Media Agency in Hyderabad | Myadsphere',
+      'PR & Media Agency in Hyderabad | myadsphere',
 
     metaDescription:
-      'Public relations, press releases, media outreach, thought leadership, influencer collaborations and reputation support from Myadsphere.'
+      'Public relations and media services by myadsphere, including press releases, media outreach, brand communication and thought leadership.'
   },
 
 
@@ -1567,10 +1567,10 @@ export const servicesData: Record<string, ServiceData> = {
     ],
 
     metaTitle:
-      'AI Solutions & Automation Agency | Myadsphere',
+      'AI Automation Agency in Hyderabad | myadsphere',
 
     metaDescription:
-      'AI agents, chatbots, workflow automation and custom AI integrations designed to help businesses operate more efficiently.'
+      'AI solutions and business automation by myadsphere, including AI chatbots, intelligent assistants, lead qualification and custom workflow integrations.'
   }
 };
 
