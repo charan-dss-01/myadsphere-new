@@ -83,13 +83,22 @@ export default function RootLayout({
     '@context': 'https://schema.org',
     '@graph': [
       {
-        '@type': 'Organization',
+        '@type': ['Organization', 'ProfessionalService'],
         '@id': 'https://myadsphere.in/#organization',
         name: 'myadsphere',
         url: 'https://myadsphere.in/',
         description:
           'myadsphere is a digital growth agency in Hyderabad offering SEO, branding, social media marketing, Google Ads, Meta Ads, website development and performance marketing.',
         telephone: '+919494980096',
+        address: {
+          '@type': 'PostalAddress',
+          streetAddress:
+            '4th Floor, Oyo Workflo, Bizness Square, HITEX Road Junction, Hitech City Road, Opposite HITEX, Kondapur',
+          addressLocality: 'Hyderabad',
+          addressRegion: 'Telangana',
+          postalCode: '500081',
+          addressCountry: 'IN',
+        },
       },
       {
         '@type': 'WebSite',
@@ -115,7 +124,7 @@ export default function RootLayout({
         <link rel="shortcut icon" href="/assets/fav.svg" />
         <link rel="apple-touch-icon" href="/assets/fav.svg" />
 
-        {/* Schema Markup - myadsphere */}
+        {/* myadsphere Schema Markup */}
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
