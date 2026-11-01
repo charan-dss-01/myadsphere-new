@@ -79,6 +79,31 @@ export default function RootLayout({
 }: {
   children: React.ReactNode
 }) {
+  const schema = {
+    '@context': 'https://schema.org',
+    '@graph': [
+      {
+        '@type': 'Organization',
+        '@id': 'https://myadsphere.in/#organization',
+        name: 'myadsphere',
+        url: 'https://myadsphere.in/',
+        description:
+          'myadsphere is a digital growth agency in Hyderabad offering SEO, branding, social media marketing, Google Ads, Meta Ads, website development and performance marketing.',
+        telephone: '+919494980096',
+      },
+      {
+        '@type': 'WebSite',
+        '@id': 'https://myadsphere.in/#website',
+        url: 'https://myadsphere.in/',
+        name: 'myadsphere',
+        publisher: {
+          '@id': 'https://myadsphere.in/#organization',
+        },
+        inLanguage: 'en-IN',
+      },
+    ],
+  }
+
   return (
     <html
       lang="en"
@@ -89,6 +114,14 @@ export default function RootLayout({
         <link rel="icon" type="image/svg+xml" href="/assets/fav.svg" />
         <link rel="shortcut icon" href="/assets/fav.svg" />
         <link rel="apple-touch-icon" href="/assets/fav.svg" />
+
+        {/* Schema Markup - myadsphere */}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(schema),
+          }}
+        />
 
         {/* Google Analytics */}
         <script
