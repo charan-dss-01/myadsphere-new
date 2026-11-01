@@ -2,7 +2,6 @@ import './globals.css'
 import type { Metadata } from 'next'
 import { Plus_Jakarta_Sans, Space_Grotesk, Poppins } from 'next/font/google'
 import Navbar from '@/components/Navbar'
-import { GoogleAnalytics } from '@next/third-parties/google'
 
 const jakarta = Plus_Jakarta_Sans({ subsets: ['latin'] })
 const spaceGrotesk = Space_Grotesk({ 
@@ -49,6 +48,20 @@ export default function RootLayout({
         <link rel="icon" type="image/svg+xml" href="/assets/fav.svg" />
         <link rel="shortcut icon" href="/assets/fav.svg" />
         <link rel="apple-touch-icon" href="/assets/fav.svg" />
+        
+        {/* Google tag (gtag.js) */}
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-CEB7C10JCG" />
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              window.dataLayer = window.dataLayer || [];
+              function gtag(){dataLayer.push(arguments);}
+              gtag('js', new Date());
+
+              gtag('config', 'G-CEB7C10JCG');
+            `,
+          }}
+        />
       </head>
       <body className={`${jakarta.className} text-white antialiased`}>
         <div className="relative w-full flex items-center justify-center">
@@ -56,7 +69,6 @@ export default function RootLayout({
         </div>
         {children}
       </body>
-      <GoogleAnalytics gaId="G-CEB7C10JCG" />
     </html>
   )
 }
