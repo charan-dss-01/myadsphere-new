@@ -1,10 +1,12 @@
+
 import React from 'react';
 import Link from 'next/link';
-import { notFound } from 'next/navigation';
+import { notFound, permanentRedirect } from 'next/navigation';
+import type { Metadata } from 'next';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import { servicesData } from '@/data/servicesData';
-import { ArrowUpRight, CheckCircle2, ChevronRight, Sparkles, Layers, ShieldCheck, Cpu } from 'lucide-react';
+import { ArrowUpRight, CheckCircle2, ChevronRight, Sparkles, Layers, Cpu } from 'lucide-react';
 
 interface PageProps {
   params: Promise<{
@@ -12,20 +14,52 @@ interface PageProps {
   }>;
 }
 
+// Generate pages only for the original service slugs.
+// Alias URLs will redirect to their original service pages.
 export async function generateStaticParams() {
-  return Object.keys(servicesData).map((slug) => ({
-    slug,
-  }));
+  return Object.entries(servicesData)
+    .filter(([slug, service]) => slug === service.slug)
+    .map(([slug]) => ({ slug }));
 }
 
-export async function generateMetadata({ params }: PageProps) {
+// SEO metadata for each service page
+export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
   const resolvedParams = await params;
   const service = servicesData[resolvedParams.slug];
-  if (!service) return { title: 'Service Not Found | MyAdSphere' };
+
+  if (!service) {
+    return {
+      title: 'Service Not Found | myadsphere',
+      robots: {
+        index: false,
+        follow: false,
+      },
+    };
+  }
+
+  const canonicalUrl = `https://myadsphere.in/services/${service.slug}`;
 
   return {
-    title: service.metaTitle,
+    title: {
+      absolute: service.metaTitle,
+    },
     description: service.metaDescription,
+    alternates: {
+      canonical: canonicalUrl,
+    },
+    openGraph: {
+      title: service.metaTitle,
+      description: service.metaDescription,
+      url: canonicalUrl,
+      siteName: 'myadsphere',
+      type: 'website',
+      locale: 'en_IN',
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title: service.metaTitle,
+      description: service.metaDescription,
+    },
   };
 }
 
@@ -35,6 +69,11 @@ export default async function ServiceDetailPage({ params }: PageProps) {
 
   if (!service) {
     notFound();
+  }
+
+  // Redirect alias URLs to the original service URL.
+  if (resolvedParams.slug !== service.slug) {
+    permanentRedirect(`/services/${service.slug}`);
   }
 
   // Related Services (excluding current)
@@ -49,14 +88,10 @@ export default async function ServiceDetailPage({ params }: PageProps) {
 
       {/* ── 1. SERVICE HERO SECTION ── */}
       <section className="relative pt-36 pb-20 md:pt-48 md:pb-28 px-6 md:px-12 border-b border-white/10 overflow-hidden select-none">
-        
-        {/* Background Grid & Ambient Glow */}
         <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.012)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.012)_1px,transparent_1px)] bg-[size:40px_40px] pointer-events-none" />
         <div className="absolute top-1/4 right-0 w-[600px] h-[350px] bg-[#FF4A17]/[0.05] blur-[150px] rounded-full pointer-events-none" />
 
         <div className="max-w-6xl mx-auto relative z-10">
-
-          {/* Minimal Breadcrumb */}
           <div className="flex items-center gap-2 text-xs font-sans text-zinc-500 mb-8">
             <Link href="/" className="hover:text-white transition-colors">Home</Link>
             <ChevronRight size={12} />
@@ -66,8 +101,6 @@ export default async function ServiceDetailPage({ params }: PageProps) {
           </div>
 
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
-            
-            {/* Left Content */}
             <div className="lg:col-span-7">
               <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-zinc-950/90 border border-white/15 text-[#FF4A17] font-sans text-[11px] font-bold tracking-[0.3em] uppercase mb-6 shadow-lg">
                 <span className="w-1.5 h-1.5 rounded-full bg-[#FF4A17] animate-pulse" />
@@ -82,7 +115,6 @@ export default async function ServiceDetailPage({ params }: PageProps) {
                 {service.heroSubhead}
               </p>
 
-              {/* CTAs */}
               <div className="flex flex-wrap items-center gap-4">
                 <Link
                   href="/#contact"
@@ -100,7 +132,6 @@ export default async function ServiceDetailPage({ params }: PageProps) {
               </div>
             </div>
 
-            {/* Right Visual Simulation Module */}
             <div className="lg:col-span-5">
               <div className="relative rounded-2xl border border-white/15 bg-zinc-950/90 p-8 shadow-2xl overflow-hidden backdrop-blur-xl">
                 <div className="absolute top-0 right-0 w-40 h-40 bg-[#FF4A17]/10 blur-3xl pointer-events-none" />
@@ -117,7 +148,6 @@ export default async function ServiceDetailPage({ params }: PageProps) {
                   </span>
                 </div>
 
-                {/* Simulated Metrics List */}
                 <div className="space-y-4 mb-6">
                   {service.outcomes.map((outcome, idx) => (
                     <div key={idx} className="flex items-start gap-3 text-xs text-zinc-300">
@@ -136,9 +166,7 @@ export default async function ServiceDetailPage({ params }: PageProps) {
                 </div>
               </div>
             </div>
-
           </div>
-
         </div>
       </section>
 
@@ -156,10 +184,9 @@ export default async function ServiceDetailPage({ params }: PageProps) {
         </div>
       </section>
 
-      {/* ── 3. CAPABILITIES ("WHAT WE DO") ── */}
+      {/* ── 3. CAPABILITIES ── */}
       <section className="relative py-24 px-6 md:px-12 bg-black border-b border-white/10">
         <div className="max-w-7xl mx-auto">
-          
           <div className="mb-16">
             <p className="text-[#FF4A17] font-sans text-xs font-bold tracking-[0.35em] uppercase mb-3">
               CORE CAPABILITIES
@@ -189,14 +216,12 @@ export default async function ServiceDetailPage({ params }: PageProps) {
               </div>
             ))}
           </div>
-
         </div>
       </section>
 
-      {/* ── 4. PROCESS ("OUR APPROACH") ── */}
+      {/* ── 4. PROCESS ── */}
       <section className="relative py-24 px-6 md:px-12 bg-black border-b border-white/10 select-none">
         <div className="max-w-7xl mx-auto">
-          
           <div className="mb-16">
             <p className="text-[#FF4A17] font-sans text-xs font-bold tracking-[0.35em] uppercase mb-3">
               EXECUTION FRAMEWORK
@@ -224,15 +249,12 @@ export default async function ServiceDetailPage({ params }: PageProps) {
               </div>
             ))}
           </div>
-
         </div>
       </section>
 
       {/* ── 5. TARGET INDUSTRIES & PLATFORMS ── */}
       <section className="relative py-24 px-6 md:px-12 bg-black border-b border-white/10">
         <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12">
-          
-          {/* Target Industries */}
           <div className="p-8 md:p-10 rounded-2xl border border-white/10 bg-zinc-950/90">
             <div className="flex items-center gap-3 mb-6">
               <Layers className="text-[#FF4A17]" size={20} />
@@ -252,7 +274,6 @@ export default async function ServiceDetailPage({ params }: PageProps) {
             </div>
           </div>
 
-          {/* Platform Tech Ecosystem */}
           <div className="p-8 md:p-10 rounded-2xl border border-white/10 bg-zinc-950/90">
             <div className="flex items-center gap-3 mb-6">
               <Cpu className="text-[#FF4A17]" size={20} />
@@ -271,14 +292,12 @@ export default async function ServiceDetailPage({ params }: PageProps) {
               ))}
             </div>
           </div>
-
         </div>
       </section>
 
       {/* ── 6. SERVICE-SPECIFIC FAQS ── */}
       <section className="relative py-24 px-6 md:px-12 bg-black border-b border-white/10">
         <div className="max-w-4xl mx-auto">
-          
           <div className="text-center mb-16">
             <p className="text-[#FF4A17] font-sans text-xs font-bold tracking-[0.35em] uppercase mb-3">
               QUESTIONS & ANSWERS
@@ -303,14 +322,12 @@ export default async function ServiceDetailPage({ params }: PageProps) {
               </div>
             ))}
           </div>
-
         </div>
       </section>
 
-      {/* ── 7. RELATED SERVICES CROSS-LINKS ── */}
+      {/* ── 7. RELATED SERVICES ── */}
       <section className="relative py-24 px-6 md:px-12 bg-black border-b border-white/10">
         <div className="max-w-7xl mx-auto">
-          
           <div className="flex items-center justify-between mb-12">
             <div>
               <p className="text-[#FF4A17] font-sans text-xs font-bold tracking-[0.35em] uppercase mb-2">
@@ -348,11 +365,10 @@ export default async function ServiceDetailPage({ params }: PageProps) {
               </Link>
             ))}
           </div>
-
         </div>
       </section>
 
-      {/* ── 8. FINAL HIGH-CONVERSION CTA ── */}
+      {/* ── 8. FINAL CTA ── */}
       <section className="relative py-24 px-6 md:px-12 bg-black text-center select-none overflow-hidden">
         <div className="absolute inset-0 bg-[radial-gradient(rgba(255,74,23,0.06)_1px,transparent_1px)] bg-[size:32px_32px] pointer-events-none" />
 
