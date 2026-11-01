@@ -81,8 +81,59 @@ export default async function ServiceDetailPage({ params }: PageProps) {
     .filter((s) => s.slug !== service.slug)
     .slice(0, 3);
 
+  // SEO: Dynamic Service and Breadcrumb structured data
+  const pageUrl = `https://myadsphere.in/services/${service.slug}`;
+
+  const structuredData = {
+    '@context': 'https://schema.org',
+    '@graph': [
+      {
+        '@type': 'Service',
+        '@id': `${pageUrl}#service`,
+        name: service.title,
+        description: service.metaDescription,
+        serviceType: service.title,
+        url: pageUrl,
+        provider: {
+          '@id': 'https://myadsphere.in/#organization',
+        },
+      },
+      {
+        '@type': 'BreadcrumbList',
+        itemListElement: [
+          {
+            '@type': 'ListItem',
+            position: 1,
+            name: 'Home',
+            item: 'https://myadsphere.in/',
+          },
+          {
+            '@type': 'ListItem',
+            position: 2,
+            name: 'Services',
+            item: 'https://myadsphere.in/services',
+          },
+          {
+            '@type': 'ListItem',
+            position: 3,
+            name: service.title,
+            item: pageUrl,
+          },
+        ],
+      },
+    ],
+  };
+
   return (
     <main className="min-h-screen bg-black text-white antialiased selection:bg-[#FF4A17] selection:text-white">
+      {/* SEO Structured Data */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(structuredData).replace(/</g, '\\u003c'),
+        }}
+      />
+
       {/* Global Navbar */}
       <Navbar />
 
